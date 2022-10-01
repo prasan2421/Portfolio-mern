@@ -376,13 +376,13 @@ export default function HomeSectionFirst(
           </Grow>
           <Grow in={checked} style={{ transformOrigin: '0 0 0' }} className='introTextLast'
               {...(checked ? { timeout: 2000 } : {})}>
-                  <Typography variant="h1">Front-end Developer</Typography>
+                  <Typography variant="h1">MERN Stack Developer</Typography>
           </Grow>
           
          
           
         </Box>
-      <Box className='subTitle'><Typography variant="subtitle1">React | React Native | JS / TS</Typography></Box>
+      <Box className='subTitle'><Typography variant="subtitle1">React | React Native | Express | JS / TS</Typography></Box>
       <Box  sx={{marginTop:'50px', display:{sm:'flex'},  }}>
                 <Box sx={{display:{xs:'flex'}, border:'5px solid ',borderColor:'inherit', borderRadius:'20px', overflow:'hidden', alignItems:{sm:'center'}, width:{xs:'100%',sm:'auto'},marginTop:{xs:'10px',sm:'0'} }}>
                   <CustomButton variant="text" 
