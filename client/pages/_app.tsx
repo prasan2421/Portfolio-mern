@@ -10,6 +10,8 @@ import DancingLinesLight from '../components/dancing-lines-light';
 import useBreakpoint from 'use-breakpoint';
 import Script from 'next/script'
 
+import axios from 'axios';
+
 
 const BREAKPOINTS = { mobile: 0, tablet: 900, desktop: 1280 }
 
@@ -44,6 +46,40 @@ const DancingLinesDisplay=()=>{
   }
   else return null;
 }
+
+const [backendData , setBackendData] = React.useState([{}])
+
+const loadPlayer = async () => {
+  // fetch("/api").then(
+  //   response => response.json()
+  // ).then(
+  //   data =>{
+  //     alert(JSON.stringify(data))
+  //   }
+    
+  // )
+   
+  axios.get('/api/contacts')
+  .then(function (response) {
+    // handle success
+    // console.log(response);
+    alert(JSON.stringify(response))
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+    alert(JSON.stringify(error))
+  })
+  // .finally(function () {
+  //   // always executed
+  //   alert('Something went wrong.')
+  // });
+  
+}
+
+useEffect(()=>{
+  // loadPlayer()
+},[])
 
   return (
     <>

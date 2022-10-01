@@ -11,6 +11,8 @@ import { useSpring, animated } from '@react-spring/web';
 import Backdrop from '@mui/material/Backdrop';
 import { GetStaticProps } from 'next'
 import TextField from '@mui/material/TextField';
+import Alert from '@mui/material/Alert';
+import CloseIcon from '@mui/icons-material/Close';
 import Send from '@mui/icons-material/Send';
 import CancelIcon from '@mui/icons-material/Cancel';
 import Stack from '@mui/material/Stack';
@@ -22,10 +24,13 @@ import FormControl from '@mui/material/FormControl';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
+import qs from 'qs';
 
+import axios from 'axios';
 // import {Link as Link2} from '@mui/material/Link';
 
-import {Grid, Box, Slide, Grow, Typography, Button, IconButton} from '@mui/material';
+import {Grid, Box, Slide, Grow, Typography, Button, IconButton, Collapse} from '@mui/material';
+import LoadingButton from '@mui/lab/LoadingButton';
 import { styled, alpha, ThemeProvider, createTheme, useTheme,responsiveFontSizes, } from '@mui/material/styles';
 import AddReactionIcon from '@mui/icons-material/AddReaction';
 import DownloadIcon from '@mui/icons-material/Download';
@@ -86,20 +91,20 @@ const Fade = React.forwardRef<HTMLDivElement, FadeProps>(function Fade(props, re
   };
 
   interface IFormInputs {
-    Name: string;
-    Email: string;
-    Subject: string;
-    Message: string;
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
     // iceCreamType: { label: string; value: string };
     // password: yup.string().min(4).max(20).required(),
   }
 
   const schema = yup.object({
-    Name: yup.string().required(),
+    name: yup.string().required(),
     // age: yup.number().positive().integer().required(),
-    Email: yup.string().email().required(),
-    Subject: yup.string().required(),
-    Message: yup.string().required()
+    email: yup.string().email().required(),
+    subject: yup.string().required(),
+    message: yup.string().required()
   }).required();
  
 
@@ -110,8 +115,9 @@ export default function HomeSectionFirst(
     const [checked, setChecked] = React.useState(true);
     const [open, setOpen] = React.useState(false);
     const [openEmoji, setOpenEmoji] = React.useState(false);
-    const [message, setMessage] = React.useState('');
-    
+    const [sendTrigger, setSendTrigger] = React.useState(false);
+    const [success, setSuccess] = React.useState(true);
+    const [alertOpen, setAlertOpen] = React.useState(false);
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -157,25 +163,67 @@ export default function HomeSectionFirst(
   //   const result = await response.json()
   //   alert(`Is this your full name: ${result.data}`)
   // }
+  
 
   const submitMessage= async(data:any) =>{
+
+    setSendTrigger(true);
+    // alert(JSON.stringify(data));return;
+
+    // const config = {
+    //   headers: {
+    //     'Content-Type': 'application/x-www-form-urlencoded'
+    //   }
+    // }
+
+    axios.post('/api/contacts'
+    ,qs.stringify(data)
+    )
+    .then(function (response) {
+      setSendTrigger(false)
+      setSuccess(true)
+      setAlertOpen(true)
+      setOpen(false)
+      
+      // handle success
+      // console.log(response);
+      // alert(JSON.stringify(response.data))
+    })
+    .catch(function (error) {
+      setSendTrigger(false)
+      setSuccess(false)
+      setAlertOpen(true)
+      // handle error
+      console.log(error);
+      alert(JSON.stringify(error))
+    })
+    // .finally(function () {
+    //   // trigger after finish
+    //   // setSendTrigger(false)
+    //   // alert('Something went wrong.')
+    // });
+    
+
+
     
     // const dataMessage = JSON.stringify({'name':'ram','email':'dasdas','message':'dasdasdas'})
     
     // alert(dataMessage)
+
+
    
-    const response = await fetch('/api/contact', {
-      method:'POST',
-      body:JSON.stringify({'name':'ram','email':'dasdas','message':'dasdasdas'}),
-      headers:{
-        'Content-Type':'application/json'
-      }
+    // const response = await fetch('/api/contact', {
+    //   method:'POST',
+    //   body:JSON.stringify({'name':'ram','email':'dasdas','message':'dasdasdas'}),
+    //   headers:{
+    //     'Content-Type':'application/json'
+    //   }
 
-    })
+    // })
 
-    const datames = await response.json()
+    // const datames = await response.json()
   
-    console.log(datames)
+    // console.log(datames)
   }
 
   const { control, handleSubmit, formState: { errors }  } = useForm<IFormInputs>({
@@ -184,8 +232,9 @@ export default function HomeSectionFirst(
 
   const onSubmit: SubmitHandler<IFormInputs> = (data) => {
     
-    // submitMessage(data)
-    alert('This feature is currently under construction.')
+    submitMessage(data)
+    // alert(JSON.stringify(data))
+    
   // setMessage(data)
   
   };
@@ -218,7 +267,7 @@ export default function HomeSectionFirst(
         <form onSubmit={handleSubmit(onSubmit)} >
 
         <Controller
-            name="Name"
+            name="name"
             control={control}
             // defaultValue="John Doe"
             render={({ field }) => (
@@ -226,8 +275,8 @@ export default function HomeSectionFirst(
                 {...field}
                 label="Name"
                 variant="outlined"
-                error={!!errors.Name}
-                helperText={errors.Name ? errors.Name?.message : ''}
+                error={!!errors.name}
+                helperText={errors.name ? errors.name?.message : ''}
                 fullWidth
                 margin="dense"
                 sx={{ width:{xs: '100%',sm:'100%', md:'50%'}, marginBottom:'10px' , paddingRight:{sm:0,md:'5px'}}}
@@ -236,7 +285,7 @@ export default function HomeSectionFirst(
           />
 
         <Controller
-            name="Email"
+            name="email"
             control={control}
             // defaultValue="example@dev.com"
             render={({ field }) => (
@@ -244,8 +293,8 @@ export default function HomeSectionFirst(
                 {...field}
                 label="Email"
                 variant="outlined"
-                error={!!errors.Email}
-                helperText={errors.Email ? errors.Email?.message : ''}
+                error={!!errors.email}
+                helperText={errors.email ? errors.email?.message : ''}
                 sx={{width:{xs: '100%',sm:'100%', md:'50%'}, marginBottom:'10px',paddingLeft:{sm:0,md:'5px'} }}
                 fullWidth
                 margin="dense"
@@ -253,18 +302,17 @@ export default function HomeSectionFirst(
             )}
           />
           <Controller
-            name="Subject"
+            name="subject"
             control={control}
             // defaultValue="Greetings"
             render={({ field }) => (
               <TextField
                 {...field}
-                label="Message"
+                label="Subject"
                 
-             
                 variant="outlined"
-                error={!!errors.Subject}
-                helperText={errors.Subject ? errors.Subject?.message : ''}
+                error={!!errors.subject}
+                helperText={errors.subject ? errors.subject?.message : ''}
                 sx={{width: '100%', marginBottom:'10px', }}
                 fullWidth
                 margin="dense"
@@ -273,7 +321,7 @@ export default function HomeSectionFirst(
           />    
 
         <Controller
-            name="Message"
+            name="message"
             control={control}
             // defaultValue="You are awesome!!"
             render={({ field }) => (
@@ -285,8 +333,8 @@ export default function HomeSectionFirst(
               rows={4}
              
                 variant="outlined"
-                error={!!errors.Message}
-                helperText={errors.Message ? errors.Message?.message : ''}
+                error={!!errors.message}
+                helperText={errors.message ? errors.message?.message : ''}
                 sx={{width: '100%', marginBottom:'10px', }}
                 fullWidth
                 margin="dense"
@@ -294,9 +342,11 @@ export default function HomeSectionFirst(
             )}
           />    
            
-            <Button type="submit" sx={{display:'flex'}}>
-              Send <Send />
-            </Button>
+            <LoadingButton type="submit" variant="contained" loading={sendTrigger?true:false}
+          loadingPosition="end"
+          endIcon={<Send/>}>
+              Send 
+            </LoadingButton>
         </form>
       </Box>
     </Container>
@@ -359,6 +409,27 @@ export default function HomeSectionFirst(
   return (
 
     <Grid container sx={{height:'100vh',paddingX: {xs:'2.5rem',md:'4.5rem'}}}>  
+    
+    <Collapse in={alertOpen} sx={{position:'absolute', bottom:0, right:20}} >
+        <Alert
+        variant="filled" severity={success?"success":"error"}
+          action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="small"
+              onClick={() => {
+                setAlertOpen(false);
+              }}
+            >
+              <CloseIcon fontSize="inherit" />
+            </IconButton>
+          }
+          sx={{ mb: 2 }}
+        >
+          {success?'Message Sent':'Message sending Failed'}
+        </Alert>
+      </Collapse>
     {renderForm}
     {emojiForm}
     <Grid item xs={12} style={{display:'flex', alignItems:'center'}}>
@@ -376,13 +447,13 @@ export default function HomeSectionFirst(
           </Grow>
           <Grow in={checked} style={{ transformOrigin: '0 0 0' }} className='introTextLast'
               {...(checked ? { timeout: 2000 } : {})}>
-                  <Typography variant="h1">MERN Stack Developer</Typography>
+                  <Typography variant="h1">Front-end Developer</Typography>
           </Grow>
           
          
           
         </Box>
-      <Box className='subTitle'><Typography variant="subtitle1">React | React Native | Express | JS / TS</Typography></Box>
+      <Box className='subTitle'><Typography variant="subtitle1">React | React Native | JS / TS</Typography></Box>
       <Box  sx={{marginTop:'50px', display:{sm:'flex'},  }}>
                 <Box sx={{display:{xs:'flex'}, border:'5px solid ',borderColor:'inherit', borderRadius:'20px', overflow:'hidden', alignItems:{sm:'center'}, width:{xs:'100%',sm:'auto'},marginTop:{xs:'10px',sm:'0'} }}>
                   <CustomButton variant="text" 
