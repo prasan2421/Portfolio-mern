@@ -1,5 +1,22 @@
 {
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js"
+  "/_document": "pages/_document.js",
+  "/about": "pages/about.html",
+  "/api/contact": "pages/api/contact.js",
+  "/api/personalDetails": "pages/api/personalDetails.js",
+  "/api": "pages/api.js",
+  "/home/HomeSectionFifth": "pages/home/HomeSectionFifth.html",
+  "/contact": "pages/contact.html",
+  "/home/HomeSectionFourth": "pages/home/HomeSectionFourth.html",
+  "/home/HomeSectionFirst": "pages/home/HomeSectionFirst.html",
+  "/home/HomeSectionThird": "pages/home/HomeSectionThird.html",
+  "/posts/404": "pages/posts/404.html",
+  "/skill": "pages/skill.html",
+  "/projects/[projectId]": "pages/projects/[projectId].js",
+  "/posts/[id]": "pages/posts/[id].js",
+  "/": "pages/index.js",
+  "/home/HomeSectionSecond": "pages/home/HomeSectionSecond.html",
+  "/work": "pages/work.js",
+  "/projects": "pages/projects.js"
 }
