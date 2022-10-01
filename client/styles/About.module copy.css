@@ -1,0 +1,396 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=La+Belle+Aurore&display=swap');
+
+/* body{
+    background-image:  url("https://cdn.pixabay.com/photo/2017/02/12/12/42/wall-2059909_640.png") ;
+  }   */
+
+#root{
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; */
+}
+h1,h2{
+  font-weight: bold!important;
+}
+
+
+
+.ContainerWrapper{
+  position:absolute;
+  font-family: 'La Belle Aurore',cursive;
+  color: #515152;
+  font-size: 1.2rem;
+  top: 1.5rem;
+  
+}
+
+
+.ContainerWrapper::before{
+  content: '<body>';
+  padding-Left:0.5rem;
+    font-family: 'La Belle Aurore',cursive;
+    color: #515152;
+    font-size: 1.2rem;
+    position: absolute;
+   
+    top: 2.5rem;
+}
+
+.AboutDiv::before{
+  content: '<div>';
+  padding-Left:2.5rem;
+    font-family: 'La Belle Aurore',cursive;
+    color: #515152;
+    font-size: 1.2rem;
+    position: absolute;
+   
+    top: -2rem;
+}
+
+.AboutDiv::after{
+  content: '</div>';
+  padding-Left:2.5rem;
+    font-family: 'La Belle Aurore',cursive;
+    color: #515152;
+    font-size: 1.2rem;
+    position: absolute;
+   
+    bottom: -2rem;
+}
+
+.ContainerWrapper-base{
+  
+  position:absolute;
+  font-family: 'La Belle Aurore',cursive;
+  color: #515152;
+  font-size: 1.2rem;
+  bottom: 0.5rem;
+  
+}
+.ContainerWrapper-base::before{
+  content: '</body>';
+    font-family: 'La Belle Aurore',cursive;
+    color: #515152;
+    font-size: 1.2rem;
+    position: absolute;
+    padding-Left:0.5rem;
+    bottom: 2.5rem;
+}
+.back-text{
+  font-family: font-file-82132;
+    position: absolute;
+    top: -11rem;
+    left: 42vw;
+    z-index: -1;
+    font-size: 32rem;
+    color: rgba(255,255,255,0.04);
+   
+}
+
+.back-text-third{
+  font-family: font-file-82132;
+    position: absolute;
+    bottom: -11rem;
+    left: 0;
+    z-index: -1;
+    font-size: 32rem;
+    color: rgba(255,255,255,0.04);
+   
+}
+
+.portfolioGallary{
+  position: relative;
+}
+
+.portfolioGallary::before{
+  content: '<section>';
+    font-family: 'La Belle Aurore',cursive;
+    color: #515152;
+    font-size: 1.2rem;
+    position: absolute;
+    left:1rem;
+    top: -2.5rem;
+}
+.portfolioGallary::after{
+  content: '<section/>';
+    font-family: 'La Belle Aurore',cursive;
+    color: #515152;
+    font-size: 1.2rem;
+    position: absolute;
+    left:1rem;
+    bottom: -2.5rem;
+}
+
+.introText h1{
+  /* font-size: 4.5em; */
+  display: block ;
+  margin: 0;
+  padding: 0;
+  line-height: 1em;
+}
+
+.PortfolioTitle h1{
+  /* font-size: 4em; */
+  display: block ;
+  margin: 0;
+  padding: 0;
+  line-height: 1em;
+  
+}
+
+.PortfolioTitle{
+  position: relative;
+  margin-top: 1.5rem;
+}
+
+.PortfolioTitle::before{
+  content: '<h1>';
+  font-family: 'La Belle Aurore',cursive;
+  color: #515152;
+  font-size: 1.2rem;
+  position: absolute;
+ 
+  left: -1.5rem;
+  top: -1rem;
+}
+
+a:hover {  
+  color: rgb(44, 183, 253);  
+}
+
+.PortfolioTitle::after{
+  content: '<h1/>';
+  font-family: 'La Belle Aurore',cursive;
+  color: #515152;
+  font-size: 1.2rem;
+  position: absolute;
+  
+  left: -1.5rem;
+  bottom: -1.5rem;
+}
+
+.drawerStyle div{
+  justify-content: space-between;
+}
+/* 
+.drawerStyleSmall div:nth-child(3) {
+  height:100vh;
+  justify-content: space-between;
+} */
+
+
+.logoText {
+  margin:0;
+  letter-spacing: 1px;
+  font-family: "Waterfall";
+  line-height: 1em;
+  display: inline-grid;
+}
+div.swiper-button-prev,
+div.swiper-button-next {
+color: white;
+font-weight: bolder;
+}
+
+.socialButton {
+   /* height:7rem */
+   margin-bottom: 10rem;
+}
+
+.media:hover {
+  transition: 1s;
+    transform: scale(1.5)
+  }
+
+
+span.swiper-pagination-bullet {
+  background-color: white;
+  }
+
+
+    ::-webkit-scrollbar {
+      width: 10px
+    }
+
+    ::-webkit-scrollbar-track{
+      background:#282828
+    }
+    ::-webkit-scrollbar-thumb{
+      background: hwb(0 100% 0% / 0.38);
+      border-radius: 10px
+    }
+
+
+  .glass-panel {
+    color: #fff;
+    /* margin: 40px auto; */
+    background-color: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    width: 100%;
+    border-radius: 15px;
+    padding: 32px;
+    backdrop-filter: blur(10px);
+  }
+
+  .PortfolioItemWrapper{
+    position: absolute;
+                display:flex;
+                top: 30%;
+                left: 30%;
+                        width: 40%;
+                        height:40%;
+                        border-radius:100%;
+                        background: rgba(0, 0, 0, 0.54);
+                        color: white;
+                        padding: 10px;
+                        justify-content:center;
+                        align-items:center;
+  }
+
+  .ViewProject p{
+margin:2px;
+align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+
+
+  .glass-panel2 {
+    color: #fff;
+    /* margin: 40px auto; */
+    background-color: rgba(255,255,255,0.06);
+    border: 1px solid rgb(179, 179, 179);
+    width: 100%;
+    border-radius: 15px;
+    padding: 32px;
+    backdrop-filter: blur(10px);
+  }
+
+  
+  
+
+  .circle {
+    border: 0.3em dashed #2b2c2c;
+    border-radius: 50%;
+    box-shadow: 0.375em 0.375em 0 0 rgba(15, 28, 63, 0.125);
+    height: 20em;
+    width: 20em;
+  }
+
+  .circle2 {
+    border: 0.2em dashed #3f4141;
+    border-radius: 50%;
+    box-shadow: 0.375em 0.375em 0 0 rgba(15, 28, 63, 0.125);
+    height: 17em;
+    width: 17em;
+  }
+
+  .introText{
+    position: relative;
+  }
+
+  .introText::before{
+    content: '<h1>';
+    font-family: 'La Belle Aurore',cursive;
+    color: #515152;
+    font-size: 1.2rem;
+    position: absolute;
+    top: -1.5rem;
+    left: -1.5rem;
+   
+  }
+  .introTextLast{
+position:relative;
+  }
+
+  .introTextLast::after{
+    content: '<h1/>';
+    font-family: 'La Belle Aurore',cursive;
+    color: #515152;
+    font-size: 1.2rem;
+    position: absolute;
+    margin-top: 2rem;
+  }
+
+  .subTitle{
+    position:relative;
+    margin-top:3rem ;
+  }
+
+  .subTitle::before{
+    content: '<p>';
+    font-family: 'La Belle Aurore',cursive;
+    color: #515152;
+    font-size: 1.2rem;
+    position: absolute;
+   
+    left: -1.5rem;
+    top: -1.5rem;
+  }
+
+
+  .subTitle::after{
+    content: '<p/>';
+    font-family: 'La Belle Aurore',cursive;
+    color: #515152;
+    font-size: 1.2rem;
+    position: absolute;
+    
+    left: -1.5rem;
+    bottom: -1.5rem;
+  }
+
+  .formBelow{
+    position: relative;
+    margin-top: 4rem;
+  }
+
+  .formBelow::before{
+    content: '<form>';
+    font-family: 'La Belle Aurore',cursive;
+    color: #515152;
+    font-size: 1.2rem;
+    position: absolute;
+   
+    left: -1.5rem;
+    top: -1.5rem;
+  }
+
+  .formBelow::after{
+    content: '<form/>';
+    font-family: 'La Belle Aurore',cursive;
+    color: #515152;
+    font-size: 1.2rem;
+    position: absolute;
+    
+    left: -1.5rem;
+    bottom: -1.5rem;
+  }
+
+  .bodyContainer{
+    /* background-color:#f44336; */
+    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+    color:white;
+    
+    border: 0.2rem solid #fff;
+   
+    box-shadow: 0 0 .2rem #fff,
+              0 0 .2rem #fff,
+              0 0 0.5rem #bc13fe,
+              0 0 0.7rem #bc13fe,
+              0 0 0.9rem #bc13fe,
+              inset 0 0 0.8rem #bc13fe; 
+
+    text-shadow:
+              0 0 0.5px #fff,
+              0 0 1px #fff,
+              0 0 1.5px #fff,
+              0 0 30px #5271ff,
+              0 0 50px #5271ff,
+              0 0 60px #5271ff,
+              0 0 70px #5271ff,
+              0 0 80px #5271ff;
+}
