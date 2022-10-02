@@ -16,7 +16,7 @@ app.use(cors());
 
 dotenv.config({path:'config.env'})
 
-const port = process.env.PORT || 3001
+
 
 //log requests
 app.use(morgan('tiny'));
@@ -37,19 +37,23 @@ app.use('/img', express.static(path.resolve(__dirname,"assets/img")))
 app.use('/js', express.static(path.resolve(__dirname,"assets/js"))) 
 
 
-// Client path
-// Step 1:
-app.use(express.static(path.resolve(__dirname, "./client/out")));
-// Step 2:
-
-
 
 // load routers
 app.use('/',require('./server/routes/router'))
 
+const port = process.env.PORT || 3001
+
+// Client path
+if (process.env.NODE_ENV === "production") {
+// Step 1:
+app.use(express.static(path.resolve(__dirname, "./client/out")));
+// Step 2:
+// API requests
 app.get("*", function (request, response) {
   response.sendFile(path.resolve(__dirname, "./client/out", "index.html"));
 });
+
+}
 
 app.listen(port, () => {
   console.log(`Server app listening on port ${port}`)
