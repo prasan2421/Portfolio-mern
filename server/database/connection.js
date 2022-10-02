@@ -3,7 +3,7 @@ const mongoose=require('mongoose')
 const connectDB = async()=>{
     try{
 //mongodb connection string
-const con = await mongoose.connect("mongodb+srv://prasan2421:Shimaastha2421@cluster0.pt3kltd.mongodb.net/portfolio_db?retryWrites=true&w=majority")
+const con = await mongoose.connect(process.env.MONGO_URI)
 
     // // depreciation warning message remove
 //     ,{
