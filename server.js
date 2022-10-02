@@ -11,7 +11,7 @@ const connectDB = require('./server/database/connection')
 
 dotenv.config({path:'config.env'})
 
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 3001
 
 //log requests
 app.use(morgan('tiny'));
