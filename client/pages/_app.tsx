@@ -59,7 +59,7 @@ const loadPlayer = async () => {
     
   // )
    
-  axios.get('/api/contacts')
+  axios.get('/api/test')
   .then(function (response) {
     // handle success
     // console.log(response);
@@ -78,7 +78,7 @@ const loadPlayer = async () => {
 }
 
 useEffect(()=>{
-  // loadPlayer()
+  loadPlayer()
 },[])
 
   return (

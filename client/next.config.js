@@ -6,12 +6,16 @@ module.exports = {
   async rewrites() {
     return [
       {
+        source: "/api/test",
+        destination: "http://localhost:3001/api/test",
+      },
+      {
         source: "/api/users",
         destination: "http://localhost:3001/api/users",
       },
       {
         source: "/api/contacts",
-        destination: "http://127.0.0.1:3001/api/contacts",
+        destination: "http://localhost:3001/api/contacts",
       },
     ]
   },

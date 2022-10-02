@@ -9,7 +9,7 @@ const contactController = require('../controller/contact_controller');
 // @description Root Route
 // @method GET/
 
-route.get('/', services.homeRoutes)
+route.get('/api/test', services.homeRoutes)
 
 // @description add user Route
 // @method GET/
