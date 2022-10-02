@@ -44,9 +44,10 @@ app.use('/',require('./server/routes/router'))
 const port = process.env.PORT || 3001
 
 // Client path
-if (process.env.NODE_ENV === "production") {
 // Step 1:
 app.use(express.static(path.resolve(__dirname, "./client/out")));
+
+if (process.env.NODE_ENV === "production") {
 // Step 2:
 // API requests
 app.get("*", function (request, response) {
