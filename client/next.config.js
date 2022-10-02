@@ -11,7 +11,7 @@ module.exports = {
       },
       {
         source: "/api/contacts",
-        destination: "http://localhost:3001/api/contacts",
+        destination: "127.0.0.1:3001/api/contacts",
       },
     ]
   },
