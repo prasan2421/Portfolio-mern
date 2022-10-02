@@ -52,7 +52,8 @@ app.use(express.static( "client/out"));
 // Step 2:
 // API requests
 app.get("*", function (request, response) {
-  response.sendFile(path.resolve(__dirname, "client", "out", "index.html"));
+  response.sendFile(path.resolve(__dirname, "./client/out", "index.html"));
+  // response.sendFile(path.resolve(__dirname, "client", "out", "index.html"));
 });
 
 }
