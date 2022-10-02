@@ -10,11 +10,10 @@ const cors = require("cors");
 
 const connectDB = require('./server/database/connection')
 
-dotenv.config({path:'config.env'})
+dotenv.config({path:'.env'})
 const app = express()
 app.use(cors());
 
-dotenv.config({path:'config.env'})
 
 
 
@@ -44,14 +43,16 @@ app.use('/',require('./server/routes/router'))
 const port = process.env.PORT || 3001
 
 // Client path
-// Step 1:
-app.use(express.static(path.resolve(__dirname, "./client/out")));
+
 
 if (process.env.NODE_ENV === "production") {
+  // Step 1:
+// app.use(express.static(path.resolve(__dirname, "./client/out")));
+app.use(express.static( "client/out"));
 // Step 2:
 // API requests
 app.get("*", function (request, response) {
-  response.sendFile(path.resolve(__dirname, "./client/out", "index.html"));
+  response.sendFile(path.resolve(__dirname, "client", "out", "index.html"));
 });
 
 }
