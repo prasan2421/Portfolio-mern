@@ -213,7 +213,14 @@ export default function  About(){
 
  
   const [activeStep, setActiveStep] = React.useState(0);
-  const [personalDetailsData, setPersonalDetailsData] = React.useState([]);
+  const [personalDetailsData, setPersonalDetailsData] = React.useState([
+    {'title':'Name', 'subtitle':'Prasanna Tuladhar'},
+    // {'title':'Birth Date', 'subtitle':'23/03/1993'},
+    {'title':'Email', 'subtitle':'tuladharprasan@gmail.com'},
+    {'title':'Website', 'subtitle':'www.prasannat.com'},
+    {'title':'Address', 'subtitle':'Storgata 63, 0182, Oslo'},
+    
+    ]);
   
   // const colorMode = React.useContext(ColorModeContext);
   const [checked, setChecked] = React.useState(true);
