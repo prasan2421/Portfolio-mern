@@ -50,35 +50,56 @@ const DancingLinesDisplay=()=>{
 const [backendData , setBackendData] = React.useState([{}])
 
 const loadPlayer = async () => {
-  // fetch("/api").then(
+  // fetch("/api/contacts").then(
   //   response => response.json()
   // ).then(
   //   data =>{
-  //     alert(JSON.stringify(data))
+  //     alert('asdas')
   //   }
     
   // )
+  //  .catch( data =>{
+  //   alert(JSON.stringify(data))
+  // })
    
-  axios.get('/api/test')
-  .then(function (response) {
-    // handle success
-    // console.log(response);
-    alert(JSON.stringify(response))
-  })
-  .catch(function (error) {
-    // handle error
-    console.log(error);
-    alert(JSON.stringify(error))
-  })
+ 
   // .finally(function () {
   //   // always executed
   //   alert('Something went wrong.')
   // });
+
+  axios.get('/api/contacts')
+  .then(function (response) {
+    
+    // handle success
+    console.log(response);
+    alert(JSON.stringify(response))
+  })
+  .catch(function (error) {
+   
+    // handle error
+    if (error.response) {
+      // The request was made and the server responded with a status code
+      // that falls out of the range of 2xx
+      console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
+    } else if (error.request) {
+      // The request was made but no response was received
+      // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+      // http.ClientRequest in node.js
+      console.log(error.request);
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      console.log('Error', error.message);
+    }
+    console.log(error.config);
+  })
   
 }
 
 useEffect(()=>{
-  loadPlayer()
+  // loadPlayer()
 },[])
 
   return (

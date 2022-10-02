@@ -5,10 +5,7 @@ module.exports = {
   // reactStrictMode:true,
   async rewrites() {
     return [
-      {
-        source: "/api/test",
-        destination: "http://localhost:3001/api/test",
-      },
+      
       {
         source: "/api/users",
         destination: "http://localhost:3001/api/users",
