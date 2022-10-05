@@ -25,6 +25,7 @@ import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import qs from 'qs';
+import useBreakpoint from 'use-breakpoint';
 
 import axios from 'axios';
 // import {Link as Link2} from '@mui/material/Link';
@@ -35,6 +36,7 @@ import { styled, alpha, ThemeProvider, createTheme, useTheme,responsiveFontSizes
 import AddReactionIcon from '@mui/icons-material/AddReaction';
 import DownloadIcon from '@mui/icons-material/Download';
 
+const BREAKPOINTS = { mobile: 0, tablet: 900, desktop: 1280 }
 
 const CustomButton = styled(Button)({
  
@@ -124,6 +126,9 @@ export default function HomeSectionFirst(
 
     const handleOpenEmoji = () => setOpenEmoji(true);
   const handleCloseEmoji = () => setOpenEmoji(false);
+  const theme = useTheme();
+
+  const { breakpoint, maxWidth, minWidth } = useBreakpoint(BREAKPOINTS, 'desktop');
 
   // const handleSubmit = async (event:any) => {
   //   // Stop the form from submitting and refreshing the page.
@@ -164,6 +169,19 @@ export default function HomeSectionFirst(
   //   alert(`Is this your full name: ${result.data}`)
   // }
   
+  const AnimationDisplay=()=>{
+   
+      return(
+        <svg  className={theme.palette.mode === 'dark'?"textAnim textAnimContainer":"textAnimLight textAnimContainer"} width={breakpoint=='desktop'?"250px":"200px"} viewBox="0 0 375 111" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M109.396 6.35199V3.85199H106.896H92.928H91.3079L90.6461 5.33072L56.064 82.6001L21.4819 5.33072L20.8201 3.85199H19.2H5.08801H2.58801V6.35199V106V108.5H5.08801H18.192H20.692V106V43.2756L49.1735 107.02L49.8348 108.5H51.456H60.672H62.2948L62.9554 107.018L91.292 43.4453V106V108.5H93.792H106.896H109.396V106V6.35199Z" stroke={theme.palette.mode === 'light'?"black":"white"} stroke-width="5"/>
+        <path d="M181.299 49.84V47.34H178.799H144.723V18.788H183.119H185.619V16.288V5.48801V2.98801H183.119H129.119H126.619V5.48801V106V108.5H129.119H183.119H185.619V106V95.2V92.7H183.119H144.723V63.14H178.799H181.299V60.64V49.84Z" stroke={theme.palette.mode === 'light'?"black":"white"} stroke-width="5"/>
+        <path d="M253.635 107.258L254.358 108.5H255.795H271.491H275.904L273.636 104.715L250.158 65.5401C256.972 63.5063 262.363 60.0104 266.143 54.9459C270.516 49.2141 272.695 42.5836 272.695 35.152C272.695 29.0916 271.304 23.606 268.463 18.7665C265.589 13.8702 261.258 10.0544 255.609 7.27985C249.99 4.472 243.2 3.13202 235.347 3.13202H202.947H200.447V5.63202V106V108.5H202.947H216.051H218.551V106V67.46H230.454L253.635 107.258ZM249.615 23.1456L249.627 23.1573L249.64 23.1688C252.56 25.8522 254.159 29.7238 254.159 35.152C254.159 40.4566 252.573 44.48 249.576 47.4841C246.659 50.3137 242.073 51.948 235.347 51.948H218.551V18.932H235.347C242.23 18.932 246.813 20.4992 249.615 23.1456Z" stroke={theme.palette.mode === 'light'?"black":"white"} stroke-width="5"/>
+        <path d="M369.469 108.5H371.969V106V5.48801V2.98801H369.469H356.365H353.865V5.48801V76.9445L305.747 4.10996L305.005 2.98801H303.661H290.557H288.057V5.48801V106V108.5H290.557H303.661H306.161V106V34.4121L354.278 107.376L355.019 108.5H356.365H369.469Z" stroke={theme.palette.mode === 'light'?"black":"white"} stroke-width="5"/>
+        </svg>
+      )
+    
+   
+  }
 
   const submitMessage= async(data:any) =>{
 
@@ -447,10 +465,14 @@ export default function HomeSectionFirst(
           </Grow>
           <Grow in={checked} style={{ transformOrigin: '0 0 0' }} className='introTextLast'
               {...(checked ? { timeout: 2000 } : {})}>
-                  <Typography variant="h1">MERN Stack Developer</Typography>
+                  <Typography variant="h1">{AnimationDisplay()} Stack Developer</Typography>
+                 
           </Grow>
+          <Box>
           
-         
+
+
+          </Box>
           
         </Box>
       <Box className='subTitle'><Typography variant="subtitle1">React | React Native | Express | JS / TS</Typography></Box>
