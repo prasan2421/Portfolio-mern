@@ -391,5 +391,139 @@ a:hover{
     border: 2px solid #f44336;
     border-radius: 20px;
   }
+
+
+  .textAnim{
+   
+animation: fill 0.5s ease forwards 2s;
+animation-direction:initial
+  }
+  .textAnim:hover{
+    animation: fill 0.5s ease forwards 2s;
+    animation-direction: reverse;
+   
+      }
+      .textAnimLight{
+   
+        animation: fillLight 0.5s ease forwards 2s;
+        animation-direction:initial
+          }
+          .textAnimLight:hover{
+            animation: fillLight 0.5s ease forwards 2s;
+            animation-direction: reverse;
+           
+              }    
+     
+
+  .textAnimContainer path:nth-child(1){
+stroke-dasharray: 739.7772216796875;
+stroke-dashoffset: 739.7772216796875;
+animation:line-anim 2s ease forwards;
+
+  }
   
+
+  .textAnimContainer path:nth-child(1):hover{
+    stroke-dasharray: 739.7772216796875;
+    stroke-dashoffset: 739.7772216796875;
+    animation:line-animHov 2s ease forwards;
+    animation-direction: reverse;
+      }
+
+    
+
+  .textAnimContainer path:nth-child(2){
+    stroke-dasharray: 483.96795654296875;
+stroke-dashoffset: 483.96795654296875;
+animation:line-anim 2s ease forwards 0.3s;
+  }
+
+  .textAnimContainer path:nth-child(2):hover{
+    stroke-dasharray: 483.96795654296875;
+stroke-dashoffset: 483.96795654296875;
+animation:line-animHov2 2s ease forwards;
+animation-direction: reverse;
+  }
+  .textAnimContainer path:nth-child(3){
+    stroke-dasharray: 550.5634765625;
+stroke-dashoffset: 550.5634765625;
+animation:line-anim 2s ease forwards 0.6s;
+  }
+  .textAnimContainer path:nth-child(3):hover{
+    stroke-dasharray: 550.5634765625;
+stroke-dashoffset: 550.5634765625;
+animation:line-animHov3 2s ease forwards;
+animation-direction: reverse;
+  }
+  .textAnimContainer path:nth-child(4){
+    stroke-dasharray: 606.560791015625;
+stroke-dashoffset: 606.560791015625;
+animation:line-anim 2s ease forwards 0.9s;
+  }
+  .textAnimContainer path:nth-child(4):hover{
+    stroke-dasharray: 606.560791015625;
+stroke-dashoffset: 606.560791015625;
+animation:line-animHov4 2s ease forwards;
+animation-direction: reverse;
+  }
+  
+ @keyframes line-anim {
+   to{
+     stroke-dashoffset: 0;
+   }
+ }
+
+ @keyframes line-animHov {
+   from{
+    stroke-dashoffset: 739.7772216796875;
+   }
+  to{
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes line-animHov2 {
+  from{
+   stroke-dashoffset: 483.96795654296875;
+  }
+ to{
+   stroke-dashoffset: 0;
+ }
+}
+@keyframes line-animHov3 {
+  from{
+   stroke-dashoffset: 550.5634765625;
+  }
+ to{
+   stroke-dashoffset: 0;
+ }
+}
+@keyframes line-animHov4 {
+  from{
+   stroke-dashoffset: 606.560791015625;
+  }
+ to{
+   stroke-dashoffset: 0;
+ }
+}
+
+
+
+ @keyframes fill {
+   from{
+     fill:transparent
+   }
+   to{
+     fill: #fff;
+   }
+ }
+
+ @keyframes fillLight {
+  from{
+    fill:transparent
+  }
+  to{
+    fill: #000;
+  }
+}
+
  

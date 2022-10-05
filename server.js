@@ -44,6 +44,7 @@ const port = process.env.PORT || 3001
 
 // Client path
 
+app.use(express.static( "client/out"));
 
 if (process.env.NODE_ENV === "production") {
   // Step 1:
