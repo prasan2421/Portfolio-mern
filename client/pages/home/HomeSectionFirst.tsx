@@ -177,6 +177,8 @@ export default function HomeSectionFirst(
         <path d="M181.299 49.84V47.34H178.799H144.723V18.788H183.119H185.619V16.288V5.48801V2.98801H183.119H129.119H126.619V5.48801V106V108.5H129.119H183.119H185.619V106V95.2V92.7H183.119H144.723V63.14H178.799H181.299V60.64V49.84Z" stroke={theme.palette.mode === 'light'?"black":"white"} stroke-width="5"/>
         <path d="M253.635 107.258L254.358 108.5H255.795H271.491H275.904L273.636 104.715L250.158 65.5401C256.972 63.5063 262.363 60.0104 266.143 54.9459C270.516 49.2141 272.695 42.5836 272.695 35.152C272.695 29.0916 271.304 23.606 268.463 18.7665C265.589 13.8702 261.258 10.0544 255.609 7.27985C249.99 4.472 243.2 3.13202 235.347 3.13202H202.947H200.447V5.63202V106V108.5H202.947H216.051H218.551V106V67.46H230.454L253.635 107.258ZM249.615 23.1456L249.627 23.1573L249.64 23.1688C252.56 25.8522 254.159 29.7238 254.159 35.152C254.159 40.4566 252.573 44.48 249.576 47.4841C246.659 50.3137 242.073 51.948 235.347 51.948H218.551V18.932H235.347C242.23 18.932 246.813 20.4992 249.615 23.1456Z" stroke={theme.palette.mode === 'light'?"black":"white"} stroke-width="5"/>
         <path d="M369.469 108.5H371.969V106V5.48801V2.98801H369.469H356.365H353.865V5.48801V76.9445L305.747 4.10996L305.005 2.98801H303.661H290.557H288.057V5.48801V106V108.5H290.557H303.661H306.161V106V34.4121L354.278 107.376L355.019 108.5H356.365H369.469Z" stroke={theme.palette.mode === 'light'?"black":"white"} stroke-width="5"/>
+        
+        
         </svg>
       )
     
@@ -471,11 +473,10 @@ export default function HomeSectionFirst(
           <Box>
           
 
-
           </Box>
           
         </Box>
-      <Box className='subTitle'><Typography variant="subtitle1">React | React Native | Express | JS / TS</Typography></Box>
+      <Box className='subTitle'><Typography  variant="subtitle1">React | React Native | Express | JS / TS | </Typography><Typography variant="h5" className='subTitleUIUX'> UI / UX</Typography></Box>
       <Box  sx={{marginTop:'50px', display:{sm:'flex'},  }}>
                 <Box sx={{display:{xs:'flex'}, border:'5px solid ',borderColor:'inherit', borderRadius:'20px', overflow:'hidden', alignItems:{sm:'center'}, width:{xs:'100%',sm:'auto'},marginTop:{xs:'10px',sm:'0'} }}>
                   <CustomButton variant="text" 

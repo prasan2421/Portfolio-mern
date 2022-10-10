@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=La+Belle+Aurore&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Waterfall&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap');
 
 
 html,
@@ -47,7 +48,11 @@ a {
 .subTitle{
   position:relative;
   margin-top:2rem ;
+  display: flex;
 }
+
+.subTitleUIUX{
+font-family: 'Fredericka the Great';}
 
 .subTitle::before{
   content: '<p>';
@@ -308,6 +313,15 @@ a:hover{
 .subTitle{
   position:relative;
   margin-top:2rem ;
+  display: flex;
+  align-items: center;
+}
+
+
+
+.subTitleUIUX{
+  font-family:'Finger Paint';
+  margin-left: 10px;
 }
 
 .subTitle::before{
@@ -393,7 +407,7 @@ a:hover{
   }
 
 
-  .textAnim{
+  .textAnim, .textAnim:hover::after {
    
 animation: fill 0.5s ease forwards 2s;
 animation-direction:initial
@@ -403,12 +417,12 @@ animation-direction:initial
     animation-direction: reverse;
    
       }
-      .textAnimLight{
+  .textAnimLight{
    
         animation: fillLight 0.5s ease forwards 2s;
         animation-direction:initial
           }
-          .textAnimLight:hover{
+  .textAnimLight:hover{
             animation: fillLight 0.5s ease forwards 2s;
             animation-direction: reverse;
            
@@ -460,7 +474,7 @@ animation-direction: reverse;
 stroke-dashoffset: 606.560791015625;
 animation:line-anim 2s ease forwards 0.9s;
   }
-  .textAnimContainer path:nth-child(4):hover{
+  .textAnim path:nth-child(4):hover{
     stroke-dasharray: 606.560791015625;
 stroke-dashoffset: 606.560791015625;
 animation:line-animHov4 2s ease forwards;
