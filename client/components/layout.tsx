@@ -271,7 +271,7 @@ export default function Layout({ children, home }: {
         <Toolbar>
           <Box  sx={{  flex:1, justifyContent:'left', display: 'flex' }}></Box>
        
-        {/* <Alert severity="info" sx={{justifyContent:'center',display:'flex',  borderRadius:'15px',width:'max-content'}}>Portfolio under construction !!</Alert> */}
+        <Alert severity="info" sx={{justifyContent:'center',display:'flex',  borderRadius:'15px',width:'max-content'}}>Portfolio under construction !!</Alert>
        
         <Box  sx={{  flex:1, justifyContent:'right', display: 'flex' }}>
             <Box>
