@@ -276,7 +276,7 @@ export default function Layout({ children, home }: {
         <Box  sx={{  flex:1, justifyContent:'right', display: 'flex' }}>
             <Box>
             
-              
+                                             
               <IconButton  
               // to="/cart"  
               // component={NavLink} 
