@@ -6,6 +6,7 @@ import Layout, { siteTitle } from '../../components/layout'
 import utilStyles from '../../styles/utils.module.css'
 import { getSortedPostsData } from '../../lib/posts'
 import Link from 'next/link'
+import ButtonBase from '@mui/material/ButtonBase';
 import Date from '../../components/date'
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Card from '@mui/material/Card';
@@ -27,6 +28,7 @@ import {Grid, Box, Slide, Grow, Typography, Button, IconButton} from '@mui/mater
 import { styled, alpha, ThemeProvider, createTheme, useTheme,responsiveFontSizes, } from '@mui/material/styles';
 import AddReactionIcon from '@mui/icons-material/AddReaction';
 import DownloadIcon from '@mui/icons-material/Download';
+import { url } from "inspector";
 
 const BREAKPOINTS = { mobile: 0, tablet: 900, desktop: 1280 }
 
@@ -36,6 +38,94 @@ const CustomButton = styled(Button)({
  
     padding:'1rem 3rem 1rem 3rem'
    });
+
+   const ImageButton = styled(ButtonBase)(({ theme }) => ({
+    position: 'relative',
+    height: 200,
+    overflow:'hidden',
+   
+    [theme.breakpoints.down('sm')]: {
+      width: '100% !important', // Overrides inline-style
+      height: 100,
+    },
+    '&:hover, &.Mui-focusVisible': {
+     
+      zIndex: 1,
+      '& .MuiImageBackdrop-root': {
+        opacity: 0.15,
+      },
+      '& .Image-mui': {
+        transform: 'scale(1.5)',
+      },
+      '& .MuiImageMarked-root': {
+        opacity: 0,
+      },
+      '& .MuiTypography-root': {
+        border: '4px solid currentColor',
+      },
+    },
+  }));
+  
+  const ImageSrc = styled('span')({
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center 40%',
+    transition: 'transform .2s',
+    
+    '&:hover': {
+      
+     
+     
+    },
+  });
+  
+  const ImageBox = styled('span')(({ theme }) => ({
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: theme.palette.common.white,
+
+    
+
+    '&:hover': {
+      '& .ImageBox-Text': {
+        backgroundColor:theme.palette.mode === 'dark' ?'rgb(48 48 48 / 50%)':'rgb(255 255 255 / 24%)',
+      },
+     
+     
+    },
+    
+  }));
+  
+  const ImageBackdrop = styled('span')(({ theme }) => ({
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    backgroundColor: theme.palette.common.black,
+    opacity: 0.4,
+    transition: theme.transitions.create('opacity'),
+  }));
+  
+  const ImageMarked = styled('span')(({ theme }) => ({
+    height: 3,
+    width: 18,
+    backgroundColor: theme.palette.common.white,
+    position: 'absolute',
+    bottom: -2,
+    left: 'calc(50% - 9px)',
+    transition: theme.transitions.create('opacity'),
+  }));   
 
 export default function HomeSectionSecond({posts}) {
 
@@ -86,27 +176,65 @@ export default function HomeSectionSecond({posts}) {
 
           
           <Box className='subTitle'>
-          <Typography variant="body1">A small gallery of recent projects chosen by me. I&apos;ve done them all together with amazing people from companies around the globe. It&apos;s only a drop in the ocean compared to the entire list.</Typography>
-          <Typography variant="body1">Interested to see some more? Visit my <Link  href={'/work#sectProjects'} passHref ><b style={{color:'#1976d2'}}>work page</b></Link>.</Typography>
+          <Typography variant="body1" sx={{textAlign:'justify', textJustify:'inter-word'}}>A small gallery of recent projects chosen by me. I&apos;ve done them all together with amazing people from companies around the globe. It&apos;s only a drop in the ocean compared to the entire list.</Typography>
             </Box>
             
-              <Box >
-              </Box>
+             
             </Box>
             </Slide>
       </Grid>
-      {/* <Grid item xs={12} md={4} sx={{display:'flex', marginTop:{xs:'3rem'}, justifyContent:{sm:'left', md:'center'}, alignItems:{sm:'left',md:'center'}}}>
-     
+      <Grid item xs={12} md={4} sx={{display:'flex', marginTop:{xs:'3rem'}, justifyContent:{sm:'left', md:'center'}, alignItems:{sm:'left',md:'center'}}}>
+      <Link  href={'/work#sectProjects'} passHref >
                   <CustomButton type="button" variant="outlined" 
                   // onClick={handleOpen}
-                  href={'/projects'} 
-                  >See more!</CustomButton>
+                  
+                  >See more!</CustomButton></Link>
                
-      </Grid> */}
+      </Grid>
       </Grid>
       <Grid container className="portfolioGallary" spacing={1}>
      
+
       {(posts?posts.slice(0, 5):[]).map((text, index) => (
+        <Grid key={index} item xs={6} md={2.4} sx={{position:'relative', }}>
+          <Link  href={`/projects/${text.slug}`}  passHref >
+        <ImageButton
+        focusRipple
+        key={text.slug}
+        style={{
+          width: '100%',
+          
+        }}
+        // text.frontmatter.socialImage?`/${text.frontmatter.socialImage}`:deer
+      >
+       
+        <ImageSrc className="Image-mui" sx={{ backgroundImage: text.frontmatter.socialImage?`url(${text.frontmatter.socialImage})`:`url(${'/images/deer.png'})`}} />
+        <ImageBackdrop className="MuiImageBackdrop-root" />
+        <ImageBox>
+          <Typography
+            component="span"
+            variant="subtitle2"
+            color="inherit"
+
+            className="ImageBox-Text"
+            sx={{
+              
+              position: 'relative',
+              p: 2,
+              pt: 2,
+              pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
+            }}
+          >
+            {text.slug}
+            <ImageMarked className="MuiImageMarked-root" />
+          </Typography>
+        </ImageBox>
+      </ImageButton>
+      </Link>
+      </Grid>
+      ))}
+     
+      {/* {(posts?posts.slice(0, 5):[]).map((text, index) => (
         <Grid key={index} item xs={6} md={2.4} sx={{position:'relative',}}>
          
             <Link  href={`/projects/${text.slug}`}  passHref={breakpoint=='mobile'?true:false} >
@@ -123,7 +251,7 @@ export default function HomeSectionSecond({posts}) {
             // image={`/${text.frontmatter.socialImage}`}
             image={deer}
             
-          /> */}
+          /> 
 
 <Image style={{backgroundColor:theme.palette.mode === 'dark' ?'black':'white'}}
                     // loader={myLoader}
@@ -144,7 +272,7 @@ export default function HomeSectionSecond({posts}) {
                          <Box className='ViewProject'>
                            
                            <Typography variant='button'>View Project</Typography>
-                           {/* <Typography>Project</Typography> */}
+                           
                            
                          </Box>
              
@@ -173,41 +301,46 @@ export default function HomeSectionSecond({posts}) {
 
           
       </Grid>
-        ))}
+        ))} */}
 
-<Grid  item xs={6} md={2.4} sx={{position:'relative',}}>
-        <Card sx={{borderRadius:0,}}>
-        <CardActionArea 
-        className='media'
-       onMouseEnter={()=>handlePopoverOpen(100)}
-       onMouseLeave={()=>handlePopoverOpen(null)} 
-                        sx={{position:'relative',}} >
-          <CardMedia
-         
-            component="img"
-            image={      "https://www.zmescience.com/mrf4u/statics/i/ps/cdn.zmescience.com/wp-content/uploads/2016/08/600px-Venus_in_Real_Color_28Mosaic29.jpg?width=1200&enable=upscale"
-          }
-            
-          />
-          <Link  href={'/work#sectProjects'} scroll={false} passHref >
-          <Button
-          variant="outlined"
-           type="button"
-           
+        <Grid item xs={6} md={2.4} sx={{position:'relative', }}>
+          <Link  href={'/work#sectProjects'}  passHref >
+        <ImageButton
+        focusRipple
+        
+        style={{
+          width: '100%',
           
-           className='PortfolioItemWrapper'>
-                         <Box className='ViewProject'>
-                         <Typography variant='button'>See More!</Typography>
-                         </Box>
-             
-           </Button>
-           </Link>
-        </CardActionArea>
-      
-      </Card>
-   
-           </Grid>
-               
+        }}
+        // text.frontmatter.socialImage?`/${text.frontmatter.socialImage}`:deer
+      >
+       
+        <ImageSrc className="Image-mui" sx={{ backgroundImage: `url('https://www.zmescience.com/mrf4u/statics/i/ps/cdn.zmescience.com/wp-content/uploads/2016/08/600px-Venus_in_Real_Color_28Mosaic29.jpg?width=1200&enable=upscale')`}} />
+        <ImageBackdrop className="MuiImageBackdrop-root" />
+        <ImageBox>
+          <Typography
+            component="span"
+            variant="subtitle2"
+            color="inherit"
+
+            className="ImageBox-Text"
+            sx={{
+              
+              position: 'relative',
+              p: 2,
+              pt: 2,
+              pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
+            }}
+          >
+            See More!
+            <ImageMarked className="MuiImageMarked-root" />
+          </Typography>
+        </ImageBox>
+      </ImageButton>
+      </Link>
+      </Grid>
+
+
       </Grid>
   </Box>
   );

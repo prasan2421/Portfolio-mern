@@ -172,14 +172,17 @@ export default function HomeSectionFirst(
   const AnimationDisplay=()=>{
    
       return(
-        <svg  className={theme.palette.mode === 'dark'?"textAnim textAnimContainer":"textAnimLight textAnimContainer"} width={breakpoint=='desktop'?"250px":"200px"} viewBox="0 0 375 111" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M109.396 6.35199V3.85199H106.896H92.928H91.3079L90.6461 5.33072L56.064 82.6001L21.4819 5.33072L20.8201 3.85199H19.2H5.08801H2.58801V6.35199V106V108.5H5.08801H18.192H20.692V106V43.2756L49.1735 107.02L49.8348 108.5H51.456H60.672H62.2948L62.9554 107.018L91.292 43.4453V106V108.5H93.792H106.896H109.396V106V6.35199Z" stroke={theme.palette.mode === 'light'?"black":"white"} stroke-width="5"/>
-        <path d="M181.299 49.84V47.34H178.799H144.723V18.788H183.119H185.619V16.288V5.48801V2.98801H183.119H129.119H126.619V5.48801V106V108.5H129.119H183.119H185.619V106V95.2V92.7H183.119H144.723V63.14H178.799H181.299V60.64V49.84Z" stroke={theme.palette.mode === 'light'?"black":"white"} stroke-width="5"/>
-        <path d="M253.635 107.258L254.358 108.5H255.795H271.491H275.904L273.636 104.715L250.158 65.5401C256.972 63.5063 262.363 60.0104 266.143 54.9459C270.516 49.2141 272.695 42.5836 272.695 35.152C272.695 29.0916 271.304 23.606 268.463 18.7665C265.589 13.8702 261.258 10.0544 255.609 7.27985C249.99 4.472 243.2 3.13202 235.347 3.13202H202.947H200.447V5.63202V106V108.5H202.947H216.051H218.551V106V67.46H230.454L253.635 107.258ZM249.615 23.1456L249.627 23.1573L249.64 23.1688C252.56 25.8522 254.159 29.7238 254.159 35.152C254.159 40.4566 252.573 44.48 249.576 47.4841C246.659 50.3137 242.073 51.948 235.347 51.948H218.551V18.932H235.347C242.23 18.932 246.813 20.4992 249.615 23.1456Z" stroke={theme.palette.mode === 'light'?"black":"white"} stroke-width="5"/>
-        <path d="M369.469 108.5H371.969V106V5.48801V2.98801H369.469H356.365H353.865V5.48801V76.9445L305.747 4.10996L305.005 2.98801H303.661H290.557H288.057V5.48801V106V108.5H290.557H303.661H306.161V106V34.4121L354.278 107.376L355.019 108.5H356.365H369.469Z" stroke={theme.palette.mode === 'light'?"black":"white"} stroke-width="5"/>
-        
+        <svg  className={theme.palette.mode === 'dark'?"textAnim textAnimContainer":"textAnimLight textAnimContainer"} width={breakpoint=='desktop'?"220px":"185px"} viewBox="0 0 302 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M231.74 94.712V92.212H229.24H196.604V5V2.5H194.104H181H178.5V5V105.368V107.868H181H229.24H231.74V105.368V94.712Z" stroke={theme.palette.mode === 'light'?"black":"white"} stroke-width="5"/>
+<path d="M95.604 5V2.5H93.104H80H77.5V5V68.36C77.5 77.0329 79.1952 84.5386 82.7209 90.7605L82.7332 90.7822L82.7459 90.8035C86.3422 96.8659 91.2099 101.436 97.3292 104.444L97.3366 104.447L97.3441 104.451C103.479 107.416 110.289 108.876 117.728 108.876C125.163 108.876 131.93 107.418 137.976 104.447C144.188 101.443 149.109 96.8742 152.71 90.8035L152.715 90.7956L152.719 90.7877C156.352 84.5601 158.1 77.0442 158.1 68.36V5V2.5H155.6H142.496H139.996V5V68.504C139.996 77.0607 137.88 82.9148 134.124 86.5889L134.114 86.5985L134.104 86.6082C130.366 90.346 125.069 92.356 117.872 92.356C110.578 92.356 105.177 90.3446 101.342 86.5986C97.676 82.9258 95.604 77.0669 95.604 68.504V5Z" stroke={theme.palette.mode === 'light'?"black":"white"} stroke-width="5"/>
+<path d="M64.236 5V2.5H61.736H5H2.5V5V105.368V107.868H5H18.104H20.604V105.368V62.652H53.528H56.028V60.152V49.496V46.996H53.528H20.604V18.156H61.736H64.236V15.656V5Z" stroke={theme.palette.mode === 'light'?"black":"white"} stroke-width="5"/>
+<path d="M298.74 94.712V92.212H296.24H263.604V5V2.5H261.104H248H245.5V5V105.368V107.868H248H296.24H298.74V105.368V94.712Z" stroke={theme.palette.mode === 'light'?"black":"white"} stroke-width="5"/>
+
         
         </svg>
+
+
+
       )
     
    
@@ -467,7 +470,7 @@ export default function HomeSectionFirst(
           </Grow>
           <Grow in={checked} style={{ transformOrigin: '0 0 0' }} className='introTextLast'
               {...(checked ? { timeout: 2000 } : {})}>
-                  <Typography variant="h1">{AnimationDisplay()} Stack Developer</Typography>
+                  <Typography variant="h1">{AnimationDisplay()} Stack JS Developer</Typography>
                  
           </Grow>
           <Box>
@@ -476,7 +479,7 @@ export default function HomeSectionFirst(
           </Box>
           
         </Box>
-      <Box className='subTitle'><Typography  variant="subtitle1">React | React Native | Express | JS / TS | </Typography><Typography variant="h5" className='subTitleUIUX'> UI / UX</Typography></Box>
+      <Box className='subTitle'><Typography  variant="subtitle1">React | React Native | Express | JS / TS | <Box className='subTitleUIUX'> UI / UX</Box></Typography></Box>
       <Box  sx={{marginTop:'50px', display:{sm:'flex'},  }}>
                 <Box sx={{display:{xs:'flex'}, border:'5px solid ',borderColor:'inherit', borderRadius:'20px', overflow:'hidden', alignItems:{sm:'center'}, width:{xs:'100%',sm:'auto'},marginTop:{xs:'10px',sm:'0'} }}>
                   <CustomButton variant="text" 

@@ -472,7 +472,7 @@ theme={theme}
              
             </Box>
             <Box className={styles.subTitle}>
-            <Typography variant="h5">Throughout my life both as a student and as a work employee, I have developed great skills to perform my activities. These skills were rewarding and helpful for my to achieve my goals as well as help me to improve myself.</Typography>
+            <Typography variant="h5" sx={{textAlign:'justify', textJustify:'inter-word'}}>Throughout my life both as a student and as a work employee, I have developed great skills to perform my activities. These skills were rewarding and helpful for my to achieve my goals as well as help me to improve myself.</Typography>
             
               </Box>
                 <Box >

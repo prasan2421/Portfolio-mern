@@ -45,14 +45,11 @@ a {
 }
 
 
-.subTitle{
-  position:relative;
-  margin-top:2rem ;
-  display: flex;
-}
+
 
 .subTitleUIUX{
-font-family: 'Fredericka the Great';}
+font-family: 'Fredericka the Great';
+display: inline-flex;}
 
 .subTitle::before{
   content: '<p>';
@@ -67,7 +64,7 @@ font-family: 'Fredericka the Great';}
 
 
 .subTitle::after{
-  content: '<p/>';
+  content: '</p>';
   font-family: 'La Belle Aurore',cursive;
   color: #515152;
   font-size: 1.2rem;
@@ -82,7 +79,7 @@ font-family: 'Fredericka the Great';}
     }
   
 .introTextLast::after{
-      content: '<h1/>';
+      content: '</h1>';
       font-family: 'La Belle Aurore',cursive;
       color: #515152;
       font-size: 1.2rem;
@@ -140,7 +137,7 @@ font-family: 'Fredericka the Great';}
 } */
 
 .PortfolioTitle::after{
-  content: '<h2/>';
+  content: '</h2>';
   font-family: 'La Belle Aurore',cursive;
   color: #515152;
   font-size: 1.2rem;
@@ -186,7 +183,7 @@ font-family: 'Fredericka the Great';}
     top: -2.5rem;
 }
 .portfolioGallary::after{
-  content: '<section/>';
+  content: '</section>';
     font-family: 'La Belle Aurore',cursive;
     color: #515152;
     font-size: 1.2rem;
@@ -300,7 +297,7 @@ a:hover{
 }
 
 .PortfolioTitle::after{
-  content: '<h2/>';
+  content: '</h2>';
   font-family: 'La Belle Aurore',cursive;
   color: #515152;
   font-size: 1.2rem;
@@ -313,9 +310,10 @@ a:hover{
 .subTitle{
   position:relative;
   margin-top:2rem ;
-  display: flex;
+  /* display: flex; */
   align-items: center;
 }
+
 
 
 
@@ -337,7 +335,7 @@ a:hover{
 
 
 .subTitle::after{
-  content: '<p/>';
+  content: '</p>';
   font-family: 'La Belle Aurore',cursive;
   color: #515152;
   font-size: 1.2rem;
@@ -364,7 +362,7 @@ a:hover{
 }
 
 .formBelow::after{
-  content: '<form/>';
+  content: '</form>';
   font-family: 'La Belle Aurore',cursive;
   color: #515152;
   font-size: 1.2rem;
@@ -447,14 +445,14 @@ animation:line-anim 2s ease forwards;
     
 
   .textAnimContainer path:nth-child(2){
-    stroke-dasharray: 483.96795654296875;
-stroke-dashoffset: 483.96795654296875;
+    stroke-dasharray: 583.96795654296875;
+stroke-dashoffset: 583.96795654296875;
 animation:line-anim 2s ease forwards 0.3s;
   }
 
   .textAnimContainer path:nth-child(2):hover{
-    stroke-dasharray: 483.96795654296875;
-stroke-dashoffset: 483.96795654296875;
+    stroke-dasharray: 583.96795654296875;
+stroke-dashoffset: 583.96795654296875;
 animation:line-animHov2 2s ease forwards;
 animation-direction: reverse;
   }
@@ -497,7 +495,7 @@ animation-direction: reverse;
 }
 @keyframes line-animHov2 {
   from{
-   stroke-dashoffset: 483.96795654296875;
+   stroke-dashoffset: 583.96795654296875;
   }
  to{
    stroke-dashoffset: 0;

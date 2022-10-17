@@ -54,10 +54,15 @@ export default function HomeSectionThird({  }: {  }) {
                       
                       </Box>
                       <Box className='subTitle'>
-                      <Typography variant="body1" sx={{marginBottom:'2rem'}}>Growing up, I took a liking to all things tech and digital, which led me to picking MIS as my master’s degree major and Computer science and Information technologies as my bachelor’s degree major. Apart from all the tech courses during my MIS studies, I thoroughly enjoyed the customer behavior course and IT project management as a way to connect software development  for business development (specially, how project management and customer behavior can help in business development through proper software development).
-</Typography>
-                      <Typography variant="body1" sx={{marginBottom:'2rem'}}>For over few years I had many opportunities to work in a vast spectrum of web and mobile technologies what let me gather a significant amount of various experience. Working for companies and individuals around the globe I met and learnt from amazing and ambitious people..</Typography>
-                      <Typography variant="body1">I currently am working on self projects and exploring new development areas, also being open for new opportunities.</Typography>
+                      
+                        <Typography variant="subtitle1"  style={{marginBottom:'2rem', textAlign:'justify', textJustify:'inter-word'}}>
+                        Growing up, I took a liking to all things tech and digital, which led me to develop my career in the field of Software Development. I expertise in developing web and mobile applications, optimize softwares for customer satisfaction, and innovate creative features. I am a recent MIS graduate with an in-depth understanding of computer technologies & software development, connecting management decision making for organizational development.
+                        </Typography>
+                        <Typography variant="subtitle1"  style={{marginBottom:'2rem', textAlign:'justify', textJustify:'inter-word'}}>For over few years I had many opportunities to work in a vast spectrum of web and mobile technologies what let me gather a significant amount of various experience. Working for companies and individuals around the globe I met and learnt from amazing and ambitious people.. 
+                        </Typography>
+                        <Typography variant="subtitle1"  style={{marginBottom:'2rem', textAlign:'justify', textJustify:'inter-word'}}>I currently am working on self projects and exploring new development areas, also being open for new opportunities. 
+                        </Typography>
+                     
                         </Box>
                           <Box>
                           </Box>

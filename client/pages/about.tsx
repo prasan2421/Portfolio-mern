@@ -365,7 +365,7 @@ theme={theme}
              
             </Box>
             <Box className={styles.subTitle}>
-            <Typography variant="h5">I&apos;m a <b style={{color:'turquoise'}}>Web / Mobile application</b> developer, involved in the development of various applications throughout my few years of involvement in the field. I have a background in Computer science and Information Technologies and Information Systems.</Typography>
+            <Typography variant="h5" sx={{textAlign:'justify', textJustify:'inter-word'}}>I&apos;m a <b style={{color:'turquoise'}}>Web / Mobile application</b> developer, involved in the development of various applications throughout my few years of involvement in the field. I have a background in Computer science and Information Technologies and Information Systems.</Typography>
             
               </Box>
                 <Box >

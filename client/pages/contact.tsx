@@ -419,7 +419,7 @@ theme={theme}
              
             </Box>
             <Box className={styles.subTitle}>
-            <Typography variant="h5">Contact me if you want to know about me further or if you would like to get in touch with me. </Typography>
+            <Typography variant="h5" sx={{textAlign:'justify', textJustify:'inter-word'}}>Contact me if you want to know about me further or if you would like to get in touch with me. </Typography>
             
               </Box>
                 <Box >
@@ -457,7 +457,7 @@ theme={theme}
                 
                 </Box> */}
                 <Box className='subTitle'>
-                <Typography variant="body1">I&apos;m interested in part time / full time or freelance work opportunities- especially ambitious or large projects. However, if you have other request or question, don&apos;t hesitate to use the form.</Typography>
+                <Typography variant="body1" sx={{textAlign:'justify', textJustify:'inter-word'}}>I&apos;m interested in part time / full time or freelance work opportunities - especially ambitious on large projects. However, if you have other request or question, don&apos;t hesitate to use the form.</Typography>
                   </Box>
                   <Box className='formBelow'>
                   <TextField id="outlined-basic" label="Name" variant="outlined" style={{ width:'50%', marginBottom:'10px' , paddingRight:'5px'}}/>

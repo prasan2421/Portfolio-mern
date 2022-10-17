@@ -16,6 +16,13 @@ import Zoom from '@mui/material/Zoom';
 import TextField from '@mui/material/TextField';
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import MyMaps from "../../components/maps";
+import { useForm, SubmitHandler, Controller } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
+import qs from 'qs';
+import axios from 'axios';
+import LoadingButton from '@mui/lab/LoadingButton';
+import Send from '@mui/icons-material/Send';
 
 import BackgroundText from "../../components/BackgroundText";
 
@@ -29,12 +36,7 @@ import DownloadIcon from '@mui/icons-material/Download';
 
 const myLatLng = { lat: 59.9239669, lng: 10.7466753 };
 
-const blogData=[
-  {'topic':'Javascript', 'title':'React', 'subtitle':'This is a demo summary.', 'color':'red'},
-  {'topic':'Javascript','title':'React Native', 'subtitle':'This is a demo summary.', 'color':'green'},
-  {'topic':'Web designing','title':'UI/UX', 'subtitle':'This is a demo summary.', 'color':'#81D8F7'},
-  {'topic':'Business development','title':'E-commerce', 'subtitle':'This is a demo summary.', 'color':'yellow'},
-  {'topic':'Business growth','title':'Growth Hacking', 'subtitle':'This is a demo summary.', 'color':'cyan'} ]
+
 
   const render = (status) => {
     switch (status) {
@@ -47,14 +49,74 @@ const blogData=[
     }
   };
 
+  interface IFormInputs {
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+    // iceCreamType: { label: string; value: string };
+    // password: yup.string().min(4).max(20).required(),
+  }
+
+  const schema = yup.object({
+    name: yup.string().required(),
+    // age: yup.number().positive().integer().required(),
+    email: yup.string().email().required(),
+    subject: yup.string().required(),
+    message: yup.string().required()
+  }).required();
+ 
 
 export default function HomeSectionFifth({  }: {  }) {
     const [checked, setChecked] = React.useState(true);
+    const [sendTrigger, setSendTrigger] = React.useState(false);
+    const [success, setSuccess] = React.useState(true);
+    const [alertOpen, setAlertOpen] = React.useState(false);
    
     
     const containerRef = React.useRef(null);
+
+    const submitMessage= async(data:any) =>{
+
+      setSendTrigger(true);
     
   
+      axios.post('/api/contacts'
+      ,qs.stringify(data)
+      )
+      .then(function (response) {
+        setSendTrigger(false)
+        setSuccess(true)
+        setAlertOpen(true)
+       
+        
+        // handle success
+        // console.log(response);
+        // alert(JSON.stringify(response.data))
+      })
+      .catch(function (error) {
+        setSendTrigger(false)
+        setSuccess(false)
+        setAlertOpen(true)
+        // handle error
+        console.log(error);
+        alert(JSON.stringify(error))
+      })
+     
+    }
+    
+    const { control, handleSubmit, formState: { errors }  } = useForm<IFormInputs>({
+      resolver: yupResolver(schema),
+    });
+  
+    const onSubmit: SubmitHandler<IFormInputs> = (data) => {
+      
+      submitMessage(data)
+      // alert(JSON.stringify(data))
+      
+    // setMessage(data)
+    
+    };
 
   return (
 
@@ -73,28 +135,92 @@ export default function HomeSectionFifth({  }: {  }) {
                       
                       </Box>
                       <Box className='subTitle'>
-                      <Typography variant="body1">I&apos;m interested in part time / full time or freelance work opportunities- especially ambitious or large projects. However, if you have other request or question, don&apos;t hesitate to use the form.</Typography>
+                      <Typography variant="body1" sx={{ textAlign:'justify', textJustify:'inter-word'}}>I&apos;m interested in part time / full time or freelance work opportunities - especially ambitious on large projects. However, if you have other request or question, don&apos;t hesitate to use the form.</Typography>
                         </Box>
-                        <Box className='formBelow'>
-                        <TextField id="outlined-basic" label="Name" variant="outlined" sx={{ width:{sm:'100%', md:'50%'}, marginBottom:'10px' , paddingRight:'5px'}}/>
-                        <TextField id="outlined-basic" label="Email" variant="outlined" sx={{width:{sm:'100%', md:'50%'}, marginBottom:'10px',paddingLeft:'5px' }}/>
+                        <form onSubmit={handleSubmit(onSubmit)} style={{marginTop:'20px'}}>
 
-                        <TextField id="outlined-basic" label="Subject" variant="outlined" style={{display:'flex', width:'100%', marginBottom:'10px' }}/>
-                        <TextField
-                        id="outlined-basic" label="Message" variant="outlined"
-                      
-                            multiline
-                            rows={4}
-                            // defaultValue="You are awesome!!"
-                            style={{display:'flex', width:'100%',marginBottom:'20px'}}
-                          />
-                          <Box  sx={{display:'flex', justifyContent:'flex-end'}}>
-                          <Button variant="outlined">
-                        Send message ! 
-                      </Button>
-                          </Box>
-                      
-                        </Box>
+        <Controller
+            name="name"
+            control={control}
+            // defaultValue="John Doe"
+            render={({ field }) => (
+              <TextField
+                {...field}
+                label="Name"
+                variant="outlined"
+                error={!!errors.name}
+                helperText={errors.name ? errors.name?.message : ''}
+                fullWidth
+                margin="dense"
+                sx={{ width:{xs: '100%',sm:'100%', md:'50%'}, marginBottom:'10px' , paddingRight:{sm:0,md:'5px'}}}
+              />
+            )}
+          />
+
+        <Controller
+            name="email"
+            control={control}
+            // defaultValue="example@dev.com"
+            render={({ field }) => (
+              <TextField
+                {...field}
+                label="Email"
+                variant="outlined"
+                error={!!errors.email}
+                helperText={errors.email ? errors.email?.message : ''}
+                sx={{width:{xs: '100%',sm:'100%', md:'50%'}, marginBottom:'10px',paddingLeft:{sm:0,md:'5px'} }}
+                fullWidth
+                margin="dense"
+              />
+            )}
+          />
+          <Controller
+            name="subject"
+            control={control}
+            // defaultValue="Greetings"
+            render={({ field }) => (
+              <TextField
+                {...field}
+                label="Subject"
+                
+                variant="outlined"
+                error={!!errors.subject}
+                helperText={errors.subject ? errors.subject?.message : ''}
+                sx={{width: '100%', marginBottom:'10px', }}
+                fullWidth
+                margin="dense"
+              />
+            )}
+          />    
+
+        <Controller
+            name="message"
+            control={control}
+            // defaultValue="You are awesome!!"
+            render={({ field }) => (
+              <TextField
+                {...field}
+                label="Message"
+                
+              multiline
+              rows={4}
+             
+                variant="outlined"
+                error={!!errors.message}
+                helperText={errors.message ? errors.message?.message : ''}
+                sx={{width: '100%', marginBottom:'10px', }}
+                fullWidth
+                margin="dense"
+              />
+            )}
+          />    
+           
+            <LoadingButton type="submit" variant="contained" loading={sendTrigger?true:false}
+          loadingPosition="end"
+          endIcon={<Send/>}>
+              Send 
+            </LoadingButton>
+        </form>
                           <Box>
                           </Box>
                         </Box>

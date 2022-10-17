@@ -331,7 +331,7 @@ theme={theme}
 
             </Box>
             <Box className={styles.subTitle}>
-            <Typography variant="h5">I have worked as a Web / Mobile application developer in my professional career where I was involved in the development of various applications throughout my few years of involvement in the field. </Typography>
+            <Typography variant="h5" sx={{textAlign:'justify', textJustify:'inter-word'}}>I have worked as a Web / Mobile application developer in my professional career where I was involved in the development of various applications throughout my few years of involvement in the field. </Typography>
             
               </Box>
                 <Box >

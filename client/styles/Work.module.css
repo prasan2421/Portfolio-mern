@@ -115,7 +115,7 @@ h1,h2{
     top: -2.5rem;
 }
 .portfolioGallary::after{
-  content: '<section/>';
+  content: '</section>';
     font-family: 'La Belle Aurore',cursive;
     color: #515152;
     font-size: 1.2rem;
@@ -162,7 +162,7 @@ a:hover {
 }
 
 .PortfolioTitle::after{
-  content: '<h1/>';
+  content: '</h1>';
   font-family: 'La Belle Aurore',cursive;
   color: #515152;
   font-size: 1.2rem;
@@ -307,7 +307,7 @@ position:relative;
   }
 
   .introTextLast::after{
-    content: '<h1/>';
+    content: '</h1>';
     font-family: 'La Belle Aurore',cursive;
     color: #515152;
     font-size: 1.2rem;
@@ -333,7 +333,7 @@ position:relative;
 
 
   .subTitle::after{
-    content: '<p/>';
+    content: '</p>';
     font-family: 'La Belle Aurore',cursive;
     color: #515152;
     font-size: 1.2rem;
@@ -360,7 +360,7 @@ position:relative;
   }
 
   .formBelow::after{
-    content: '<form/>';
+    content: '</form>';
     font-family: 'La Belle Aurore',cursive;
     color: #515152;
     font-size: 1.2rem;
