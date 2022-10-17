@@ -38,7 +38,7 @@ import { styled, alpha, ThemeProvider, createTheme, useTheme,responsiveFontSizes
 import AddReactionIcon from '@mui/icons-material/AddReaction';
 import DownloadIcon from '@mui/icons-material/Download';
 
-const BREAKPOINTS = { mobile: 0, tablet: 900, desktop: 1280 }
+const BREAKPOINTS = { smallScreen:0, mobile: 600, tablet: 900, desktop: 1280 }
 
 const CustomButton = styled(Button)({
  
@@ -183,9 +183,30 @@ export default function HomeSectionFirst(
   // }
   
   const AnimationDisplay=()=>{
+
+    let widthType;
+
+    if(breakpoint=='desktop'){
+       widthType='220px'
+    }
+else if(breakpoint=='tablet'){
+   widthType='180px'
+}
+
+else if(breakpoint=='mobile'){
+   widthType='180px'
+}
+
+else if(breakpoint=='smallScreen'){
+  widthType='120px'
+}
+else{
+   widthType='120px'
+}
+
    
       return(
-        <svg  className={theme.palette.mode === 'dark'?"textAnim textAnimContainer":"textAnimLight textAnimContainer"} width={breakpoint=='desktop'?"220px":"185px"} viewBox="0 0 302 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg  className={theme.palette.mode === 'dark'?"textAnim textAnimContainer":"textAnimLight textAnimContainer"} width={widthType} viewBox="0 0 302 112" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M231.74 94.712V92.212H229.24H196.604V5V2.5H194.104H181H178.5V5V105.368V107.868H181H229.24H231.74V105.368V94.712Z" stroke={theme.palette.mode === 'light'?"black":"white"} stroke-width="5"/>
 <path d="M95.604 5V2.5H93.104H80H77.5V5V68.36C77.5 77.0329 79.1952 84.5386 82.7209 90.7605L82.7332 90.7822L82.7459 90.8035C86.3422 96.8659 91.2099 101.436 97.3292 104.444L97.3366 104.447L97.3441 104.451C103.479 107.416 110.289 108.876 117.728 108.876C125.163 108.876 131.93 107.418 137.976 104.447C144.188 101.443 149.109 96.8742 152.71 90.8035L152.715 90.7956L152.719 90.7877C156.352 84.5601 158.1 77.0442 158.1 68.36V5V2.5H155.6H142.496H139.996V5V68.504C139.996 77.0607 137.88 82.9148 134.124 86.5889L134.114 86.5985L134.104 86.6082C130.366 90.346 125.069 92.356 117.872 92.356C110.578 92.356 105.177 90.3446 101.342 86.5986C97.676 82.9258 95.604 77.0669 95.604 68.504V5Z" stroke={theme.palette.mode === 'light'?"black":"white"} stroke-width="5"/>
 <path d="M64.236 5V2.5H61.736H5H2.5V5V105.368V107.868H5H18.104H20.604V105.368V62.652H53.528H56.028V60.152V49.496V46.996H53.528H20.604V18.156H61.736H64.236V15.656V5Z" stroke={theme.palette.mode === 'light'?"black":"white"} stroke-width="5"/>
