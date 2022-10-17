@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Head from 'next/head'
 import Layout, { siteTitle } from '../../components/layout'
 import utilStyles from '../../styles/utils.module.css'
@@ -25,6 +25,8 @@ import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import qs from 'qs';
+import Fab from '@mui/material/Fab';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import useBreakpoint from 'use-breakpoint';
 
 import axios from 'axios';
@@ -120,6 +122,7 @@ export default function HomeSectionFirst(
     const [sendTrigger, setSendTrigger] = React.useState(false);
     const [success, setSuccess] = React.useState(true);
     const [alertOpen, setAlertOpen] = React.useState(false);
+    const [showTopBtn, setShowTopBtn] = useState(true);
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -129,6 +132,16 @@ export default function HomeSectionFirst(
   const theme = useTheme();
 
   const { breakpoint, maxWidth, minWidth } = useBreakpoint(BREAKPOINTS, 'desktop');
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY < 400) {
+            setShowTopBtn(true);
+        } else {
+            setShowTopBtn(false);
+        }
+    });
+}, []);
 
   // const handleSubmit = async (event:any) => {
   //   // Stop the form from submitting and refreshing the page.
@@ -261,6 +274,14 @@ export default function HomeSectionFirst(
   // setMessage(data)
   
   };
+
+  const goToTop = () => {
+    window.scrollTo({
+        top: document.documentElement.clientHeight,
+        behavior: 'smooth',
+    });
+};
+
 
   const renderForm = (
     
@@ -432,8 +453,16 @@ export default function HomeSectionFirst(
   return (
 
     <Grid container sx={{height:'100vh',paddingX: {xs:'2.5rem',md:'4.5rem'}}}>  
-    
-    <Collapse in={alertOpen} sx={{position:'absolute', bottom:0, right:20}} >
+      <div className="top-to-btm">
+      {showTopBtn && (
+        <Move scale={1.5} springConfig={{ tension: 150, friction: 10 }} >
+          <Fab size="small" color="primary"  aria-label="add"  onClick={goToTop}>
+            <ArrowDownwardIcon color="inherit"/>
+          </Fab>
+          </Move>  
+      )}
+      </div>
+    <Collapse in={alertOpen} sx={{position:'absolute', bottom:50, right:20}} >
         <Alert
         variant="filled" severity={success?"success":"error"}
           action={
@@ -448,7 +477,7 @@ export default function HomeSectionFirst(
               <CloseIcon fontSize="inherit" />
             </IconButton>
           }
-          sx={{ mb: 2 }}
+          sx={{ mb: 2, }}
         >
           {success?'Message Sent':'Message sending Failed'}
         </Alert>

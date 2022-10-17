@@ -23,13 +23,14 @@ import qs from 'qs';
 import axios from 'axios';
 import LoadingButton from '@mui/lab/LoadingButton';
 import Send from '@mui/icons-material/Send';
-
+import CloseIcon from '@mui/icons-material/Close';
+import Alert from '@mui/material/Alert';
 import BackgroundText from "../../components/BackgroundText";
 
 import { GetStaticProps } from 'next'
 // import {Link as Link2} from '@mui/material/Link';
 
-import {Grid, Box, Slide, Grow, Typography, Button, IconButton} from '@mui/material';
+import {Grid, Box, Slide, Grow, Typography, Button, IconButton , Collapse} from '@mui/material';
 import { styled, alpha, ThemeProvider, createTheme, useTheme,responsiveFontSizes, } from '@mui/material/styles';
 import AddReactionIcon from '@mui/icons-material/AddReaction';
 import DownloadIcon from '@mui/icons-material/Download';
@@ -123,6 +124,26 @@ export default function HomeSectionFifth({  }: {  }) {
     <Box sx={{position:'relative', overflow: 'hidden', paddingY:'5rem',}}>
           
                 <Grid container sx={{paddingX: {xs:'2.5rem',md:'4.5rem'}}} spacing={4}>
+                <Collapse in={alertOpen} sx={{position:'absolute', bottom:0, right:20}} >
+        <Alert
+        variant="filled" severity={success?"success":"error"}
+          action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="small"
+              onClick={() => {
+                setAlertOpen(false);
+              }}
+            >
+              <CloseIcon fontSize="inherit" />
+            </IconButton>
+          }
+          sx={{ mb: 2 }}
+        >
+          {success?'Message Sent':'Message sending Failed'}
+        </Alert>
+      </Collapse>
                   <Grid item xs={12} md={6} sx={{display:'flex', alignItems:'center'}}>
                 <Slide direction="up" in={checked} container={containerRef.current}>
                         <Box sx={{ color: 'text.primary'}} >
