@@ -146,6 +146,19 @@ export default function HomeSectionSecond({posts}) {
       setMouseOverItem(index)
     };
   
+    const objectData=[
+      {'id':'1','img':'','title':'Prasannat Portfolio','subtitle':'A portfolio website developed in MERN stack.','technologies': 'React, React Native, Typescript, Express, MongoDB','link':'http://www.prasannat.com','date':'07/03/2018 – 30/11/2020','list':['NEXT js, client side framework that use react js, to create front-end.','Express, a node js web-application framework, to create backend.','Mongoose db, an Object Data Modeling (ODM) library for MongoDB and Node js, connecting backend-end with front-end.','Material UI, Google Maps, Redux, SSR, AXIOS for Rest API requests, CRUD, React Spring, and more..',]},
+      {'id':'2','img':'images/foodbusters.png','title':'Foodbusters','subtitle':'Food delivery mobile application (customer and delivery application)','technologies': 'React Native, Javascript','link':'https://foodbusters.com.np/','date':'07/03/2018 – 30/11/2020','list':['Location tracking','Google maps features.','cart system.','API integration between applications.','Redux State management','Product listing and organising.','AXIOS for HTTP requests to rest API.']},
+      {'id':'3','img':'images/covid.png','title':'Nepal Covid-19 Surveillance','subtitle':'A mobile application for COVID-19 Surveillance in Nepal','technologies': 'React Native, Javascript','link':'https://play.google.com/store/apps/details?id=com.iclick.covidnew&hl=en&gl=US','date':'07/03/2018 – 30/11/2020','list':['Government of Nepal: Kathmandu Metropolitan City','Surveillance app to monitor the spread of covid-19 in the locality.','Check ones possibility of covid-19 comparing with the given symptoms.','Monitor and notify through push notifications.','Covid-19 Surveillance system developed for the residence of Kathmandu city.']},
+      {'id':'4','img':'images/patanjalisfa.png','title':'Patanjali SFA','subtitle':'Sales Force Order collection application for internal use of Patanjali employees.','technologies': 'React Native, Javascript','link':'https://play.google.com/store/apps/details?id=com.iclick.patanjali&hl=en&gl=US','date':'07/03/2018 – 30/11/2020','list':['Location tracking.','Google maps features.','Cart system.','Redux State management','Product listing and organising','AXIOS for HTTP requests to rest API']},
+      {'id':'5','img':'images/pbri.png','title':'Patanjali Bio Research Institute','subtitle':'Sales Force Order collection application for internal use of Patanjali Bio Research employees.','technologies': 'React Native, Javascript','link':'https://play.google.com/store/apps/details?id=com.patanjali.pbri&hl=en&gl=US','date':'07/03/2018 – 30/11/2020','list':['Location tracking.','Google maps features.','Cart system.','Redux State management','Product listing and organising','AXIOS for HTTP requests to rest API']},
+      {'id':'6','img':'','title':'Patanjali Dairy Application','subtitle':'Sales Force Order collection application for internal use of Patanjali Dairy employees.','technologies': 'React Native, Javascript','link':'https://play.google.com/store/apps/details?id=com.patanjali.dairy&hl=en&gl=US','date':'07/03/2018 – 30/11/2020','list':['Location tracking.','Google maps features.','Cart system.','Redux State management','Product listing and organising','AXIOS for HTTP requests to rest API']},
+      {'id':'7','img':'','title':'Prakriti Organics','subtitle':'Sales Force Order collection application for internal use of Prakriti Organics employees.','technologies': 'React Native, Javascript','link':'https://play.google.com/store/apps/details?id=com.prakriti.organics','date':'07/03/2018 – 30/11/2020','list':['Location tracking.','Google maps features.','Cart system.','Redux State management','Product listing and organising','AXIOS for HTTP requests to rest API']},
+      {'id':'8','img':'','title':'Ruchi Soya- Nutrela SOA','subtitle':'Sales Order collection application for internal use of Ruchi Soya - Nutrela SOA employees.','technologies': 'React Native, Javascript','link':'https://play.google.com/store/apps/details?id=com.ruchisoya.nutrela&ref=apkcombo.com','date':'07/03/2018 – 30/11/2020','list':['Location tracking.','Google maps features.','Cart system.','Redux State management','Product listing and organising','AXIOS for HTTP requests to rest API']},
+      {'id':'9','img':'images/doe.png','title':'Department of Environment- GIS','subtitle':'GIS Based Industrial Information System','technologies': 'Laravel, PHP, HTML, CSS, Javascript (jQuery)','link':'https://play.google.com/store/apps/details?id=com.iclick.giis&hl=en&gl=US','date':'07/03/2018 – 30/11/2020','list':['Web application - Laravel (PHP)','Government of Nepal: Department of Forest and Environment']},
+      {'id':'10','img':'','title':'IMIS - Jhenaidah','subtitle':'Integrated Municipality Integrated system app of Jhenaidah municipality, Bangladesh','technologies': 'Laravel, PHP, HTML, CSS, Javascript (jQuery)','link':'http://178.128.123.39/imis-jhenaidah-new/','date':'07/03/2018 – 30/11/2020','list':['Web application - Laravel (PHP)','Muicipality Integrated System for Jhenaidah Municipality, Bangladesh']},
+    ]
+    
   //     useEffect(()=>{
       
   //   // getStaticProps()
@@ -195,12 +208,18 @@ export default function HomeSectionSecond({posts}) {
       <Grid container className="portfolioGallary" spacing={1}>
      
 
-      {(posts?posts.slice(0, 5):[]).map((text, index) => (
-        <Grid key={index} item xs={6} md={2.4} sx={{position:'relative', }}>
-          <Link  href={`/projects/${text.slug}`}  passHref >
+      {(objectData?objectData.slice(0, 5):[]).map((data, index) => (
+        <Grid key={data.id} item xs={6} md={2.4} sx={{position:'relative', }}>
+     
         <ImageButton
+         onClick={() => {
+          router.push({
+            pathname: `/work/${data.title}`,
+            query: data,
+          })
+        }}
         focusRipple
-        key={text.slug}
+        key={data.id}
         style={{
           width: '100%',
           
@@ -208,7 +227,7 @@ export default function HomeSectionSecond({posts}) {
         // text.frontmatter.socialImage?`/${text.frontmatter.socialImage}`:deer
       >
        
-        <ImageSrc className="Image-mui" sx={{ backgroundImage: text.frontmatter.socialImage?`url(${text.frontmatter.socialImage})`:`url(${'/images/deer.png'})`}} />
+        <ImageSrc className="Image-mui" sx={{ backgroundImage: data.img?`url(${data.img})`:`url(${'/images/deer.png'})`}} />
         <ImageBackdrop className="MuiImageBackdrop-root" />
         <ImageBox>
           <Typography
@@ -225,83 +244,15 @@ export default function HomeSectionSecond({posts}) {
               pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
             }}
           >
-            {text.slug}
+            {data.title}
             <ImageMarked className="MuiImageMarked-root" />
           </Typography>
         </ImageBox>
       </ImageButton>
-      </Link>
+     
       </Grid>
       ))}
      
-      {/* {(posts?posts.slice(0, 5):[]).map((text, index) => (
-        <Grid key={index} item xs={6} md={2.4} sx={{position:'relative',}}>
-         
-            <Link  href={`/projects/${text.slug}`}  passHref={breakpoint=='mobile'?true:false} >
-            <Card sx={{borderRadius:0,}}>
-          
-        <CardActionArea 
-        className='media'
-       onMouseEnter={()=>handlePopoverOpen(index)}
-       onMouseLeave={()=>handlePopoverOpen(null)} 
-                        sx={{position:'relative',}} >
-          {/* <CardMedia
-         
-            component="img"
-            // image={`/${text.frontmatter.socialImage}`}
-            image={deer}
-            
-          /> 
-
-<Image style={{backgroundColor:theme.palette.mode === 'dark' ?'black':'white'}}
-                    // loader={myLoader}
-                    src={text.frontmatter.socialImage?`/${text.frontmatter.socialImage}`:deer}
-                    alt="deer"
-                    width={600}
-                    height={600}
-                  />
-         { breakpoint!=='mobile'?(
-          <Link  href={`/projects/${text.slug}`}  passHref >
-          { mouseOverItem==index?(
-              <Zoom in={true} >
-            <Button
-          variant="outlined"
-           type="button"
-          
-           className='PortfolioItemWrapper'>
-                         <Box className='ViewProject'>
-                           
-                           <Typography variant='button'>View Project</Typography>
-                           
-                           
-                         </Box>
-             
-           </Button>
-           </Zoom> 
-          ):<Zoom in={false} >
-          <Box 
-         className='PortfolioItemWrapper'/>
-         
-         </Zoom> }
-          </Link>):null}
-          
-          <Box sx={{position:'absolute', bottom:10,right:10, left:10, textAlign:'center',}}>
-      <Paper elevation={3} sx={{backgroundColor:theme.palette.mode === 'dark' ?'rgb(48 48 48 / 24%)':'rgb(255 255 255 / 24%)'}}>
-
-        <p style={{margin:0,padding:'5px'}}>{text.slug}</p>
-      </Paper>
-      </Box>
-
-
-        </CardActionArea>
-      
-      </Card>
-      </Link>
-          
-
-          
-      </Grid>
-        ))} */}
 
         <Grid item xs={6} md={2.4} sx={{position:'relative', }}>
           <Link  href={'/work#sectProjects'}  passHref >

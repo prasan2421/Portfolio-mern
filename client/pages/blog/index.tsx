@@ -267,7 +267,7 @@ const CustomButton = styled(Button)({
 
 
 
-const Work = ({posts}) => {
+const Blog = ({posts}) => {
   const theme = useTheme();
   const { breakpoint, maxWidth, minWidth } = useBreakpoint(BREAKPOINTS, 'desktop');
 
@@ -395,7 +395,7 @@ theme={theme}
       {/* -------------------------------------------- First grid --------------------------------------------------- */}
 
     <Box style={{position:'relative', overflow: 'hidden', paddingTop:'6rem',paddingBottom:'10rem'}}>
-    <BackgroundText text={'Work'}/>
+    <BackgroundText text={'Blog'}/>
       <Grid container sx={{paddingX: {xs:'2.5rem',md:'4.5rem'}, marginBottom:'5rem'}}>
         <Grid item xs={12} lg={8}> 
       <Slide direction="up" in={checked} container={containerRef.current}>
@@ -404,12 +404,12 @@ theme={theme}
               
               <Grow in={checked} style={{ transformOrigin: '0 0 0' }}
                   {...(checked ? { timeout: 1000 } : {})}>
-                      <Typography variant="h1">Work Experience</Typography>
+                      <Typography variant="h1">Blogs</Typography>
               </Grow>
 
             </Box>
             <Box className={styles.subTitle}>
-            <Typography variant="h5" sx={{textAlign:'justify', textJustify:'inter-word'}}>I have worked as a Web / Mobile application developer in my professional career where I was involved in the development of various applications throughout my few years of involvement in the field. </Typography>
+            <Typography variant="h5" sx={{textAlign:'justify', textJustify:'inter-word'}}>Enjoy my Blogs below !!!! </Typography>
             
               </Box>
                 <Box >
@@ -589,7 +589,7 @@ theme={theme}
   );
 };
 
-export default React.memo(Work);
+export default React.memo(Blog);
 
 
 

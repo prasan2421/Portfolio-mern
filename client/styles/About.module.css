@@ -272,6 +272,34 @@ position:relative;
     margin-top: 2rem;
   }
 
+  .projectLink{
+    position:relative;
+    margin-top:3rem ;
+  }
+
+  .projectLink::before{
+    content: '<a>';
+    font-family: 'La Belle Aurore',cursive;
+    color: #515152;
+    font-size: 1.2rem;
+    position: absolute;
+   
+    left: -1.5rem;
+    top: -1.5rem;
+  }
+
+
+  .projectLink::after{
+    content: '</a>';
+    font-family: 'La Belle Aurore',cursive;
+    color: #515152;
+    font-size: 1.2rem;
+    position: absolute;
+    
+    left: -1.5rem;
+    bottom: -1.5rem;
+  }
+
   .subTitle{
     position:relative;
     margin-top:3rem ;

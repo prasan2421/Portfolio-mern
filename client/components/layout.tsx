@@ -8,10 +8,12 @@ import Alert from '@mui/material/Alert';
 import { useRouter } from 'next/router';
 import { StyledEngineProvider } from '@mui/material/styles';
 // import DancingLines from 'react-dancing-lines';
+import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import CircleIcon from '@mui/icons-material/Circle';
@@ -56,6 +58,7 @@ const navData=[
   {'title':'About', 'link':'/about'},
   {'title':'My Skills', 'link':'/skill'},
   {'title':'Work', 'link':'/work'},
+  {'title':'Blog', 'link':'/blog'},
   {'title':'contact', 'link':'/contact'} ]
 
   const StyledList = styled(List)({
@@ -198,9 +201,6 @@ export default function Layout({ children, home }: {
               )
 
               }
-                
-                
-            
               </Link>
             </ListItem>
             </>
@@ -264,12 +264,22 @@ export default function Layout({ children, home }: {
       <CssBaseline />
       <AppBar
         position="fixed"
-        sx={{ background: 'transparent',  color:"inherit", boxShadow: 'none', width:'100%' 
+        sx={{ background: 'transparent',  color:"inherit", boxShadow: 'none', width: '100%'
         // `calc(100% - ${drawerWidth}px)`
         , ml: `${drawerWidth}px` }}
       >
         <Toolbar>
-          <Box  sx={{  flex:1, justifyContent:'left', display: 'flex' }}></Box>
+          <Box  sx={{  flex:1, justifyContent:'left', display: 'flex' }}>
+            {/* {router.pathname !== "/" && (
+    
+    <Button variant="contained" 
+    onClick={() => router.back()}
+    startIcon={<ArrowBackIcon/>}>
+        Back 
+      </Button>
+  )} */}
+  
+  </Box>
        
         <Alert severity="info" sx={{justifyContent:'center',display:'flex',  borderRadius:'15px',width:'max-content'}}>Portfolio under construction !!</Alert>
        

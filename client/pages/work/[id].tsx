@@ -1,18 +1,18 @@
 import React from "react";
+
 import fs from 'fs';
 import path from 'path'
 import matter from 'gray-matter';
 import { useEffect, useState, useRef,useMemo, useCallback } from "react";
-
+import { useRouter } from 'next/router'
 // import Announcement from "../components/Announcement";
 // import Categories from "../components/Categories";
 import useMediaQuery from '@mui/material/useMediaQuery';
 import TextField from '@mui/material/TextField';
 import CancelIcon from '@mui/icons-material/Cancel';
 import useBreakpoint from 'use-breakpoint';
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 // import TextareaAutosize from '@mui/material/TextareaAutosize';
 // import Newsletter from "../components/Newsletter";
 // import Products from "../components/Products";
@@ -22,7 +22,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import prasannapng from '../assets/images/prasannapng.png';
-
+import IconButton from '@mui/material/IconButton';
 import MobileStepper from '@mui/material/MobileStepper';
 import Paper from '@mui/material/Paper';
 import Modal from '@mui/material/Modal';
@@ -34,10 +34,6 @@ import Send from '@mui/icons-material/Send';
 import Zoom from '@mui/material/Zoom';
 import Image from 'next/image'
 import BackgroundText from "../../components/BackgroundText";
-import ImageListItemBar from '@mui/material/ImageListItemBar';
-import ListSubheader from '@mui/material/ListSubheader';
-import IconButton from '@mui/material/IconButton';
-import InfoIcon from '@mui/icons-material/Info';
 // import Typography from '@mui/material/Typography';
 import Grow from '@mui/material/Grow';
 import Slide from '@mui/material/Slide';
@@ -54,13 +50,14 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import ButtonBase from '@mui/material/ButtonBase';
 import { CardActionArea, CardActions } from '@mui/material';
 import styles from '../../styles/About.module.css';
 import Alert from '@mui/material/Alert';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import TagSphere from "../../components/wordSphere";
 import MyMaps from "../../components/maps";
-import DetailModel from "../../components/DetailModel"
+import DetailWork from "../../components/DetailWork"
 import { GoogleMap,LoadScript, useLoadScript, Marker } from "@react-google-maps/api";
 
  // import Swiper core and required modules
@@ -109,84 +106,11 @@ const center = {
   lng: -38.523
 };
 
-const itemData = [
-  {
-    img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
-    title: 'Breakfast',
-    author: '@bkristastucchio',
-    rows: 2,
-    cols: 2,
-    featured: true,
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
-    title: 'Burger',
-    author: '@rollelflex_graphy726',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
-    title: 'Camera',
-    author: '@helloimnik',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
-    title: 'Coffee',
-    author: '@nolanissac',
-    cols: 2,
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1533827432537-70133748f5c8',
-    title: 'Hats',
-    author: '@hjrc33',
-    cols: 2,
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62',
-    title: 'Honey',
-    author: '@arwinneil',
-    rows: 2,
-    cols: 2,
-    featured: true,
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1516802273409-68526ee1bdd6',
-    title: 'Basketball',
-    author: '@tjdragotta',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1518756131217-31eb79b20e8f',
-    title: 'Fern',
-    author: '@katie_wasserman',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1597645587822-e99fa5d45d25',
-    title: 'Mushrooms',
-    author: '@silverdalex',
-    rows: 2,
-    cols: 2,
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1567306301408-9b74779a11af',
-    title: 'Tomato basil',
-    author: '@shelleypauls',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1471357674240-e1a485acb3e1',
-    title: 'Sea star',
-    author: '@peterlaster',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1589118949245-7d38baf380d6',
-    title: 'Bike',
-    author: '@southside_customs',
-    cols: 2,
-  },
-];
+
 
  
     const EducationData=[
-      {'image':usn, 'title':'Application Developer (Web / Mobile)', 'subtitle':'I.Click Pvt.Ltd. ','date':'07/03/2018 – 30/11/2020','list':['Developed Web and mobile (android / iOS) applications.','Cooperated with designers to create clean interfaces and simple, intuitive interactions and experiences.','Developed project concepts and maintained optimal workflow.','API integration between applications.','Updated landing pages, product listings, and checkouts for launches and promotions.','Created new page designs for split tests and promotions','Worked with testing teams to end tests and make winning variations live.','optimized page structures for better performance','Incorporated requested QA updates','Assisted with tracking and documentation for split tests and funnels']},
-      {'image':tu, 'title':'Internship in Web Development', 'subtitle':'Sherpa Technologies Pvt. Ltd.','date':'02/08/2017 – 09/12/2017','list':['Designed company’s website using HTML,CSS,Javascript (Bootstrap framework)','Listened to and implemented management’s recommendations into the website','Determined customer needs and improved UX in response.','Backend coding and developed APIs.','Debugged problems with minimal guidance']},
+      {'subtitle':'Food delivery mobile application (customer and delivery application) - React native','date':'07/03/2018 – 30/11/2020','list':['Developed Web and mobile (android / iOS) applications.','Cooperated with designers to create clean interfaces and simple, intuitive interactions and experiences.','Developed project concepts and maintained optimal workflow.','API integration between applications.','Updated landing pages, product listings, and checkouts for launches and promotions.','Created new page designs for split tests and promotions','Worked with testing teams to end tests and make winning variations live.','optimized page structures for better performance','Incorporated requested QA updates','Assisted with tracking and documentation for split tests and funnels']},
       
       ];
 
@@ -265,14 +189,94 @@ const CustomButton = styled(Button)({
  padding:'1rem 3rem 1rem 3rem'
 });
 
+const ImageButton = styled(ButtonBase)(({ theme }) => ({
+  position: 'relative',
+  height: 200,
+  overflow:'hidden',
+ 
+  [theme.breakpoints.down('sm')]: {
+    width: '100% !important', // Overrides inline-style
+    height: 100,
+  },
+  '&:hover, &.Mui-focusVisible': {
+   
+    zIndex: 1,
+    '& .MuiImageBackdrop-root': {
+      opacity: 0.15,
+    },
+    '& .Image-mui': {
+      transform: 'scale(1.5)',
+    },
+    '& .MuiImageMarked-root': {
+      opacity: 0,
+    },
+    '& .MuiTypography-root': {
+      border: '4px solid currentColor',
+    },
+  },
+}));
 
+const ImageSrc = styled('span')({
+  position: 'absolute',
+  left: 0,
+  right: 0,
+  top: 0,
+  bottom: 0,
+  backgroundSize: 'cover',
+  backgroundPosition: 'center 40%',
+  transition: 'transform .2s',
+});
 
-const Work = ({posts}) => {
+const ImageBackdrop = styled('span')(({ theme }) => ({
+  position: 'absolute',
+  left: 0,
+  right: 0,
+  top: 0,
+  bottom: 0,
+  backgroundColor: theme.palette.common.black,
+  opacity: 0.4,
+  transition: theme.transitions.create('opacity'),
+}));
+
+const ImageMarked = styled('span')(({ theme }) => ({
+  height: 3,
+  width: 18,
+  backgroundColor: theme.palette.common.white,
+  position: 'absolute',
+  bottom: -2,
+  left: 'calc(50% - 9px)',
+  transition: theme.transitions.create('opacity'),
+}));  
+
+const ImageBox = styled('span')(({ theme }) => ({
+  position: 'absolute',
+  left: 0,
+  right: 0,
+  top: 0,
+  bottom: 0,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  color: theme.palette.common.white,
+
+  '&:hover': {
+    '& .ImageBox-Text': {
+      backgroundColor:theme.palette.mode === 'dark' ?'rgb(48 48 48 / 50%)':'rgb(255 255 255 / 24%)',
+    },
+  },
+  
+}));
+
+const Work = () => {
+  const router = useRouter()
+  const {id} = router.query
+  const data = router.query;
   const theme = useTheme();
   const { breakpoint, maxWidth, minWidth } = useBreakpoint(BREAKPOINTS, 'desktop');
 
   useEffect(()=>{
     window.scrollTo(0,0)
+    // alert(JSON.stringify(data))
   },[])
   
   const matches = useMediaQuery('(min-width:600px)');
@@ -323,33 +327,7 @@ const Work = ({posts}) => {
 
   
 
-  const renderForm = (
-    
-    <Modal
-    aria-labelledby="spring-modal-title"
-    aria-describedby="spring-modal-description"
-    open={open}
-    onClose={handleClose}
-    closeAfterTransition
-    BackdropComponent={Backdrop}
-    BackdropProps={{
-      timeout: 500,
-    }}
-   
-  >
-    <Fade in={open}>
-    <Box sx={[styleModel,{width:breakpoint=='mobile'?'90%':'auto'},{paddingX:breakpoint=='mobile'?'15px':'32px'}]} >
-       <Button size='small' onClick={handleClose} sx={{position:'absolute',right:0,top:0,minWidth:0}}>
-        <CancelIcon fontSize='large' sx={{color:'red',}}/>
-      </Button>
-       
-    <DetailModel ListData={listData} />
-       
-    </Box>
-    
-    </Fade>
-  </Modal>
-  );
+  
 
   const settings = {
     dots: true,
@@ -386,16 +364,26 @@ const Work = ({posts}) => {
     <ThemeProvider 
 theme={theme}
 >
-    <Box className='main' component="main" sx={{ color: 'text.primary', flexGrow:1, marginBottom:'15px' }}>  
+<Box  sx={{  flex:1, justifyContent:'left', display: 'flex' }}>{router.pathname !== "/" && (
+    
+    <Button sx={{zIndex:100000, marginLeft:'10px', marginTop:'10px'}} variant="contained" 
+    onClick={() => router.back()}
+    startIcon={<ArrowBackIcon/>}>
+        Back 
+      </Button>
+  )}</Box>
+    <Box className='main' component="main" sx={{ color: 'text.primary', flexGrow:1, marginBottom:'15px' }}> 
+   
+    
     <Box className='ContainerWrapper' sx={{marginX:{ xs: '0.1rem', md:'1rem' },}}>{'<html>'}</Box>
    
     <Box sx={{marginBottom:'7rem'}}>
-    {renderForm}
+   
       
       {/* -------------------------------------------- First grid --------------------------------------------------- */}
 
     <Box style={{position:'relative', overflow: 'hidden', paddingTop:'6rem',paddingBottom:'10rem'}}>
-    <BackgroundText text={'Work'}/>
+    <BackgroundText text={id}/>
       <Grid container sx={{paddingX: {xs:'2.5rem',md:'4.5rem'}, marginBottom:'5rem'}}>
         <Grid item xs={12} lg={8}> 
       <Slide direction="up" in={checked} container={containerRef.current}>
@@ -404,12 +392,18 @@ theme={theme}
               
               <Grow in={checked} style={{ transformOrigin: '0 0 0' }}
                   {...(checked ? { timeout: 1000 } : {})}>
-                      <Typography variant="h1">Work Experience</Typography>
+                      <Typography variant="h2">{id}</Typography>
               </Grow>
 
             </Box>
             <Box className={styles.subTitle}>
-            <Typography variant="h5" sx={{textAlign:'justify', textJustify:'inter-word'}}>I have worked as a Web / Mobile application developer in my professional career where I was involved in the development of various applications throughout my few years of involvement in the field. </Typography>
+            
+            <Typography variant="h5" sx={{textAlign:'justify', textJustify:'inter-word'}}>{data.subtitle}</Typography>
+            
+              </Box>
+              <Box className={styles.projectLink}>
+            
+            <Typography variant="h5" >Project : <Link  href={`${data.link}`} target="_blank" underline="hover"><u>{data.link}</u></Link></Typography>
             
               </Box>
                 <Box >
@@ -438,125 +432,97 @@ theme={theme}
         <Card sx={{margin:'7px', borderTop:`2px solid lightgreen`}}>
         
             <CardContent>
-            <Typography gutterBottom variant="h5" component="div" color="lightgreen">
-                Work Experience
-              </Typography>
-              {EducationData.map((text, index) => (
-                <CardActionArea key='index' onClick={()=>handleOpen(text)} sx={{display:'flex', justifyContent:'space-between'}}>
-                <Box  key={index} sx={{display:{sm:'flex'}, margin:'15px',}}>
-                  <Box sx={{width:{xs:'100%',sm:'auto'},marginRight:'10px',justifyContent:'center', alignItems:'center',display:{xs:'flex',sm:'block'}}}>
-                    <Image
-                    // loader={myLoader}
-                    src={text.image}
-                    alt="Picture of the Company"
-                    width={70}
-                    height={70}
-                  />
-                  </Box>
-                    
-                    <Box sx={{marginY:{xs:'1rem',sm:0}}}>
-                      <Typography variant="body1" >
-                        {text.title}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {text.subtitle}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {text.date}
-                      </Typography>
-                    </Box>
+              <Box sx={{display:'flex'}}>
+                <Typography gutterBottom variant="h5" component="div" color="lightgreen">
+                Technologies Used : 
+                </Typography>
+                <Typography variant="h6" sx={{marginLeft:'5px',fontWeight:'bold'}}> {data.technologies}</Typography>
               </Box>
-              <Box>
-                <ChevronRightIcon fontSize="large"/>
-              </Box>
-              </CardActionArea>
-              ))}
+              <DetailWork ListData={data} />
             </CardContent>
         
         </Card>
       </Grid>
-
-
-      <Grid xs={12} >
       
-        <Card id="sectProjects" sx={{margin:'7px', borderTop:`2px solid lightgreen`}}>
-            <CardContent>
-            <Typography gutterBottom variant="h5" component="div" color="lightgreen">
-                Projects
-              </Typography>
-              <Grid container >
-              {posts.map((text, index) => (
-                <Grid  key={index} xs={6} sm={6} md={3} sx={{display:'flex',justifyContent:'center'}}>
-                <CardActionArea sx={{borderRadius:'20px',overflow:'hidden'}}>
-              <Box sx={{ marginY:'15px', }}>
-                <Box sx={{   justifyContent: 'center',
-  display: 'flex'}}>
-                <Image
-                    // loader={myLoader}
-                    src={text.frontmatter.socialImage?`/${text.frontmatter.socialImage}`:technology}
-                    alt="Project"
-                    width={70}
-                    height={70}
-                  />
-                </Box>
-                  
-                  <Box sx={{marginY:'1rem', justifyContent:'center', display:'flex'}}>
-                    <Typography variant="body1" >
-                      {text.slug}
-                    </Typography>
-                    
-                   
-                  </Box>
-            </Box>
-            </CardActionArea>
-            </Grid>
-              ))}</Grid>
-            </CardContent>
-        
-        </Card>
-        
-      </Grid>
      </Grid>
-    
-    
+     
    </Container>
-   
-   <Box sx={{marginLeft:'20px',marginTop:'40px',marginBottom:'20px'}}>
-              
-           
-                      <Typography variant="h3">Gallery</Typography>
-           
-
-            </Box>
-   <ImageList  cols={4} >
  
-      {itemData.map((item) => (
-        <ImageListItem key={item.img}>
-          <img
-            src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-            srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-            alt={item.title}
-            loading="lazy"
-          />
-          <ImageListItemBar
-            title={item.title}
-            subtitle={item.author}
-            actionIcon={
-              <IconButton
-                sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
-                aria-label={`info about ${item.title}`}
-              >
-                <InfoIcon />
-              </IconButton>
-            }
-          />
-        </ImageListItem>
-      ))}
-    </ImageList>
      </Box>
   
    </Box>
-   
+   <Grid container spacing={2} sx={{marginTop:'40px'}}>
+      
+      <Grid item xs={3}  >
+          
+      <ImageButton
+        focusRipple
+        // key={text.slug}
+        style={{
+          width: '100%',
+          
+        }}
+        // text.frontmatter.socialImage?`/${text.frontmatter.socialImage}`:deer
+      >
+       
+        <ImageSrc  sx={{backgroundColor:'white', backgroundImage: `url(${'/images/deer.png'})`}} />
+       
+      </ImageButton>
+      
+      </Grid>
+      <Grid item xs={3}  >
+          
+          <ImageButton
+            focusRipple
+            // key={text.slug}
+            style={{
+              width: '100%',
+              
+            }}
+            // text.frontmatter.socialImage?`/${text.frontmatter.socialImage}`:deer
+          >
+           
+            <ImageSrc sx={{backgroundColor:'white', backgroundImage: `url(${'/images/deer.png'})`}} />
+           
+          </ImageButton>
+          
+       </Grid>
+       <Grid item xs={3}  >
+          
+          <ImageButton
+            focusRipple
+            // key={text.slug}
+            style={{
+              width: '100%',
+              
+            }}
+            // text.frontmatter.socialImage?`/${text.frontmatter.socialImage}`:deer
+          >
+           
+            <ImageSrc sx={{backgroundColor:'white', backgroundImage: `url(${'/images/deer.png'})`}} />
+           
+          </ImageButton>
+          
+          </Grid>
+          <Grid item xs={3}  >
+          
+          <ImageButton
+            focusRipple
+            // key={text.slug}
+            style={{
+              width: '100%',
+              
+            }}
+            // text.frontmatter.socialImage?`/${text.frontmatter.socialImage}`:deer
+          >
+           
+            <ImageSrc  sx={{backgroundColor:'white', backgroundImage: `url(${'/images/deer.png'})`}} />
+           
+          </ImageButton>
+          
+          </Grid>
+
+  </Grid>
    
           {/* -------------------------------------------- Second grid end--------------------------------------------------- */}
     
@@ -593,22 +559,3 @@ export default React.memo(Work);
 
 
 
-export async function getStaticProps() {
-  const files = fs.readdirSync('projects');
-
-  const posts = files.map((fileName) => {
-    const slug = fileName.replace('.md', '');
-    const readFile = fs.readFileSync(`projects/${fileName}`, 'utf-8');
-    const { data: frontmatter } = matter(readFile);
-    return {
-      slug,
-      frontmatter,
-    };
-  });
-
-  return {
-    props: {
-      posts,
-    },
-  };
-}

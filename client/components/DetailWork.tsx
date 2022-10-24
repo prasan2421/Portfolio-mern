@@ -65,7 +65,7 @@ interface FadeProps {
     p: 4,
   };
 
-const DetailModel = ({ListData, ...props}:TextProps) => {
+const DetailWork = ({ListData, ...props}:TextProps) => {
     const [open, setOpen] = React.useState(false);
 
     const handleOpen = () => setOpen(true);
@@ -79,20 +79,20 @@ const DetailModel = ({ListData, ...props}:TextProps) => {
   return (
    
    
-    <Box sx={{maxHeight:'80vh', overflow:'auto'}} >
+    <Box>
       
-      <Box sx={{display:'grid'}}>
+      {/* <Box sx={{display:'grid'}}>
       <Typography variant='h5'>{ListData?ListData.title:''}</Typography>
       <Typography variant='subtitle1'>{ListData?ListData.subtitle:''}</Typography>
       <Typography variant='subtitle2'>{ListData?ListData.date:''}</Typography>
      
-      </Box>
+      </Box> */}
       <List>
      
       
       {ListData?ListData.list.map((item:any) => (
          <ListItem key='index'>
-           <ListItemIcon>
+           <ListItemIcon sx={{minWidth:'30px'}}>
                 <CircleIcon fontSize='small' sx={{color:'gray'}}/>
               </ListItemIcon>
          <ListItemText>
@@ -109,4 +109,4 @@ const DetailModel = ({ListData, ...props}:TextProps) => {
   ;
 };
 
-export default React.memo(DetailModel);
+export default React.memo(DetailWork);
