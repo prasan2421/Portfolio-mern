@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path'
 import matter from 'gray-matter';
 import { useEffect, useState, useRef,useMemo, useCallback } from "react";
-
+import { useRouter } from 'next/router'
 // import Announcement from "../components/Announcement";
 // import Categories from "../components/Categories";
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -190,7 +190,18 @@ const itemData = [
       
       ];
 
-  
+      const objectData=[
+        {'id':'1','img':'images/1.png','title':'Prasannat Portfolio','subtitle':'A portfolio website developed in MERN stack.','technologies': 'React, React Native, Typescript, Express, MongoDB','link':'http://www.prasannat.com','date':'07/03/2018 – 30/11/2020','list':['NEXT js, client side framework that use react js, to create front-end.','Express, a node js web-application framework, to create backend.','Mongoose db, an Object Data Modeling (ODM) library for MongoDB and Node js, connecting backend-end with front-end.','Material UI, Google Maps, Redux, SSR, AXIOS for Rest API requests, CRUD, React Spring, and more..',],'images':['images/Portfolio/1.png','images/Portfolio/2.png']},
+        {'id':'2','img':'images/foodbusters.png','title':'Foodbusters','subtitle':'Food delivery mobile application (customer and delivery application)','technologies': 'React Native, Javascript','link':'https://foodbusters.com.np/','date':'07/03/2018 – 30/11/2020','list':['Location tracking','Google maps features.','cart system.','API integration between applications.','Redux State management','Product listing and organising.','AXIOS for HTTP requests to rest API.'],'images':['images/Foodbusters/1.jpg','images/Foodbusters/2.jpg','images/Foodbusters/3.jpg','images/Foodbusters/4.jpg','images/Foodbusters/5.jpg','images/Foodbusters/6.jpg','images/Foodbusters/7.jpg','images/Foodbusters/8.jpg','images/Foodbusters/9.jpg']},
+        {'id':'3','img':'images/covid.png','title':'Nepal Covid-19 Surveillance','subtitle':'A mobile application for COVID-19 Surveillance in Nepal','technologies': 'React Native, Javascript','link':'https://play.google.com/store/apps/details?id=com.iclick.covidnew&hl=en&gl=US','date':'07/03/2018 – 30/11/2020','list':['Government of Nepal: Kathmandu Metropolitan City','Surveillance app to monitor the spread of covid-19 in the locality.','Check ones possibility of covid-19 comparing with the given symptoms.','Monitor and notify through push notifications.','Covid-19 Surveillance system developed for the residence of Kathmandu city.'],'images':['images/Covid/1.jpg','images/Covid/2.jpg','images/Covid/3.jpg','images/Covid/4.jpg','images/Covid/5.jpg','images/Covid/6.jpg','images/Covid/7.jpg','images/Covid/8.jpg',]  },
+        {'id':'4','img':'images/patanjalisfa.png','title':'Patanjali SFA','subtitle':'Sales Force Order collection application for internal use of Patanjali employees.','technologies': 'React Native, Javascript','link':'https://play.google.com/store/apps/details?id=com.iclick.patanjali&hl=en&gl=US','date':'07/03/2018 – 30/11/2020','list':['Location tracking.','Google maps features.','Cart system.','Redux State management','Product listing and organising','AXIOS for HTTP requests to rest API'],'images':['images/Patanjalisfa/1.jpg','images/Patanjalisfa/2.jpg','images/Patanjalisfa/3.jpg','images/Patanjalisfa/4.jpg','images/Patanjalisfa/5.jpg','images/Patanjalisfa/6.jpg','images/Patanjalisfa/7.jpg','images/Patanjalisfa/8.jpg','images/Patanjalisfa/9.jpg','images/Patanjalisfa/10.jpg','images/Patanjalisfa/11.jpg','images/Patanjalisfa/12.jpg','images/Patanjalisfa/13.jpg','images/Patanjalisfa/14.jpg','images/Patanjalisfa/15.jpg','images/Patanjalisfa/16.jpg','images/Patanjalisfa/17.jpg','images/Patanjalisfa/18.jpg','images/Patanjalisfa/19.jpg','images/Patanjalisfa/20.jpg','images/Patanjalisfa/21.jpg','images/Patanjalisfa/22.jpg',]},
+        {'id':'5','img':'images/pbri.png','title':'Patanjali Bio Research Institute','subtitle':'Sales Force Order collection application for internal use of Patanjali Bio Research employees.','technologies': 'React Native, Javascript','link':'https://play.google.com/store/apps/details?id=com.patanjali.pbri&hl=en&gl=US','date':'07/03/2018 – 30/11/2020','list':['Location tracking.','Google maps features.','Cart system.','Redux State management','Product listing and organising','AXIOS for HTTP requests to rest API'],'images':[]},
+        {'id':'6','img':'','title':'Patanjali Dairy Application','subtitle':'Sales Force Order collection application for internal use of Patanjali Dairy employees.','technologies': 'React Native, Javascript','link':'https://play.google.com/store/apps/details?id=com.patanjali.dairy&hl=en&gl=US','date':'07/03/2018 – 30/11/2020','list':['Location tracking.','Google maps features.','Cart system.','Redux State management','Product listing and organising','AXIOS for HTTP requests to rest API'],'images':[]},
+        {'id':'7','img':'','title':'Prakriti Organics','subtitle':'Sales Force Order collection application for internal use of Prakriti Organics employees.','technologies': 'React Native, Javascript','link':'https://play.google.com/store/apps/details?id=com.prakriti.organics','date':'07/03/2018 – 30/11/2020','list':['Location tracking.','Google maps features.','Cart system.','Redux State management','Product listing and organising','AXIOS for HTTP requests to rest API'],'images':[]},
+        {'id':'8','img':'','title':'Ruchi Soya- Nutrela SOA','subtitle':'Sales Order collection application for internal use of Ruchi Soya - Nutrela SOA employees.','technologies': 'React Native, Javascript','link':'https://play.google.com/store/apps/details?id=com.ruchisoya.nutrela&ref=apkcombo.com','date':'07/03/2018 – 30/11/2020','list':['Location tracking.','Google maps features.','Cart system.','Redux State management','Product listing and organising','AXIOS for HTTP requests to rest API'],'images':['images/Nutrela/1.jpg','images/Nutrela/2.jpg','images/Nutrela/3.jpg','images/Nutrela/4.jpg','images/Nutrela/5.jpg','images/Nutrela/6.jpg','images/Nutrela/7.jpg','images/Nutrela/8.jpg','images/Nutrela/9.jpg']},
+        {'id':'9','img':'images/doe.png','title':'Department of Environment- GIS','subtitle':'GIS Based Industrial Information System','technologies': 'Laravel, PHP, HTML, CSS, Javascript (jQuery)','link':'https://play.google.com/store/apps/details?id=com.iclick.giis&hl=en&gl=US','date':'07/03/2018 – 30/11/2020','list':['Web application - Laravel (PHP)','Government of Nepal: Department of Forest and Environment'],'images':[]},
+        {'id':'10','img':'','title':'IMIS - Jhenaidah','subtitle':'Integrated Municipality Integrated system app of Jhenaidah municipality, Bangladesh','technologies': 'Laravel, PHP, HTML, CSS, Javascript (jQuery)','link':'http://178.128.123.39/imis-jhenaidah-new/','date':'07/03/2018 – 30/11/2020','list':['Web application - Laravel (PHP)','Muicipality Integrated System for Jhenaidah Municipality, Bangladesh'],'images':[]},
+      ]
 
 const images = [
   {
@@ -269,6 +280,7 @@ const CustomButton = styled(Button)({
 
 const Work = ({posts}) => {
   const theme = useTheme();
+  const router = useRouter()
   const { breakpoint, maxWidth, minWidth } = useBreakpoint(BREAKPOINTS, 'desktop');
 
   useEffect(()=>{
@@ -485,15 +497,21 @@ theme={theme}
                 Projects
               </Typography>
               <Grid container >
-              {posts.map((text, index) => (
-                <Grid  key={index} xs={6} sm={6} md={3} sx={{display:'flex',justifyContent:'center'}}>
-                <CardActionArea sx={{borderRadius:'20px',overflow:'hidden'}}>
+              {objectData.map((data, index) => (
+                <Grid  key={data.id} xs={6} sm={6} md={3} sx={{display:'flex',justifyContent:'center'}}>
+                  <Button  onClick={() => {
+          router.push({
+            pathname: `/work/${data.title}`,
+            query: data,
+          })
+        }}>
+                <Box sx={{borderRadius:'20px',overflow:'hidden'}} >
               <Box sx={{ marginY:'15px', }}>
                 <Box sx={{   justifyContent: 'center',
   display: 'flex'}}>
                 <Image
                     // loader={myLoader}
-                    src={text.frontmatter.socialImage?`/${text.frontmatter.socialImage}`:technology}
+                    src={data.img?`/${data.img}`:technology}
                     alt="Project"
                     width={70}
                     height={70}
@@ -502,13 +520,14 @@ theme={theme}
                   
                   <Box sx={{marginY:'1rem', justifyContent:'center', display:'flex'}}>
                     <Typography variant="body1" >
-                      {text.slug}
+                      {data.title}
                     </Typography>
                     
                    
                   </Box>
             </Box>
-            </CardActionArea>
+            </Box>
+            </Button>
             </Grid>
               ))}</Grid>
             </CardContent>
@@ -521,38 +540,7 @@ theme={theme}
     
    </Container>
    
-   <Box sx={{marginLeft:'20px',marginTop:'40px',marginBottom:'20px'}}>
-              
-           
-                      <Typography variant="h3">Gallery</Typography>
-           
-
-            </Box>
-   <ImageList  cols={4} >
- 
-      {itemData.map((item) => (
-        <ImageListItem key={item.img}>
-          <img
-            src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-            srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-            alt={item.title}
-            loading="lazy"
-          />
-          <ImageListItemBar
-            title={item.title}
-            subtitle={item.author}
-            actionIcon={
-              <IconButton
-                sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
-                aria-label={`info about ${item.title}`}
-              >
-                <InfoIcon />
-              </IconButton>
-            }
-          />
-        </ImageListItem>
-      ))}
-    </ImageList>
+  
      </Box>
   
    </Box>

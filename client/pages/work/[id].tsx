@@ -271,13 +271,32 @@ const Work = () => {
   const router = useRouter()
   const {id} = router.query
   const data = router.query;
+  
+ 
   const theme = useTheme();
   const { breakpoint, maxWidth, minWidth } = useBreakpoint(BREAKPOINTS, 'desktop');
 
+  
+// const imgData=['/images/Patanjalisfa/1.jpg','/images/Patanjalisfa/2.jpg','/images/Patanjalisfa/3.jpg','/images/Patanjalisfa/4.jpg','/images/Patanjalisfa/5.jpg','/images/Patanjalisfa/6.jpg','/images/Patanjalisfa/7.jpg','/images/Patanjalisfa/8.jpg','/images/Patanjalisfa/9.jpg','/images/Patanjalisfa/10.jpg','/images/Patanjalisfa/11.jpg','/images/Patanjalisfa/12.jpg','/images/Patanjalisfa/13.jpg','/images/Patanjalisfa/14.jpg','/images/Patanjalisfa/15.jpg','/images/Patanjalisfa/16.jpg','/images/Patanjalisfa/17.jpg','/images/Patanjalisfa/18.jpg','/images/Patanjalisfa/19.jpg','/images/Patanjalisfa/20.jpg','/images/Patanjalisfa/21.jpg','/images/Patanjalisfa/22.jpg',]
+
   useEffect(()=>{
     window.scrollTo(0,0)
-    // alert(JSON.stringify(data))
+ 
+  converter()
   },[])
+
+const converter=()=>{
+  let imgData1=[]
+    for(let i=0; i<data.images.length; i++){
+
+    // imgData.push(i)
+    imgData1.push(data.images[i])
+}
+
+setImgData(imgData1)
+}
+
+
   
   const matches = useMediaQuery('(min-width:600px)');
   const [checkedZoom, setCheckedZoom] = React.useState(null);
@@ -288,7 +307,7 @@ const Work = () => {
   
   // const colorMode = React.useContext(ColorModeContext);
   const [checked, setChecked] = React.useState(true);
-
+  const [imgData, setImgData] = React.useState([]);
   
 
   const handleChange = () => {
@@ -451,76 +470,26 @@ theme={theme}
      </Box>
   
    </Box>
-   <Grid container spacing={2} sx={{marginTop:'40px'}}>
+   <Grid container  sx={{marginTop:'40px'}}>
+      {imgData?imgData.map((item:any)=>(
+        <Grid item xs={1} sm={1} md={3}  >
+                  <img
+        src={`${item}?w=164&h=164&fit=crop&auto=format`}
+        width='200px'
+        // alt={''}
+        loading="lazy"
+      />
+                
+                    
+                    
+                
+                  
+                  </Grid>
+      ))
+       :{}
+      }
+     
       
-      <Grid item xs={3}  >
-          
-      <ImageButton
-        focusRipple
-        // key={text.slug}
-        style={{
-          width: '100%',
-          
-        }}
-        // text.frontmatter.socialImage?`/${text.frontmatter.socialImage}`:deer
-      >
-       
-        <ImageSrc  sx={{backgroundColor:'white', backgroundImage: `url(${'/images/deer.png'})`}} />
-       
-      </ImageButton>
-      
-      </Grid>
-      <Grid item xs={3}  >
-          
-          <ImageButton
-            focusRipple
-            // key={text.slug}
-            style={{
-              width: '100%',
-              
-            }}
-            // text.frontmatter.socialImage?`/${text.frontmatter.socialImage}`:deer
-          >
-           
-            <ImageSrc sx={{backgroundColor:'white', backgroundImage: `url(${'/images/deer.png'})`}} />
-           
-          </ImageButton>
-          
-       </Grid>
-       <Grid item xs={3}  >
-          
-          <ImageButton
-            focusRipple
-            // key={text.slug}
-            style={{
-              width: '100%',
-              
-            }}
-            // text.frontmatter.socialImage?`/${text.frontmatter.socialImage}`:deer
-          >
-           
-            <ImageSrc sx={{backgroundColor:'white', backgroundImage: `url(${'/images/deer.png'})`}} />
-           
-          </ImageButton>
-          
-          </Grid>
-          <Grid item xs={3}  >
-          
-          <ImageButton
-            focusRipple
-            // key={text.slug}
-            style={{
-              width: '100%',
-              
-            }}
-            // text.frontmatter.socialImage?`/${text.frontmatter.socialImage}`:deer
-          >
-           
-            <ImageSrc  sx={{backgroundColor:'white', backgroundImage: `url(${'/images/deer.png'})`}} />
-           
-          </ImageButton>
-          
-          </Grid>
 
   </Grid>
    

@@ -4,7 +4,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 
 type TextProps = {
    
-    text:string
+    text:any
   }
 
 const BackgroundText = ({text}:TextProps) => {

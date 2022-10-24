@@ -13,10 +13,20 @@ import useBreakpoint from 'use-breakpoint';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-// import TextareaAutosize from '@mui/material/TextareaAutosize';
-// import Newsletter from "../components/Newsletter";
-// import Products from "../components/Products";
-// import Slider1 from "../components/Slider";
+import { IconButtonProps } from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import { red } from '@mui/material/colors';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ShareIcon from '@mui/icons-material/Share';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+
+import Avatar from '@mui/material/Avatar';
 import { styled, alpha, ThemeProvider, createTheme, useTheme,responsiveFontSizes, } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -35,7 +45,7 @@ import Zoom from '@mui/material/Zoom';
 import Image from 'next/image'
 import BackgroundText from "../../components/BackgroundText";
 import ImageListItemBar from '@mui/material/ImageListItemBar';
-import ListSubheader from '@mui/material/ListSubheader';
+
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
 // import Typography from '@mui/material/Typography';
@@ -50,11 +60,7 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import InterestsIcon from '@mui/icons-material/Interests';
 import { useSpring, animated } from '@react-spring/web';
 import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardActionArea, CardActions } from '@mui/material';
+import { CardActionArea } from '@mui/material';
 import styles from '../../styles/About.module.css';
 import Alert from '@mui/material/Alert';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -78,6 +84,20 @@ import guitar from '../../assets/images/guitar.png';
 import technology from '../../assets/images/technology.png';
 import travel from '../../assets/images/travel.png';
 
+import ListSubheader from '@mui/material/ListSubheader';
+import List from '@mui/material/List';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import Collapse from '@mui/material/Collapse';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import DraftsIcon from '@mui/icons-material/Drafts';
+import SendIcon from '@mui/icons-material/Send';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import Checkbox from '@mui/material/Checkbox';
+import StarBorder from '@mui/icons-material/StarBorder';
+import ListItem from '@mui/material/ListItem';
+
 
 // Import Swiper styles
 import 'swiper/css';
@@ -96,6 +116,21 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
   textAlign: 'center',
   color: theme.palette.text.secondary,
+}));
+
+interface ExpandMoreProps extends IconButtonProps {
+  expand: boolean;
+}
+
+const ExpandMore = styled((props: ExpandMoreProps) => {
+  const { expand, ...other } = props;
+  return <IconButton {...other} />;
+})(({ theme, expand }) => ({
+  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
+  marginLeft: 'auto',
+  transition: theme.transitions.create('transform', {
+    duration: theme.transitions.duration.shortest,
+  }),
 }));
 
 
@@ -281,10 +316,14 @@ const Blog = ({posts}) => {
   
   const [checkedImage, setCheckedImage] = React.useState(true);
   const [activeStep, setActiveStep] = React.useState(0);
-  
+  const [checked1, setChecked1] = React.useState(0);
   // const colorMode = React.useContext(ColorModeContext);
   const [checked, setChecked] = React.useState(true);
+  const [expanded, setExpanded] = React.useState(false);
 
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
   
 
   const handleChange = () => {
@@ -380,6 +419,9 @@ const Blog = ({posts}) => {
   const handlePopoverOpen = (index:any) => {
     setMouseOverItem(index)
   };
+
+  
+
  
   
   return (
@@ -404,7 +446,7 @@ theme={theme}
               
               <Grow in={checked} style={{ transformOrigin: '0 0 0' }}
                   {...(checked ? { timeout: 1000 } : {})}>
-                      <Typography variant="h1">Blogs</Typography>
+                      <Typography variant="h1">Blog</Typography>
               </Grow>
 
             </Box>
@@ -433,126 +475,390 @@ theme={theme}
    <Box sx={{position:'relative'}}>
      <Box className={styles.AboutDiv}>
      <Container maxWidth="xl" sx={{marginTop:'-5rem'}}  >
-     <Grid container > 
-      <Grid xs={12} >
-        <Card sx={{margin:'7px', borderTop:`2px solid lightgreen`}}>
+     <Grid container  > 
+     <Grid container sm={9} xs={12} spacing={2} >
+        <Grid item md={4} sm={6} xs={12} >
+        <Card >
+        <CardHeader
+          avatar={
+            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+              M
+            </Avatar>
+          }
+          action={
+            <IconButton aria-label="settings">
+              <MoreVertIcon />
+            </IconButton>
+          }
+          title="Module Federation"
+          subheader="September 20, 2022"
+        />
+        <CardMedia
+          component="img"
+          height="194"
+          image="/images/deer.png"
+          alt="Module Federation"
+        />
+        <CardContent>
+          <Typography variant="body2" color="text.secondary">
+          Module federation brings the separate builds or modules, parts of other applications, together, sharing common dependencies to develop and deploy the modules independently and combine them at runtime.
+          </Typography>
+        </CardContent>
+        <CardActions disableSpacing>
+          <IconButton aria-label="add to favorites">
+            <FavoriteIcon />
+          </IconButton>
+          <IconButton aria-label="share">
+            <ShareIcon />
+          </IconButton>
+          <ExpandMore
+            expand={expanded}
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label="show more"
+          >
+            <ExpandMoreIcon />
+          </ExpandMore>
+        </CardActions>
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <CardContent>
+            
+            <Typography paragraph>
+            Earlier this week, I had the opportunity to visit Forsta for an event on 'Design Systems' and 'Module Federation'. Thanks to ReactJS Oslo and Forsta for a wonderful and insightful event. For me, Module Federation, brought by Webpack 5, was definitely a hot topic, and I found it very convenient for front-end development. The concept of micro frontends is to involve sections of UI and features developed by independent teams, built separately using different technologies, and then combined into a single application. Module federation brings these separate builds or modules, parts of other applications, together, sharing common dependencies to develop and deploy the modules independently and combine them at runtime. Using this development approach on projects with multiple teams that have independent development cycles can definitely ease the code sharing process.
+            </Typography>
+            <Typography paragraph>
+            During the event a few questions were raised, one of them being: What does module federation bring that is different from the traditional approach of working in a monolithic codebase? This did bring up some confusion regarding the advantages and trade-offs that one needs to make. Do we really need this? 
+            </Typography>
+            <Typography paragraph>
+            Having learned about this approach and its capabilities in the event, I wasn’t quite sure if we really needed to adopt it until recently, when I did a short study, and for me the answer is: "Definitely!" 
+            </Typography>
+            <Typography>
+            - It gives you flexibility to work on a project with multiple teams.
+- Independent development and deployment.
+- Javascript frameworks of your choice.
+- Version independent 
+- Shared libraries
+- Better way of code sharing 
+            </Typography>
+            <Typography>
+            However, complexity in setting up this architecture and uncertainty of application performance due to failure in remote components are some of the drawbacks. 
+            </Typography>
+          </CardContent>
+        </Collapse>
+      </Card>
+        </Grid>
+        <Grid item md={4} sm={6} xs={12} >
+        <Card >
+        <CardHeader
+          avatar={
+            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+              M
+            </Avatar>
+          }
+          action={
+            <IconButton aria-label="settings">
+              <MoreVertIcon />
+            </IconButton>
+          }
+          title="Lorem Ipsum"
+          subheader="September 20, 2022"
+        />
+        <CardMedia
+          component="img"
+          height="194"
+          image="/images/deer.png"
+          alt="Lorem Ipsum"
+        />
+        <CardContent>
+          <Typography variant="body2" color="text.secondary">
+          Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Lorem Ipsum is not simply random text.          </Typography>
+        </CardContent>
+        <CardActions disableSpacing>
+          <IconButton aria-label="add to favorites">
+            <FavoriteIcon />
+          </IconButton>
+          <IconButton aria-label="share">
+            <ShareIcon />
+          </IconButton>
+          <ExpandMore
+            expand={expanded}
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label="show more"
+          >
+            <ExpandMoreIcon />
+          </ExpandMore>
+        </CardActions>
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <CardContent>
+            <Typography paragraph>Method:</Typography>
+            <Typography paragraph>
+            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.            </Typography>
+            <Typography paragraph>
+            Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.            </Typography>
+            <Typography>
+            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.        </Typography>
+          </CardContent>
+        </Collapse>
+
+      </Card>
+        </Grid>
+        <Grid item md={4} sm={6} xs={12} >
+        <Card >
+        <CardHeader
+          avatar={
+            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+              M
+            </Avatar>
+          }
+          action={
+            <IconButton aria-label="settings">
+              <MoreVertIcon />
+            </IconButton>
+          }
+          title="Lorem Ipsum"
+          subheader="September 20, 2022"
+        />
+        <CardMedia
+          component="img"
+          height="194"
+          image="/images/deer.png"
+          alt="Lorem Ipsum"
+        />
+        <CardContent>
+          <Typography variant="body2" color="text.secondary">
+          Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Lorem Ipsum is not simply random text.          </Typography>
+        </CardContent>
+        <CardActions disableSpacing>
+          <IconButton aria-label="add to favorites">
+            <FavoriteIcon />
+          </IconButton>
+          <IconButton aria-label="share">
+            <ShareIcon />
+          </IconButton>
+          <ExpandMore
+            expand={expanded}
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label="show more"
+          >
+            <ExpandMoreIcon />
+          </ExpandMore>
+        </CardActions>
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <CardContent>
+            <Typography paragraph>Method:</Typography>
+            <Typography paragraph>
+            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.            </Typography>
+            <Typography paragraph>
+            Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.            </Typography>
+            <Typography>
+            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.        </Typography>
+          </CardContent>
+        </Collapse>
+
+      </Card>
+        </Grid>
+        <Grid item md={4} sm={6} xs={12} >
+        <Card >
+        <CardHeader
+          avatar={
+            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+              M
+            </Avatar>
+          }
+          action={
+            <IconButton aria-label="settings">
+              <MoreVertIcon />
+            </IconButton>
+          }
+          title="Lorem Ipsum"
+          subheader="September 20, 2022"
+        />
+        <CardMedia
+          component="img"
+          height="194"
+          image="/images/deer.png"
+          alt="Lorem Ipsum"
+        />
+        <CardContent>
+          <Typography variant="body2" color="text.secondary">
+          Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Lorem Ipsum is not simply random text.          </Typography>
+        </CardContent>
+        <CardActions disableSpacing>
+          <IconButton aria-label="add to favorites">
+            <FavoriteIcon />
+          </IconButton>
+          <IconButton aria-label="share">
+            <ShareIcon />
+          </IconButton>
+          <ExpandMore
+            expand={expanded}
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label="show more"
+          >
+            <ExpandMoreIcon />
+          </ExpandMore>
+        </CardActions>
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <CardContent>
+            <Typography paragraph>Method:</Typography>
+            <Typography paragraph>
+            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.            </Typography>
+            <Typography paragraph>
+            Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.            </Typography>
+            <Typography>
+            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.        </Typography>
+          </CardContent>
+        </Collapse>
+
+      </Card>
+        </Grid>
+        <Grid item md={4} sm={6} xs={12} >
+        <Card >
+        <CardHeader
+          avatar={
+            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+              M
+            </Avatar>
+          }
+          action={
+            <IconButton aria-label="settings">
+              <MoreVertIcon />
+            </IconButton>
+          }
+          title="Lorem Ipsum"
+          subheader="September 20, 2022"
+        />
+        <CardMedia
+          component="img"
+          height="194"
+          image="/images/deer.png"
+          alt="Lorem Ipsum"
+        />
+        <CardContent>
+          <Typography variant="body2" color="text.secondary">
+          Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Lorem Ipsum is not simply random text.          </Typography>
+        </CardContent>
+        <CardActions disableSpacing>
+          <IconButton aria-label="add to favorites">
+            <FavoriteIcon />
+          </IconButton>
+          <IconButton aria-label="share">
+            <ShareIcon />
+          </IconButton>
+          <ExpandMore
+            expand={expanded}
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label="show more"
+          >
+            <ExpandMoreIcon />
+          </ExpandMore>
+        </CardActions>
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <CardContent>
+            <Typography paragraph>Method:</Typography>
+            <Typography paragraph>
+            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.            </Typography>
+            <Typography paragraph>
+            Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.            </Typography>
+            <Typography>
+            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.        </Typography>
+          </CardContent>
+        </Collapse>
+
+      </Card>
+        </Grid>
         
-            <CardContent>
-            <Typography gutterBottom variant="h5" component="div" color="lightgreen">
-                Work Experience
-              </Typography>
-              {EducationData.map((text, index) => (
-                <CardActionArea key='index' onClick={()=>handleOpen(text)} sx={{display:'flex', justifyContent:'space-between'}}>
-                <Box  key={index} sx={{display:{sm:'flex'}, margin:'15px',}}>
-                  <Box sx={{width:{xs:'100%',sm:'auto'},marginRight:'10px',justifyContent:'center', alignItems:'center',display:{xs:'flex',sm:'block'}}}>
-                    <Image
-                    // loader={myLoader}
-                    src={text.image}
-                    alt="Picture of the Company"
-                    width={70}
-                    height={70}
-                  />
-                  </Box>
-                    
-                    <Box sx={{marginY:{xs:'1rem',sm:0}}}>
-                      <Typography variant="body1" >
-                        {text.title}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {text.subtitle}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {text.date}
-                      </Typography>
-                    </Box>
-              </Box>
-              <Box>
-                <ChevronRightIcon fontSize="large"/>
-              </Box>
-              </CardActionArea>
-              ))}
-            </CardContent>
         
-        </Card>
       </Grid>
-
-
-      <Grid xs={12} >
+      <Grid sm={3} xs={12}  sx={{marginLeft:'15px'}}>
+      <List
+      sx={{ width: '100%',  bgcolor: 'background.paper' }}
+      component="nav"
+      aria-labelledby="nested-list-subheader"
+      subheader={
+        <ListSubheader component="div" id="nested-list-subheader">
+          Categories
+        </ListSubheader>
+      }
+    >
+      <ListItemButton>
+        <ListItemIcon>
+          <SendIcon />
+        </ListItemIcon>
+        <ListItemText primary="Technologies" />
+      </ListItemButton>
+      <ListItemButton>
+        <ListItemIcon>
+          <DraftsIcon />
+        </ListItemIcon>
+        <ListItemText primary="Travel" />
+      </ListItemButton>
+      <ListItemButton>
+        <ListItemIcon>
+          <DraftsIcon />
+        </ListItemIcon>
+        <ListItemText primary="Sports" />
+      </ListItemButton>
+      <ListItemButton>
+        <ListItemIcon>
+          <DraftsIcon />
+        </ListItemIcon>
+        <ListItemText primary="Lifestyle" />
+      </ListItemButton>
       
-        <Card id="sectProjects" sx={{margin:'7px', borderTop:`2px solid lightgreen`}}>
-            <CardContent>
-            <Typography gutterBottom variant="h5" component="div" color="lightgreen">
-                Projects
-              </Typography>
-              <Grid container >
-              {posts.map((text, index) => (
-                <Grid  key={index} xs={6} sm={6} md={3} sx={{display:'flex',justifyContent:'center'}}>
-                <CardActionArea sx={{borderRadius:'20px',overflow:'hidden'}}>
-              <Box sx={{ marginY:'15px', }}>
-                <Box sx={{   justifyContent: 'center',
-  display: 'flex'}}>
-                <Image
-                    // loader={myLoader}
-                    src={text.frontmatter.socialImage?`/${text.frontmatter.socialImage}`:technology}
-                    alt="Project"
-                    width={70}
-                    height={70}
-                  />
-                </Box>
-                  
-                  <Box sx={{marginY:'1rem', justifyContent:'center', display:'flex'}}>
-                    <Typography variant="body1" >
-                      {text.slug}
-                    </Typography>
-                    
-                   
-                  </Box>
-            </Box>
-            </CardActionArea>
-            </Grid>
-              ))}</Grid>
-            </CardContent>
-        
-        </Card>
-        
+    </List>
+
+    <List sx={{ width: '100%',  bgcolor: 'background.paper' }}>
+    <ListSubheader component="div" id="nested-list-subheader">
+          Filter
+        </ListSubheader>
+    <ListItem
+          
+           
+            disablePadding
+          >
+            <ListItemButton  onClick={()=>setChecked1(0)} dense>
+              <ListItemIcon>
+                <Checkbox
+                  edge="start"
+                  checked={checked1 == 0}
+                  tabIndex={-1}
+                  disableRipple
+                 
+                />
+              </ListItemIcon>
+              <ListItemText  primary={'Ascending'} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem
+           
+            disablePadding
+          >
+            <ListItemButton  onClick={()=>setChecked1(1)} dense>
+              <ListItemIcon>
+                <Checkbox
+                  edge="start"
+                  checked={checked1==1}
+                  tabIndex={-1}
+                  disableRipple
+                 
+                />
+              </ListItemIcon>
+              <ListItemText  primary={'Descending'} />
+            </ListItemButton>
+          </ListItem>
+    </List>
       </Grid>
      </Grid>
     
     
    </Container>
-   
-   <Box sx={{marginLeft:'20px',marginTop:'40px',marginBottom:'20px'}}>
-              
-           
-                      <Typography variant="h3">Gallery</Typography>
-           
 
-            </Box>
-   <ImageList  cols={4} >
- 
-      {itemData.map((item) => (
-        <ImageListItem key={item.img}>
-          <img
-            src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-            srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-            alt={item.title}
-            loading="lazy"
-          />
-          <ImageListItemBar
-            title={item.title}
-            subtitle={item.author}
-            actionIcon={
-              <IconButton
-                sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
-                aria-label={`info about ${item.title}`}
-              >
-                <InfoIcon />
-              </IconButton>
-            }
-          />
-        </ImageListItem>
-      ))}
-    </ImageList>
+  
      </Box>
   
    </Box>
