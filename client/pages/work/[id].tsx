@@ -287,10 +287,13 @@ const Work = () => {
 
 const converter=()=>{
   let imgData1=[]
+  if(data.images){
     for(let i=0; i<data.images.length; i++){
 
-    // imgData.push(i)
-    imgData1.push(data.images[i])
+      // imgData.push(i)
+      imgData1.push(data.images[i])
+  }
+  
 }
 
 setImgData(imgData1)
@@ -401,7 +404,7 @@ theme={theme}
       
       {/* -------------------------------------------- First grid --------------------------------------------------- */}
 
-    <Box style={{position:'relative', overflow: 'hidden', paddingTop:'6rem',paddingBottom:'10rem'}}>
+    <Box style={{position:'relative', overflow: 'hidden', paddingTop:'6rem',paddingBottom:'5rem'}}>
     <BackgroundText text={id}/>
       <Grid container sx={{paddingX: {xs:'2.5rem',md:'4.5rem'}, marginBottom:'5rem'}}>
         <Grid item xs={12} lg={8}> 
@@ -443,9 +446,9 @@ theme={theme}
          
           
           {/* -------------------------------------------- Second grid --------------------------------------------------- */}
-   <Box sx={{position:'relative'}}>
-     <Box className={styles.AboutDiv}>
-     <Container maxWidth="xl" sx={{marginTop:'-5rem'}}  >
+   
+     <Box className={styles.ProjectsDiv}>
+     <Container maxWidth="xl"  >
      <Grid container > 
       <Grid xs={12} >
         <Card sx={{margin:'7px', borderTop:`2px solid lightgreen`}}>
@@ -467,23 +470,21 @@ theme={theme}
      
    </Container>
  
-     </Box>
+    
   
    </Box>
-   <Grid container  sx={{marginTop:'40px'}}>
+   <Grid container spacing={2}  sx={{marginTop:'40px'}}>
       {imgData?imgData.map((item:any)=>(
-        <Grid item xs={1} sm={1} md={3}  >
+        <Grid item xs={12} sm={6} md={3} sx={{justifyContent:'center', display:'flex'}}>
+                 
+                
                   <img
         src={`${item}?w=164&h=164&fit=crop&auto=format`}
         width='200px'
         // alt={''}
         loading="lazy"
       />
-                
-                    
-                    
-                
-                  
+              
                   </Grid>
       ))
        :null
