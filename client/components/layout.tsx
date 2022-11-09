@@ -187,14 +187,14 @@ export default function Layout({ children, home }: {
             <ListItem key={index} disablePadding>
               
               <Link href={`${text.link}`} 
-            
-              className={router.pathname !== text.link ? headerStyles.inactiveLink:null} passHref>
+            style={{width:'100%'}}
+              className={router.pathname !== text.link ? headerStyles.inactiveLink:null} >
                 {breakpoint=='mobile'?
               (
                
-                <a onClick={()=>{setSwipabledrawer(false)}} style={{width:'100%', alignItems:'center'}}>
+                <Button variant="text" onClick={()=>{setSwipabledrawer(false)}} style={{ width:'100%',textAlign:'center'}}>
                {drawerList(text)}
-                </a>
+                </Button>
               )  :(
                 drawerList(text)
                 
@@ -236,9 +236,10 @@ export default function Layout({ children, home }: {
                   </Box>    
                   <Box >
                   <Link href={'files/app-portfolio.apk'} >
-                      <IconButton sx={{maxWidth:'150px'}} aria-label="Instagram" color="inherit" disableRipple>
+                      <IconButton aria-label="Instagram" color="inherit" disableRipple>
                       <Move y={-10}>
                       <Image 
+                      width="130"
                     src={playstore}
                     alt="Click to doenload the app."
                     

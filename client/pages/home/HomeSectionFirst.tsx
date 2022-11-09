@@ -28,6 +28,8 @@ import qs from 'qs';
 import Fab from '@mui/material/Fab';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import useBreakpoint from 'use-breakpoint';
+import DancingLinesDark from '../../components/dancing-lines-dark';
+import DancingLinesLight from '../../components/dancing-lines-light';
 
 import axios from 'axios';
 // import {Link as Link2} from '@mui/material/Link';
@@ -143,6 +145,20 @@ export default function HomeSectionFirst(
     });
 }, []);
 
+const DancingLinesDisplay=()=>{
+  if(breakpoint!=='mobile' && theme.palette.mode === 'dark' ){
+    return(
+      <DancingLinesDark></DancingLinesDark>
+    )
+  }
+  else if(breakpoint!=='mobile' && theme.palette.mode === 'light'){
+    return(
+      <DancingLinesLight></DancingLinesLight>
+    )
+  }
+  else return null;
+}
+
   // const handleSubmit = async (event:any) => {
   //   // Stop the form from submitting and refreshing the page.
   //   event.preventDefault()
@@ -233,7 +249,7 @@ else{
     //   }
     // }
 
-    axios.post('/api/contacts'
+    axios.post('http://13.50.130.172:5000/api/contacts'
     ,qs.stringify(data)
     )
     .then(function (response) {
@@ -474,6 +490,7 @@ else{
   return (
 
     <Grid container sx={{height:'100vh',paddingX: {xs:'2.5rem',md:'4.5rem'}}}>  
+     {DancingLinesDisplay()}
       <div className="top-to-btm">
       {showTopBtn && (
         <Move scale={1.5} springConfig={{ tension: 150, friction: 10 }} >

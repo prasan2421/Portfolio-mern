@@ -68,7 +68,7 @@ const loadPlayer = async () => {
   //   alert('Something went wrong.')
   // });
 
-  axios.get('/api/contacts')
+  axios.get('/api/test')
   .then(function (response) {
     
     // handle success
@@ -118,9 +118,9 @@ useEffect(()=>{
 </Script>
     <ThemeProvider theme={theme}>
       <GoTop />
-      {DancingLinesDisplay()}
+      {/* {DancingLinesDisplay()} */}
      
-  <Layout ><Component {...pageProps} /></Layout>
+  <Layout ><Component  {...pageProps} /></Layout>
   </ThemeProvider>
   </>
   )

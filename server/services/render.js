@@ -1,8 +1,8 @@
 // Route to home 
 
 exports.homeRoutes = (req,res)=>{
-    res.send('Hello World!')
-    // res.send({"users":["First","Second","Third","Fourth"]})
+    // res.send('Hello World!')
+    res.send({"users":["First","Second","Third","Fourth"]})
     // res.render('index')
 }
 

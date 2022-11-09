@@ -2,20 +2,24 @@
 
 
 module.exports = {
+  trailingSlash: true,
   // reactStrictMode:true,
-  async rewrites() {
-    return [
-      
-      {
-        source: "/api/users",
-        destination: "http://localhost:3001/api/users",
-      },
-      {
-        source: "/api/contacts",
-        destination: "http://localhost:3001/api/contacts",
-      },
-    ]
-  },
+  // async rewrites() {
+  //   return [
+  //     {
+  //       source: "/api/test",
+  //       destination: "http://localhost:3001/api/test",
+  //     },
+  //     {
+  //       source: "/api/users",
+  //       destination: "http://localhost:3001/api/users",
+  //     },
+  //     {
+  //       source: "/api/contacts",
+  //       destination: "http://localhost:3001/api/contacts",
+  //     },
+  //   ]
+  // },
 
  
   webpack: (config, { isServer }) => {
