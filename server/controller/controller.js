@@ -36,7 +36,7 @@ user
 exports.find = (req,res) =>{
 
     if(req.query.id){
-const id = req.query.id
+const id = 'req.query.id'
 Userdb.findById(id)
 .then(data=>{
     if(!data){

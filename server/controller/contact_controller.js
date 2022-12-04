@@ -36,7 +36,7 @@ contact
 exports.find = (req,res) =>{
 
     if(req.query.id){
-const id = req.query.id
+const id = 'req.query.id'
 Contactdb.findById(id)
 .then(data=>{
     if(!data){
@@ -52,6 +52,7 @@ Contactdb.findById(id)
     }))
     }
     else{
+      
         Contactdb.find()
         .then(user=>{
             res.send(user)

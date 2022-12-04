@@ -9,6 +9,7 @@ const path= require('path')
 const cors = require("cors");
 
 const connectDB = require('./server/database/connection')
+const { errorHandler } = require('./server/middleware/errorMiddleware');
 
 dotenv.config({path:'.env'})
 const app = express()
@@ -38,7 +39,12 @@ app.use('/js', express.static(path.resolve(__dirname,"assets/js")))
 
 
 // load routers
-app.use('/',require('./server/routes/router'))
+app.use('/api/users',require('./server/routes/usersRoutes'))
+app.use('/api/contacts',require('./server/routes/contactsRoutes'))
+app.use('/api/blogs',require('./server/routes/blogRoutes'))
+app.use('/api/admins',require('./server/routes/adminRoutes'))
+
+app.use(errorHandler)
 
 const port = process.env.PORT || 3001
 
@@ -50,6 +56,7 @@ if (process.env.NODE_ENV === "production") {
   // Step 1:
 // app.use(express.static(path.resolve(__dirname, "./client/out")));
 app.use(express.static( "client/out"));
+
 // Step 2:
 // API requests
 app.get("*", function (request, response) {

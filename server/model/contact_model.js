@@ -16,7 +16,9 @@ var schema = new mongoose.Schema({
         required:true,
         
     },
+},{
+    timestamps:true
 })
 
-const Userdb = mongoose.model('contacts_cols',schema)
-module.exports = Userdb
+const Contactdb = mongoose.model('contacts_cols',schema)
+module.exports = Contactdb
