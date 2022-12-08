@@ -1,71 +1,58 @@
+// server.js
 const express = require('express')
-const dotenv = require('dotenv')
-
-
+const next = require('next')
 const morgan = require('morgan')
 const bodyparser = require('body-parser')
-// Accessing the path module
 const path= require('path')
 const cors = require("cors");
+const dotenv = require('dotenv')
 
 const connectDB = require('./server/database/connection')
 const { errorHandler } = require('./server/middleware/errorMiddleware');
-
 dotenv.config({path:'.env'})
-const app = express()
-app.use(cors());
-
-
-
-
-//log requests
-app.use(morgan('tiny'));
-
-//mongodb connection
 connectDB();
 
-//parse request to body-parser
-app.use(bodyparser.urlencoded({extended:true}))
+const dev = process.env.NODE_ENV !== 'production'
+const app = next({ dev })
+const handle = app.getRequestHandler()
 
-//set view engine
-app.set("view engine","ejs")
-// app.set("views",path.resolve(__dirname,"views/ejs"))
+app.prepare()
+.then(() => {
+    const server = express();
+
+    server.use(cors());
+    //log requests
+    server.use(morgan('tiny'));
+    //mongodb connection
+   
+
+//parse request to body-parser
+server.use(bodyparser.urlencoded({extended:true}))
 
 // load assets
-app.use('/css', express.static(path.resolve(__dirname,"assets/css"))) 
-app.use('/img', express.static(path.resolve(__dirname,"assets/img"))) 
-app.use('/js', express.static(path.resolve(__dirname,"assets/js"))) 
+server.use('/css', express.static(path.resolve(__dirname,"assets/css"))) 
+server.use('/img', express.static(path.resolve(__dirname,"assets/img"))) 
+server.use('/js', express.static(path.resolve(__dirname,"assets/js"))) 
 
 
 
 // load routers
-app.use('/api/users',require('./server/routes/usersRoutes'))
-app.use('/api/contacts',require('./server/routes/contactsRoutes'))
-app.use('/api/blogs',require('./server/routes/blogRoutes'))
-app.use('/api/admins',require('./server/routes/adminRoutes'))
+server.use('/api/users',require('./server/routes/usersRoutes'))
+server.use('/api/contacts',require('./server/routes/contactsRoutes'))
+server.use('/api/blogs',require('./server/routes/blogRoutes'))
+server.use('/api/admins',require('./server/routes/adminRoutes'))
 
-app.use(errorHandler)
+server.use(errorHandler)
 
-const port = process.env.PORT || 3001
+    server.get('*', (req,res)=>{
+        return handle(req, res)
+    })
 
-// Client path
-
-app.use(express.static( "client/out"));
-
-if (process.env.NODE_ENV === "production") {
-  // Step 1:
-// app.use(express.static(path.resolve(__dirname, "./client/out")));
-app.use(express.static( "client/out"));
-
-// Step 2:
-// API requests
-app.get("*", function (request, response) {
-  response.sendFile(path.resolve(__dirname, "./client/out", "index.html"));
-  // response.sendFile(path.resolve(__dirname, "client", "out", "index.html"));
-});
-
-}
-
-app.listen(port, () => {
-  console.log(`Server app listening on port ${port}`)
-})
+    server.listen(process.env.PORT, (err)=>{
+        if(err) throw err
+        console.log("server ready")
+    })
+}).catch ((err)=> {
+    console.error('Error occurred handling', err.stack)
+    process.exit(1)
+  })
