@@ -10,7 +10,7 @@ import DancingLinesLight from '../components/dancing-lines-light';
 import { DashboardLayout } from '../components/components/dashboard-layout';
 import useBreakpoint from 'use-breakpoint';
 import Script from 'next/script'
-import { SessionProvider } from "next-auth/react"
+
 import { Provider } from 'react-redux';
 import axios from 'axios';
 import { store } from '../app/store';
@@ -112,14 +112,14 @@ const getLayout =
     });
   `}
 </Script> */}
-<SessionProvider session={session}>
+
     <ThemeProvider theme={theme}>
       <GoTop />
      
      
       {getLayout(<Component  {...pageProps} />)}
   </ThemeProvider>
-  </SessionProvider>
+ 
   </Provider>
   )
 }

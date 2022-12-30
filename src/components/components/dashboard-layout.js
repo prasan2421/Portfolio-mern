@@ -6,7 +6,6 @@ import { AuthGuard } from './auth-guard';
 import { DashboardNavbar } from './dashboard-navbar';
 import { DashboardSidebar } from './dashboard-sidebar';
 import { useSelector, useDispatch } from 'react-redux'
-import { useSession, signIn, signOut } from "next-auth/react"
 import { useRouter } from 'next/router';
 import CircularProgress from '@mui/material/CircularProgress';
 import { getGoals, reset } from '../../features/blog/blogSlice'

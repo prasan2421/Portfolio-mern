@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path'
-import matter from 'gray-matter';
+// import matter from 'gray-matter';
 import React from "react";
 import Link from 'next/link';
 import { useEffect, useState, useRef,useMemo, useCallback } from "react";
@@ -571,22 +571,22 @@ export default React.memo(Projects);
 
 
 
-export async function getStaticProps() {
-  const files = fs.readdirSync('projects');
+// export async function getStaticProps() {
+//   const files = fs.readdirSync('projects');
 
-  const posts = files.map((fileName) => {
-    const slug = fileName.replace('.md', '');
-    const readFile = fs.readFileSync(`projects/${fileName}`, 'utf-8');
-    const { data: frontmatter } = matter(readFile);
-    return {
-      slug,
-      frontmatter,
-    };
-  });
+//   const posts = files.map((fileName) => {
+//     const slug = fileName.replace('.md', '');
+//     const readFile = fs.readFileSync(`projects/${fileName}`, 'utf-8');
+//     const { data: frontmatter } = matter(readFile);
+//     return {
+//       slug,
+//       frontmatter,
+//     };
+//   });
 
-  return {
-    props: {
-      posts,
-    },
-  };
-}
+//   return {
+//     props: {
+//       posts,
+//     },
+//   };
+// }

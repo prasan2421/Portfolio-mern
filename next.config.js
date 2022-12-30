@@ -5,9 +5,9 @@ module.exports = {
   // useFileSystemPublicRoutes: false,
   trailingSlash: true,
   env: {
-    // HOST:'http://13.50.130.172:5000/api'
+    // HOST:'http://13.50.130.172:80/api'
     // ,
-    HOST:'http://localhost:3001/api',
+    HOST:'http://localhost:3000/api',
    
     // NODE_ENV : 'production'
 
@@ -30,27 +30,7 @@ module.exports = {
   //   ]
   // },
 
- 
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      // don't resolve 'fs' module on the client to prevent this error on build --> Error: Can't resolve 'fs'
-      config.resolve.fallback = {
-          fs: false
-      }
-      config.module.rules.push({
-        test: /\.pdf$/,
-        use: [
-          {
-            loader: 'file-loader',
-          } 
-        ],
-        
-      })
-  }
 
-    
-    return config
-  },
 
   images: {
     unoptimized: true
@@ -59,11 +39,7 @@ module.exports = {
 // experimental:{appDir: true},
 
 
-resolve: {
-        fallback: {
-            "fs": false
-        },
-    },
+
     output: 'standalone',
     swcMinify: true,
 }

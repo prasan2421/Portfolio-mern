@@ -4,7 +4,7 @@ import Head from 'next/head'
 import fs from 'fs'
 import path from 'path'
 import { useRouter } from 'next/router'
-import matter from 'gray-matter';
+// import matter from 'gray-matter';
 import Image from 'next/image';
 import utilStyles from '../styles/utils.module.css'
 import { getSortedPostsData } from '../../lib/posts'
@@ -115,26 +115,26 @@ export default function Home({
 //   }
 // }
 
-export async function getStaticProps() {
-  const files = fs.readdirSync(path.join('projects'));
- console.log(files)
+// export async function getStaticProps() {
+//   const files = fs.readdirSync(path.join('projects'));
+//  console.log(files)
 
-  const posts = files.map((fileName) => {
-    const slug = fileName.replace('.md', '');
-    const readFile = fs.readFileSync(  path.join('projects', fileName), 'utf-8');
-    const { data: frontmatter } = matter(readFile);
-    return {
-      slug,
-      frontmatter,
-    };
-  });
+//   const posts = files.map((fileName) => {
+//     const slug = fileName.replace('.md', '');
+//     const readFile = fs.readFileSync(  path.join('projects', fileName), 'utf-8');
+//     const { data: frontmatter } = matter(readFile);
+//     return {
+//       slug,
+//       frontmatter,
+//     };
+//   });
 
 
 
-  return {
-    props: {
-      posts,
-    },
-  };
-}  
+//   return {
+//     props: {
+//       posts,
+//     },
+//   };
+// }  
 
