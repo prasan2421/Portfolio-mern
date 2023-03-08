@@ -2,7 +2,11 @@ import React, { useEffect, useState, useRef, useMemo, useCallback } from "react"
 import fs from 'fs';
 import path from 'path'
 // import matter from 'gray-matter';
+<<<<<<< HEAD
  import Moment from "moment";
+=======
+
+>>>>>>> 59ec834ebe47738fd261bdb703e9ec956a1cfb2c
 
 // import Announcement from "../components/Announcement";
 // import Categories from "../components/Categories";
@@ -353,7 +357,11 @@ const Blog = ({ posts }) => {
               </IconButton>
             }
             title={data.title}
+<<<<<<< HEAD
             subheader={Moment(data.createdAt).format('DD-MM-YYYY')}
+=======
+            subheader={data.createdAt}
+>>>>>>> 59ec834ebe47738fd261bdb703e9ec956a1cfb2c
           />
           <CardMedia
             component="img"
@@ -418,7 +426,11 @@ const Blog = ({ posts }) => {
           <Box style={{ position: 'relative', overflow: 'hidden', paddingTop: '6rem', paddingBottom: '10rem' }}>
             <BackgroundText text={'Blog'} />
             <Grid container sx={{ paddingX: { xs: '2.5rem', md: '4.5rem' }, marginBottom: '5rem' }}>
+<<<<<<< HEAD
               
+=======
+              <Grid item xs={12} lg={8}>
+>>>>>>> 59ec834ebe47738fd261bdb703e9ec956a1cfb2c
                 <Slide direction="up" in={checked} container={containerRef.current}>
                   <Box sx={{ color: 'text.primary' }} >
                     <Box className={styles.PortfolioTitle} >
@@ -433,12 +445,25 @@ const Blog = ({ posts }) => {
                       <Typography variant="h5" sx={{ textAlign: 'justify', textJustify: 'inter-word' }}>Enjoy my Blogs below !!!! </Typography>
 
                     </Box>
+<<<<<<< HEAD
                    
                   </Box>
                 </Slide>
               
               <Grid item xs={12} md={4} />
 
+=======
+                    <Box >
+                    </Box>
+                  </Box>
+                </Slide>
+              </Grid>
+              <Grid item xs={12} md={4} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+
+                {/* <CustomButton variant="outlined" onClick={handleOpen}>See more!</CustomButton> */}
+
+              </Grid>
+>>>>>>> 59ec834ebe47738fd261bdb703e9ec956a1cfb2c
             </Grid>
 
           </Box>
@@ -460,8 +485,11 @@ const Blog = ({ posts }) => {
                         </Paper>
                       </Box>)}
                   </Grid>
+<<<<<<< HEAD
 
                   {/* Side bar */}
+=======
+>>>>>>> 59ec834ebe47738fd261bdb703e9ec956a1cfb2c
                   <Grid item sm={3} xs={12} >
                     <List
                       sx={{ width: '100%', bgcolor: 'background.paper' }}
