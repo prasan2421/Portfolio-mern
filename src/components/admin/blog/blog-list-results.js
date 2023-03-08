@@ -3,6 +3,7 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux'
 import { format } from 'date-fns';
+import TableContainer from '@mui/material/TableContainer';
 import Moment from 'moment';
 import {
   Avatar,
@@ -20,6 +21,7 @@ import {
 } from '@mui/material';
 import Link from 'next/link';
 import { getInitials } from '../../../utils/get-initials';
+import { InfoBox } from '@react-google-maps/api';
 
 export const BlogListResults = ({ customers, ...rest }) => {
   const { user, isSuccess, spinnerAuth } = useSelector((state) => state.auth)
@@ -69,9 +71,10 @@ export const BlogListResults = ({ customers, ...rest }) => {
 
   return (
     <Card {...rest}>
-      <PerfectScrollbar>
-        <Box sx={{ minWidth: 1050 }}>
-          <Table>
+    
+        <Box>
+        <TableContainer>
+          <Table  sx={{ minWidth: 750 }}>
             <TableHead>
               <TableRow>
                 <TableCell padding="checkbox">
@@ -118,25 +121,7 @@ export const BlogListResults = ({ customers, ...rest }) => {
                     />
                   </TableCell>
                   <TableCell>
-                    <Box
-                      sx={{
-                        alignItems: 'center',
-                        display: 'flex'
-                      }}
-                    >
-                      <Avatar
-                        src={customer.avatarUrl}
-                        sx={{ mr: 2 }}
-                      >
-                        {getInitials(customer.name)}
-                      </Avatar>
-                      <Typography
-                        color="textPrimary"
-                        variant="body1"
-                      >
-                        {customer.title}
-                      </Typography>
-                    </Box>
+                  {customer.title}
                   </TableCell>
                   <TableCell>
                     {customer.description}
@@ -186,9 +171,8 @@ export const BlogListResults = ({ customers, ...rest }) => {
               ))}
             </TableBody>
           </Table>
-        </Box>
-      </PerfectScrollbar>
-      <TablePagination
+          </TableContainer>
+          <TablePagination
         component="div"
         count={customers.length}
         onPageChange={handlePageChange}
@@ -197,6 +181,9 @@ export const BlogListResults = ({ customers, ...rest }) => {
         rowsPerPage={limit}
         rowsPerPageOptions={[5, 10, 25]}
       />
+        </Box>
+    
+     
     </Card>
   );
 };

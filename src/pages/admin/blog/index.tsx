@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import React, { useEffect, useState, useRef } from "react";
 import { Box, Container } from '@mui/material';
-import { BlogListResults } from '../../../components/components/blog/blog-list-results';
-import { BlogListToolbar } from '../../../components/components/blog/blog-list-toolbar';
-import { DashboardLayout } from '../../../components/components/dashboard-layout';
+import { BlogListResults } from '../../../components/admin/blog/blog-list-results';
+import { BlogListToolbar } from '../../../components/admin/blog/blog-list-toolbar';
+import { DashboardLayout } from '../../../components/admin/dashboard-layout';
 import { customers } from '../../../__mocks__/customers';
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -61,7 +61,7 @@ const Page =  (props) => {
         <BlogListToolbar />
         <Box sx={{ mt: 3 }}>
           {data!==null?(
-            <BlogListResults customers={data} />
+            <BlogListResults customers={data} getData={getData} />
           ):null}
           
         </Box>

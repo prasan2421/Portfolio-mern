@@ -14,15 +14,15 @@ import { registerChartJs } from '../../utils/register-chart-js';
 import { useRouter } from 'next/router'
 // import { getGoals, reset } from '../../features/blog/blogSlice'
 import { Box, Container, Grid } from '@mui/material';
-import { Budget } from '../../components/components/dashboard/budget';
-import { LatestOrders } from '../../components/components/dashboard/latest-orders';
-import { LatestProducts } from '../../components/components/dashboard/latest-products';
-import { Sales } from '../../components/components/dashboard/sales';
-import { TasksProgress } from '../../components/components/dashboard/tasks-progress';
-import { TotalCustomers } from '../../components/components/dashboard/total-customers';
-import { TotalProfit } from '../../components/components/dashboard/total-profit';
-import { TrafficByDevice } from '../../components/components/dashboard/traffic-by-device';
-import { DashboardLayout } from '../../components/components/dashboard-layout';
+import { Budget } from '../../components/admin/dashboard/budget';
+import { LatestOrders } from '../../components/admin/dashboard/latest-orders';
+import { LatestProducts } from '../../components/admin/dashboard/latest-products';
+import { Sales } from '../../components/admin/dashboard/sales';
+import { TasksProgress } from '../../components/admin/dashboard/tasks-progress';
+import { TotalCustomers } from '../../components/admin/dashboard/total-customers';
+import { TotalProfit } from '../../components/admin/dashboard/total-profit';
+import { TrafficByDevice } from '../../components/admin/dashboard/traffic-by-device';
+import { DashboardLayout } from '../../components/admin/dashboard-layout';
 
 
 registerChartJs();

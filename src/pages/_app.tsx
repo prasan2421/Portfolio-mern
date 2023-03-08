@@ -7,7 +7,7 @@ import { styled, alpha, ThemeProvider, createTheme, useTheme,responsiveFontSizes
 import GoTop from "../components/goTop";
 import DancingLinesDark from '../components/dancing-lines-dark';
 import DancingLinesLight from '../components/dancing-lines-light';
-import { DashboardLayout } from '../components/components/dashboard-layout';
+import { DashboardLayout } from '../components/admin/dashboard-layout';
 import useBreakpoint from 'use-breakpoint';
 import Script from 'next/script'
 
