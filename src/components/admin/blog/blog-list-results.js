@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { format } from 'date-fns';
 import TableContainer from '@mui/material/TableContainer';
 import Moment from 'moment';
+import axios from 'axios';
 import {
   Avatar,
   Box,
@@ -23,7 +24,7 @@ import Link from 'next/link';
 import { getInitials } from '../../../utils/get-initials';
 import { InfoBox } from '@react-google-maps/api';
 
-export const BlogListResults = ({ customers, ...rest }) => {
+export const BlogListResults = ({ customers,getData, ...rest }) => {
   const { user, isSuccess, spinnerAuth } = useSelector((state) => state.auth)
   const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
   const [limit, setLimit] = useState(10);
@@ -68,6 +69,32 @@ export const BlogListResults = ({ customers, ...rest }) => {
   const handlePageChange = (event, newPage) => {
     setPage(newPage);
   };
+
+  const deleteItem = async(id) =>{
+    await axios.delete(process.env.HOST+'/blogs/'+id,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${user.token}`
+        },
+      })
+   
+      .then(function (response) {
+       alert('Success')
+       getData()
+        // setData(response.data)
+    
+      })
+    
+      .catch(function (error) {
+        
+        console.log(error);
+        alert(JSON.stringify(error))
+      })
+
+  }
+
+
 
   return (
     <Card {...rest}>
@@ -162,6 +189,7 @@ export const BlogListResults = ({ customers, ...rest }) => {
                     <Button
                       color="error"
                       variant="contained"
+                      onClick={()=>deleteItem(customer._id)}
                     >
                       Delete
                     </Button></>):null}

@@ -5,7 +5,7 @@ import Router from 'next/router';
 import { useFormik, FormikErrors } from 'formik';
 import { FormControl, InputLabel, Input } from '@mui/material'
 import Paper from '@mui/material/Paper';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation';
 
 
 import * as yup from "yup";
@@ -76,6 +76,7 @@ const Edit = () => {
     description: response.data[0].description,
     markdown: response.data[0].markdown,
         })
+        router.push('/admin/blog')
         alert('Success')
       })
     

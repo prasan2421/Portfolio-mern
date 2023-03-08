@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import Router from 'next/router';
+
+import { useRouter } from 'next/navigation';
 import { useFormik, FormikErrors } from 'formik';
 import { FormControl, InputLabel, Input } from '@mui/material'
 import Paper from '@mui/material/Paper';
@@ -36,7 +37,7 @@ interface IFormInputs {
 
 
 const Add = () => {
-
+  const router = useRouter();
   const [preview, setPreview] = useState(false)
   const [success, setSuccess] = useState(false)
 
@@ -53,6 +54,7 @@ const Add = () => {
       .then(function (response) {
 
         // setSuccess(true)
+        router.push('/admin/blog')
         alert('Success')
 
       })

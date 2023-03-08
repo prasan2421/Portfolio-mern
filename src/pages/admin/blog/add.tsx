@@ -6,7 +6,7 @@ import { FormControl, InputLabel, Input } from '@mui/material'
 import Paper from '@mui/material/Paper';
 import { useSelector, useDispatch } from 'react-redux'
 
-
+import { useRouter } from 'next/navigation';
 
 import * as yup from "yup";
 import axios from 'axios';
@@ -37,6 +37,7 @@ interface IFormInputs {
 
 
 const Add = () => {
+  const router = useRouter()
   const { user, isSuccess, spinnerAuth } = useSelector((state:any) => state.auth)
   const [preview, setPreview] = useState(false)
   const [success, setSuccess] = useState(false)
@@ -60,6 +61,7 @@ const Add = () => {
       .then(function (response) {
 
         // setSuccess(true)
+        router.push('/admin/blog')
         alert('Success')
 
       })
