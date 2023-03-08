@@ -52,7 +52,7 @@ const Edit = () => {
 
   });
 
-  const { id } = router.query
+  const { id } = Router.query
 
   function createMarkup() {
     return { __html: marked(formik.values.markdown) };
@@ -76,8 +76,8 @@ const Edit = () => {
     description: response.data[0].description,
     markdown: response.data[0].markdown,
         })
-        router.push('/admin/blog')
-        alert('Success')
+        
+        // alert('Success')
       })
     
       .catch(function (error) {
