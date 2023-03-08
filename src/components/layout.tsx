@@ -106,14 +106,7 @@ export default function Layout({ children, home }: {
 
   const router = useRouter();
 
-  // const [mode, setMode] =useState<any | null>(null);
-
-  // useEffect(() => {
-    
-  //       setMode(prefersDarkMode?'black':'white');
-      
-  // }, [prefersDarkMode]);
-
+  
   const toggleDrawer =
     (  open: boolean) =>
     (event: React.KeyboardEvent | React.MouseEvent) => {
