@@ -18,7 +18,7 @@ import { styled, alpha, ThemeProvider, createTheme, useTheme,responsiveFontSizes
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-
+import Moment from "moment";
 import BackgroundText from "../../components/BackgroundText";
 // import Typography from '@mui/material/Typography';
 import Grow from '@mui/material/Grow';
@@ -229,9 +229,10 @@ theme={theme}
       
       {/* -------------------------------------------- First grid --------------------------------------------------- */}
 
-    <Box style={{position:'relative', overflow: 'hidden', paddingTop:'6rem'}}>
+    <Box sx={{position:'relative', overflow: 'hidden', pt:{xs:'2rem', sm:'2rem', md:'6rem'}}}>
     <BackgroundText text={data.title}/>
-      <Grid container sx={{paddingX: {xs:'2.5rem',md:'4.5rem'}, marginBottom:'5rem'}}>
+    <Container maxWidth="xl" sx={{mb:'3.5rem'}} >
+      <Grid container sx={{mb:'3.5rem'}}>
         <Grid item xs={12} lg={8}> 
       <Slide direction="up" in={checked} container={containerRef.current}>
               <Box sx={{ color: 'text.primary'}} >
@@ -239,61 +240,52 @@ theme={theme}
               
               <Grow in={checked} style={{ transformOrigin: '0 0 0' }}
                   {...(checked ? { timeout: 1000 } : {})}>
-                      <Typography variant="h2">{data.title}</Typography>
+                      <Typography variant={breakpoint=='mobile'?"h4":"h2"}>{data.title}</Typography>
                       
               </Grow>
 
             </Box>
             <Box className={styles.subTitle}>
             
-            <Typography variant="h5" sx={{textAlign:'justify', textJustify:'inter-word'}}>{data.description}</Typography>
-            <Box sx={{display:'flex'}}>
+            <Typography variant={breakpoint=='mobile'?"subtitle1":"h5"} sx={{textAlign:'justify', textJustify:'inter-word'}}>{data.description}</Typography>
+            <Box sx={{color:'lightgray'}}>
                 
-                <Typography variant="h6"> {data.createdAt}</Typography>
+            Created at : {Moment(data.createdAt).format('DD-MM-YYYY')}
               </Box>
               </Box>
              
-                <Box >
-                </Box>
+               
               </Box>
               </Slide>
         </Grid>
-        <Grid item xs={12} md={4} sx={{display:'flex', justifyContent:'center', alignItems:'center'}}>
+        <Grid item xs={12} md={4} />
        
-                    {/* <CustomButton variant="outlined" onClick={handleOpen}>See more!</CustomButton> */}
-                 
         </Grid>
-        </Grid>
-       
-    </Box>
 
           {/* -------------------------------------------- First grid end --------------------------------------------------- */}
          
           
           {/* -------------------------------------------- Second grid --------------------------------------------------- */}
    
+     
+     
      <Box className={styles.ProjectsDiv}>
-     <Container maxWidth="xl"  >
-     <Grid container > 
-      <Grid xs={12} >
-        <Card sx={{margin:'7px', borderTop:`2px solid lightgreen`}}>
+     
+        <Card sx={{ borderTop:`2px solid lightgreen`}}>
         
-            <CardContent>
+            <CardContent sx={{px:{ sm:2, md: 3}}}>
               
               <MarkdownDisplay data={data.markdown} />
             </CardContent>
         
         </Card>
-      </Grid>
-      
-     </Grid>
-     
-   </Container>
- 
+    
+        </Box>
+        </Container>
+    </Box>
     
   
-   </Box>
-   
+ 
    
           {/* -------------------------------------------- Second grid end--------------------------------------------------- */}
     

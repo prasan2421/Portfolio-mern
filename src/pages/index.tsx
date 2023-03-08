@@ -85,7 +85,7 @@ export default function Home({
           ))}
         </ul>
       </section> */}
-       <Box className='ContainerWrapper' sx={{marginX:{ xs: '0.1rem', md:'1rem' },}}>{'<html>'}</Box>
+       <Box className='ContainerWrapper' >{'<html>'}</Box>
        
         <HomeSectionFirst/>
         

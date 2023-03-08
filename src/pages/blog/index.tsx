@@ -19,6 +19,7 @@ import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandMore from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Card from '@mui/material/Card';
 import { useRouter } from 'next/router'
@@ -103,6 +104,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { setMaxListeners } from "events";
+import { list } from "mdast-util-to-hast/lib/handlers/list";
 
 // const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
@@ -120,7 +122,7 @@ interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
 }
 
-const ExpandMore = styled((props: ExpandMoreProps) => {
+const ExpandMore1 = styled((props: ExpandMoreProps) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
 })(({ theme, expand }) => ({
@@ -213,6 +215,7 @@ const Blog = ({ posts }) => {
   const router = useRouter()
   const { breakpoint, maxWidth, minWidth } = useBreakpoint(BREAKPOINTS, 'desktop');
   const [data, setData] = React.useState([])
+  const [listOpen, setListOpen] = React.useState(false);
 
   function createMarkup(data) {
     return { __html: marked(data) };
@@ -334,7 +337,7 @@ const Blog = ({ posts }) => {
     <Grid container spacing={2}>
       {
      data.map((data, index) => (
-      <Grid item md={4} sm={6} xs={12} >
+      <Grid item  xs={12} sm={6} md={6} lg={4} >
         <Card >
           <CardActionArea onClick={() => {
           router.push({
@@ -399,7 +402,11 @@ const Blog = ({ posts }) => {
     );
   }
   
-  
+  const handleClick = () => {
+   
+    setListOpen(!listOpen);
+    
+  };
   
 
 
@@ -450,8 +457,8 @@ const Blog = ({ posts }) => {
           <Box sx={{ position: 'relative' }}>
             <Box className={styles.AboutDiv}>
               <Container maxWidth="xl" sx={{ marginTop: '-5rem' }}  >
-                <Grid container spacing={2}>
-                  <Grid item sm={9} xs={12}  >
+                <Grid container spacing={2}  sx={{flexDirection:{sm: "column-reverse" ,md:'row'}}}>
+                  <Grid item sm={12} md={9} >
                     {data.length !== 0 ? listItems(data) : (
                       <Box sx={{ width: '100%', }}>
                         <Paper variant="outlined" sx={{ px: 2, width: '100%', minHeight: 100, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -462,17 +469,23 @@ const Blog = ({ posts }) => {
                   </Grid>
 
                   {/* Side bar */}
-                  <Grid item sm={3} xs={12} >
+                  <Grid item  sm={12} md={3}>
                     <List
                       sx={{ width: '100%', bgcolor: 'background.paper' }}
                       component="nav"
                       aria-labelledby="nested-list-subheader"
                       subheader={
-                        <ListSubheader component="div" id="nested-list-subheader">
-                          Categories
-                        </ListSubheader>
+                        <ListItemButton onClick={()=> handleClick()}>
+        <ListItemIcon>
+          <InboxIcon />
+        </ListItemIcon>
+        <ListItemText primary="Select Category" />
+        {breakpoint == 'mobile'?(listOpen ? <ExpandLess /> : <ExpandMore />):null}
+      </ListItemButton>
                       }
                     >
+                      <Collapse in={breakpoint == 'mobile'?listOpen: true} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding sx={{ pl: {sm:4, md:0} }}>
                       <ListItemButton>
                         <ListItemIcon>
                           <SendIcon />
@@ -497,49 +510,10 @@ const Blog = ({ posts }) => {
                         </ListItemIcon>
                         <ListItemText primary="Lifestyle" />
                       </ListItemButton>
-
+</List></Collapse>
                     </List>
 
-                    <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
-                      <ListSubheader component="div" id="nested-list-subheader">
-                        Filter
-                      </ListSubheader>
-                      <ListItem
-
-
-                        disablePadding
-                      >
-                        <ListItemButton onClick={() => setChecked1(0)} dense>
-                          <ListItemIcon>
-                            <Checkbox
-                              edge="start"
-                              checked={checked1 == 0}
-                              tabIndex={-1}
-                              disableRipple
-
-                            />
-                          </ListItemIcon>
-                          <ListItemText primary={'Ascending'} />
-                        </ListItemButton>
-                      </ListItem>
-                      <ListItem
-
-                        disablePadding
-                      >
-                        <ListItemButton onClick={() => setChecked1(1)} dense>
-                          <ListItemIcon>
-                            <Checkbox
-                              edge="start"
-                              checked={checked1 == 1}
-                              tabIndex={-1}
-                              disableRipple
-
-                            />
-                          </ListItemIcon>
-                          <ListItemText primary={'Descending'} />
-                        </ListItemButton>
-                      </ListItem>
-                    </List>
+                    
                   </Grid>
                 </Grid>
 

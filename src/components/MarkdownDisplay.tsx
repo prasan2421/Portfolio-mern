@@ -50,17 +50,16 @@ const MarkdownDisplay = ({data, ...props}:TextProps) => {
       return { __html: marked(data) };
     }
 
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+
 
   return (
    
    
     <Box>
       
-      <Box sx={{display:'grid'}}>
+      
       <div dangerouslySetInnerHTML={createMarkup(data)} />
      
-      </Box>
   
     </Box>
 

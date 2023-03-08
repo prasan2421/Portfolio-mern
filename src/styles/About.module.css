@@ -333,21 +333,32 @@ position:relative;
     margin-top: 4rem;
   }
 
+  .ProjectsDiv{
+    position:relative;
+    /* margin-top:3rem ; */
+  }
+
   .ProjectsDiv::before{
     content: '<div>';
-    padding-Left:2.5rem;
-      font-family: 'La Belle Aurore',cursive;
-      color: #515152;
-      font-size: 1.2rem;
+    font-family: 'La Belle Aurore',cursive;
+    color: #515152;
+    font-size: 1.2rem;
+    position: absolute;
+   
+    left: -1.5rem;
+    top: -1.5rem;
       
   }
   
   .ProjectsDiv::after{
     content: '</div>';
-    padding-Left:2.5rem;
-      font-family: 'La Belle Aurore',cursive;
-      color: #515152;
-      font-size: 1.2rem;
+    font-family: 'La Belle Aurore',cursive;
+    color: #515152;
+    font-size: 1.2rem;
+    position: absolute;
+    
+    left: -1.5rem;
+    bottom: -2rem;
      
   }
 
