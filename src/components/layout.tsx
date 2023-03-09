@@ -145,10 +145,9 @@ export default function Layout({ children, home }: {
   )
   const drawerList=(text:any)=>{
     return(
-    <ListItemButton selected={router.pathname == text.link} >
+    <ListItemButton selected={'/'+router.pathname.split('/')[1] == text.link} >
       
-      <ListItemText primary={text.title} disableTypography={true}
-      />
+      <ListItemText primary={text.title} disableTypography={true}/>
        <Boop scale={1.5}  springConfig={{ tension: 150, friction: 10 }} >
       <ListItemIcon sx={{minWidth:'inherit'}}>
      
