@@ -4,9 +4,12 @@ import fs from 'fs';
 import path from 'path'
 // import matter from 'gray-matter';
 import { useEffect, useState, useRef,useMemo, useCallback } from "react";
-import { useRouter } from 'next/router'
+import { useRouter, Router } from 'next/router'
 // import Announcement from "../components/Announcement";
 // import Categories from "../components/Categories";
+import { AppBar, Avatar, IconButton, Toolbar, Tooltip } from '@mui/material';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+import Badge, { BadgeProps } from '@mui/material/Badge';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import TextField from '@mui/material/TextField';
 import CancelIcon from '@mui/icons-material/Cancel';
@@ -23,11 +26,13 @@ import BackgroundText from "../../components/BackgroundText";
 // import Typography from '@mui/material/Typography';
 import Grow from '@mui/material/Grow';
 import Slide from '@mui/material/Slide';
-
+import Image from 'next/image';
+import playstore from '../../../assets/images/playstore.png';
 import Button, { ButtonProps } from '@mui/material/Button';
 
 import { useSpring, animated } from '@react-spring/web';
-
+import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 
@@ -80,6 +85,15 @@ const images = [
   
 ];
 
+const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
+  '& .MuiBadge-badge': {
+    right: -3,
+    top: 13,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: '0 4px',
+  },
+}));
+
 // carousel end 
 
 const Fade = React.forwardRef<HTMLDivElement, FadeProps>(function Fade(props, ref) {
@@ -131,45 +145,45 @@ const styleModel = {
 
 const Work = () => {
   const router = useRouter()
- 
-  const data = router.query;
-  
+  const {id,pid} = router.query;
+  const [data, setData] = React.useState([])
  
   const theme = useTheme();
   const { breakpoint, maxWidth, minWidth } = useBreakpoint(BREAKPOINTS, 'desktop');
 
 
 const getData = async () => {
-  
   try {
-    const response = await axios.get(process.env.HOST+'/blog/'+data._id,
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    )
-      .then(function (response) {
-        alert(response)
+    await axios.get(process.env.HOST+'/blogs/public/'+pid,
+       {
+         headers: {
+           'Content-Type': 'application/json',
+         },
+       }
+     )
+       .then(function (response) {
+        //  alert(JSON.stringify(response))
 
-        // setResponsedata(response.data)
+         setData(response.data)
 
-      })
-  }
-  catch (error) {
-
-    console.log('Error is :' + error);
-  };
+       })
+   }
+   catch (error) {
+     alert(JSON.stringify(error))
+     console.log('Error is :' + error);
+   };
 
 
 }
 
   useEffect(()=>{
-    // alert(JSON.stringify(data))
-    window.scrollTo(0,0)
-    getData()
- 
-  },[])
+    // alert(pid)
+    if(pid){
+      getData()
+    }
+   
+    
+  },[router])
 
 
 
@@ -194,7 +208,7 @@ const getData = async () => {
   const maxSteps = images.length;
 
   const [open, setOpen] = React.useState(false);
-  const [listData, setListData] = React.useState({});
+  const [likeBlog, setLikeBlog] = React.useState(0);
   // const [data, setData] = React.useState('testing');
  
 
@@ -224,18 +238,63 @@ theme={theme}
     
     <Box className='ContainerWrapper' sx={{marginX:{ xs: '0.1rem', md:'1rem' },}}>{'<html>'}</Box>
    
-    <Box sx={{marginBottom:'7rem'}}>
+
+    <Box sx={{marginBottom:'2rem'}}>
    
       
       {/* -------------------------------------------- First grid --------------------------------------------------- */}
 
-    <Box sx={{position:'relative', overflow: 'hidden', pt:{xs:'2rem', sm:'2rem', md:'6rem'}}}>
-    <BackgroundText text={data.title}/>
+    <Box sx={{position:'relative', overflow: 'hidden', pt:{xs:'3rem', sm:'3rem', md:'6rem'}}}>
+    
+    <BackgroundText text={id} topMargin={0}/>
     <Container maxWidth="xl" sx={{mb:'3.5rem'}} >
+      <Box sx={{height:{xs:'8rem', sm:'10rem', md:'15rem'}}}>
+      <Image style={{width:'100%', objectFit:'cover',height:'inherit'}} src={playstore} alt="Cover image"/>
+
+      </Box>
+      
+    <Box sx={{display:'flex', alignItems:'center',mt:'1rem', mb:'2rem'}}>
+            {/* <Avatar
+            
+            sx={{
+              cursor: 'pointer',
+              height: 40,
+              width: 40,
+              ml: 1
+            }}
+            src="/static/images/avatars/avatar_1.png"
+          >
+            
+          </Avatar> */}
+          <AccountCircleIcon fontSize="large"/>
+          <Box sx={{marginLeft:'1rem'}} >
+              <p style={{margin:0}}>Prasanna Tuladhar</p>
+              <Box sx={{color:'gray', display:'flex', flexDirection:'row'}}>
+           
+               <Typography variant="caption">Posted on {Moment(data.createdAt).format('MMMM Do YYYY')}</Typography><span style={{marginLeft:'0.5rem', marginRight:'0.5rem'}}>•</span>
+               <Typography variant="caption">Updated on {Moment(data.createdAt).format('MMMM Do YYYY')}</Typography>
+                             </Box>
+              <Box>
+
+              </Box>
+              </Box>
+              <Box>
+                {}
+
+                <IconButton sx={{ml:{xs:'0', sm:'1rem'}}} aria-label="Like" onClick={()=>setLikeBlog(likeBlog+1)}>
+  <StyledBadge badgeContent={likeBlog} color="secondary">
+    <FavoriteTwoToneIcon  sx={{ color: 'red' }} fontSize="large"/>
+  </StyledBadge>
+</IconButton>
+              </Box> 
+    </Box>
       <Grid container sx={{mb:'3.5rem'}}>
         <Grid item xs={12} lg={8}> 
       <Slide direction="up" in={checked} container={containerRef.current}>
+
               <Box sx={{ color: 'text.primary'}} >
+
+
             <Box className={styles.PortfolioTitle} >
               
               <Grow in={checked} style={{ transformOrigin: '0 0 0' }}
@@ -248,13 +307,9 @@ theme={theme}
             <Box className={styles.subTitle}>
             
             <Typography variant={breakpoint=='mobile'?"subtitle1":"h5"} sx={{textAlign:'justify', textJustify:'inter-word'}}>{data.description}</Typography>
-            <Box sx={{color:'lightgray'}}>
-                
-            Created at : {Moment(data.createdAt).format('DD-MM-YYYY')}
-              </Box>
+           
               </Box>
              
-               
               </Box>
               </Slide>
         </Grid>
@@ -274,8 +329,8 @@ theme={theme}
         <Card sx={{ borderTop:`2px solid lightgreen`}}>
         
             <CardContent sx={{px:{ sm:2, md: 3}}}>
+              {data.length!==0?<MarkdownDisplay data={data.markdown} />:null}
               
-              <MarkdownDisplay data={data.markdown} />
             </CardContent>
         
         </Card>

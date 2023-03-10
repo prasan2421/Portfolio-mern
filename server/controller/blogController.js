@@ -77,7 +77,16 @@ const getBlogs = asyncHandler(async (req, res) => {
 // @access  Private
 const getBlogsPublic = asyncHandler(async (req, res) => {
   // res.send({ message: "Content cannot be empty!!" });return;
-  const blog = await Blog.find()
+
+  let blog;
+  if(req.params.id){
+     blog = await Blog.findById(req.params.id)
+
+  
+  }
+  else{
+     blog = await Blog.find()
+  }
 
   res.status(200).json(blog)
 })

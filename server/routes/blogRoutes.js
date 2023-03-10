@@ -39,4 +39,5 @@ router.route('/').get(protect, getBlogs).post(protect, setBlog)
 router.route('/:id').get(protect, getBlogs)
 router.route('/:id').delete(protect, deleteBlog).put(protect, updateBlog)
 router.route('/public/all').get(getBlogsPublic)
+router.route('/public/:id').get(getBlogsPublic)
   module.exports= router

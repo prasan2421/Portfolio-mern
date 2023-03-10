@@ -53,7 +53,8 @@ import Slide from '@mui/material/Slide';
 import Switch from '@mui/material/Switch';
 import Button, { ButtonProps } from '@mui/material/Button';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import Link from '@mui/material/Link';
+// import Link from '@mui/material/Link';
+import Link from "next/link";
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import InterestsIcon from '@mui/icons-material/Interests';
@@ -339,11 +340,15 @@ const Blog = ({ posts }) => {
      data.map((data, index) => (
       <Grid item  xs={12} sm={6} md={6} lg={4} >
         <Card >
-          <CardActionArea onClick={() => {
-          router.push({
+          <Link href={{
             pathname: `/blog/${data.title}`,
-            query: data,
-          })}}>
+            query:{
+              
+              pid: data._id
+            }
+        }} >
+
+          <CardActionArea >
           <CardHeader
             avatar={
               <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -385,6 +390,7 @@ const Blog = ({ posts }) => {
             </ExpandMore> */}
           </CardActions>
           </CardActionArea>
+          </Link>
           {/* <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent>
   

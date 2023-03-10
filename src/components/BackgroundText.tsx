@@ -4,13 +4,14 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 
 type TextProps = {
    
-    text:any
+    text:any,
+    topMargin?:number
   }
 
-const BackgroundText = ({text}:TextProps) => {
+const BackgroundText = ({text, topMargin}:TextProps) => {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 
-  return <Box className="back-text" sx={{color: prefersDarkMode ?'rgba(255,255,255,0.04)':'rgba(78,78,78,0.15)'}}>{ text }</Box>
+  return <Box className="back-text" style={{top:topMargin, color: prefersDarkMode ?'rgba(255,255,255,0.04)':'rgba(78,78,78,0.15)'}}>{ text }</Box>
   ;
 };
 
