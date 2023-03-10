@@ -8,8 +8,12 @@ import Alert from '@mui/material/Alert';
 import { useRouter } from 'next/router';
 import { StyledEngineProvider } from '@mui/material/styles';
 // import DancingLines from 'react-dancing-lines';
+import Stack from '@mui/material/Stack';
+import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
+import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
+import SentimentSatisfiedIcon from '@mui/icons-material/SentimentSatisfied';
 import {Logo} from './logo';
-
+import Popover from '@mui/material/Popover';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import FacebookIcon from '@mui/icons-material/Facebook';
@@ -98,6 +102,8 @@ export default function Layout({ children, home }: {
   children: React.ReactNode
   home?: boolean
 }) {
+  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
+
   const { breakpoint, maxWidth, minWidth } = useBreakpoint(BREAKPOINTS, 'desktop');
   
 
@@ -236,6 +242,14 @@ export default function Layout({ children, home }: {
         </Box>
   )
 
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const open = Boolean(anchorEl);
 
   return (
 
@@ -270,6 +284,7 @@ export default function Layout({ children, home }: {
             
                                              
               <IconButton  
+              onClick={handleClick}
               // to="/cart"  
               // component={NavLink} 
               disableRipple
@@ -279,7 +294,7 @@ export default function Layout({ children, home }: {
                 color="inherit"
               >
                  <Move y={10}>
-                <Badge badgeContent={4} color="error" anchorOrigin={{
+                <Badge badgeContent={5} color="error" anchorOrigin={{
     vertical: 'bottom',
     horizontal: 'right',
   }}>
@@ -287,7 +302,41 @@ export default function Layout({ children, home }: {
                 </Badge>
                 </Move>
               </IconButton>
-              <IconButton
+              <Popover
+        // id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+      >
+        <Stack  divider={<Divider orientation="horizontal" flexItem />} spacing={2} sx={{ m:'1rem'}}>
+        <Typography>Reaction Count</Typography>
+                <Box sx={{display:'flex', alignItems:'center',}}>
+                 
+                <InsertEmoticonIcon sx={{color:'#ffd100'}} fontSize="large"/>
+           <Typography variant='h4' sx={{ pl:2}}>2</Typography>
+                </Box>
+                
+                <Box  sx={{display:'flex', alignItems:'center'}}>
+                <SentimentSatisfiedIcon sx={{color:'#ffd100'}} fontSize="large"/>
+                <Typography variant='h4' sx={{ pl:2}}>2</Typography>
+                </Box>
+                
+           <Box sx={{display:'flex', alignItems:'center'}}>
+           <SentimentVeryDissatisfiedIcon sx={{color:'#ffd100'}} fontSize="large"/>
+           <Typography variant='h4' sx={{ pl:2}}>1</Typography>
+           </Box>
+                
+                
+           
+            </Stack>
+
+        
+      </Popover>
+              {/* <IconButton
               disableRipple
                sx={{display: { xs: 'none', md: 'inline-flex' }, marginTop:'8px'}}
                 size="large"
@@ -299,7 +348,7 @@ export default function Layout({ children, home }: {
                 <AccountCircle />
                 </Move> 
                 
-              </IconButton>
+              </IconButton> */}
               <IconButton
                
               size="large"

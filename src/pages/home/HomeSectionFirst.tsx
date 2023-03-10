@@ -449,21 +449,21 @@ else{
       >
         <Fade in={openEmoji}>
           <Box sx={style}>
-            <Typography id="transition-modal-title" variant="h6" component="h2">
+            <Typography id="transition-modal-title" variant="h6" >
               What&apos;s your reaction? (Select one or more)
             </Typography>
-            <Stack direction="row" alignItems="center" spacing={2}>
+            <Stack direction="row"  spacing={2} sx={{justifyContent:'center', mt:'1rem'}}>
               <IconButton color="primary" aria-label="upload picture" component="label">
                 
-                <InsertEmoticonIcon sx={{color:'#ffd100'}}/>
+                <InsertEmoticonIcon sx={{color:'#ffd100'}} fontSize="large"/>
               </IconButton>
               <IconButton color="primary" aria-label="upload picture" component="label">
                 
-                <SentimentSatisfiedIcon sx={{color:'#ffd100'}} />
+                <SentimentSatisfiedIcon sx={{color:'#ffd100'}} fontSize="large"/>
               </IconButton>
               <IconButton color="primary" aria-label="upload picture" component="label">
                 
-                <SentimentVeryDissatisfiedIcon sx={{color:'#ffd100'}} />
+                <SentimentVeryDissatisfiedIcon sx={{color:'#ffd100'}} fontSize="large"/>
               </IconButton>
             </Stack>
             
@@ -536,7 +536,7 @@ else{
           </Grow>
           <Grow in={checked} style={{ transformOrigin: '0 0 0' }} className='introTextLast'
               {...(checked ? { timeout: 2000 } : {})}>
-                  <Typography variant="h1">Front-End Developer</Typography>
+                  <Typography variant="h1">Full Stack Developer</Typography>
                  
           </Grow>
           <Box>
@@ -545,8 +545,8 @@ else{
           </Box>
           
         </Box>
-      <Box className='subTitle'><Typography  variant="subtitle1">React | React Native | JS / TS | <Box className='subTitleUIUX'> UI / UX</Box></Typography></Box>
-      <Box  sx={{marginTop:'50px', display:{sm:'flex'},  }}>
+    <Box className='subTitle'><Typography  variant="subtitle1">React | React Native | Node | JS / TS | <Box className='subTitleUIUX'> UI / UX</Box></Typography></Box>
+      <Box  sx={{marginTop:'50px', display:{sm:'flex'}, alignContent:'center' }}>
                 <Box sx={{display:{xs:'flex'}, border:'5px solid ',borderColor:'inherit', borderRadius:'20px', overflow:'hidden', alignItems:{sm:'center'}, width:{xs:'100%',sm:'auto'},marginTop:{xs:'10px',sm:'0'} }}>
                   <CustomButton variant="text" 
                   onClick={handleOpen}
@@ -570,13 +570,13 @@ else{
                     </Link>
                   </Box>
                 </Box>
-                  <Box sx={{display:'flex', alignItems:'center', marginLeft:{xs:'0',sm:'10px'}, marginTop:{xs:'10px',sm:'0'}, justifyContent:{xs:'center',sm:'left'} }}>
+                  <Box sx={{display:'flex', alignItems:'center', marginLeft:{xs:'0',sm:'2rem'}, marginTop:{xs:'1rem',sm:'0'}, justifyContent:{xs:'center',sm:'left'} }}>
                   <IconButton disableRipple
-                  onClick={handleOpenEmoji}
+                  onClick={handleOpenEmoji} 
                     color="primary" aria-label="upload picture" component="label" sx={{padding:0,margoin:0}}>
-                      <Move scale={1.5} springConfig={{ tension: 150, friction: 10 }} >
+                      <Move  scale={1.5} springConfig={{ tension: 150, friction: 10 }} >
        
-                        <AddReactionIcon   sx={{fontSize:'50px',color: '#ffd100',marginTop:'2px'}}/>
+                        <AddReactionIcon   sx={{fontSize:'50px',color: '#ffd100', display:'flex'}}/>
                      </Move>
                   </IconButton>
                  
