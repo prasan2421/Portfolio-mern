@@ -141,9 +141,11 @@ import {
     texts: [
       'CSS',
       'HTML',
-      'PHP.',
+      'Javascript',
+      'Typescript',
+      'Express JS',
       'NODE JS',
-      'jQuery',
+      'Next JS',
       'REST',
       'React',
       'JSON',
@@ -151,7 +153,10 @@ import {
       'React Native',
       'Bootstrap',
       'SQL',
-      'Next'
+      'Tailwind CSS',
+      'MUI',
+      'Sanity CMS',
+      'GraphQL'
     ],
     maxSpeed: 7,
     initialSpeed: 32,
@@ -197,11 +202,12 @@ import {
     const containerRef = useRef(null);
     const [firstRender, setFirstRender] = useState(false);
     const [lessSpeed, setLessSpeed] = useState(maxSpeed);
-    const [active, setActive] = useState(false);
+    const [active, setActive] = useState(true);
     const [mouseX, setMouseX] = useState(0);
     const [mouseY, setMouseY] = useState(0);
   
     const handleMouseMove = (e: any) => {
+      // setActive(false);
       // @ts-ignore
       const rect = containerRef.current.getBoundingClientRect();
   
@@ -278,7 +284,7 @@ import {
     };
   
     const init = () => {
-      setActive(false);
+      // setActive(false);
       const mouseX0 = initialSpeed * Math.sin(initialDirection * (Math.PI / 180));
       const mouseY0 =
         -initialSpeed * Math.cos(initialDirection * (Math.PI / 180));

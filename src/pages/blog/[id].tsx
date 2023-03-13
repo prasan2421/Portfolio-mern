@@ -27,7 +27,7 @@ import BackgroundText from "../../components/BackgroundText";
 import Grow from '@mui/material/Grow';
 import Slide from '@mui/material/Slide';
 import Image from 'next/image';
-import playstore from '../../../assets/images/playstore.png';
+import customerexp from '../../../public/images/customer-experience.jpeg';
 import Button, { ButtonProps } from '@mui/material/Button';
 
 import { useSpring, animated } from '@react-spring/web';
@@ -144,9 +144,13 @@ const styleModel = {
 };
 
 const Work = () => {
+  interface keyable {
+    [key: string]: any  
+}
+
   const router = useRouter()
   const {id,pid} = router.query;
-  const [data, setData] = React.useState([])
+  const [data, setData] = React.useState<keyable>([])
  
   const theme = useTheme();
   const { breakpoint, maxWidth, minWidth } = useBreakpoint(BREAKPOINTS, 'desktop');
@@ -207,8 +211,8 @@ const getData = async () => {
   };
   const maxSteps = images.length;
 
-  const [open, setOpen] = React.useState(false);
-  const [likeBlog, setLikeBlog] = React.useState(0);
+  const [open, setOpen] = React.useState<boolean>(false);
+  const [likeBlog, setLikeBlog] = React.useState<number>(0);
   // const [data, setData] = React.useState('testing');
  
 
@@ -249,7 +253,7 @@ theme={theme}
     <BackgroundText text={id} topMargin={0}/>
     <Container maxWidth="xl" sx={{mb:'3.5rem'}} >
       <Box sx={{height:{xs:'8rem', sm:'10rem', md:'15rem'}}}>
-      <Image style={{width:'100%', objectFit:'cover',height:'inherit'}} src={playstore} alt="Cover image"/>
+      <Image style={{width:'100%', objectFit:'cover',height:'inherit'}} src={customerexp} alt="Cover image"/>
 
       </Box>
       

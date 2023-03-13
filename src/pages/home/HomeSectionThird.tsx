@@ -56,11 +56,11 @@ export default function HomeSectionThird({  }: {  }) {
                       <Box className='subTitle'>
                       
                         <Typography variant="subtitle1"  style={{marginBottom:'2rem', textAlign:'justify', textJustify:'inter-word'}}>
-                        Growing up, I took a liking to all things tech and digital, which led me to develop my career in the field of Software Development. I expertise in developing web and mobile applications, have a good understanding of computer technologies and optimisation of softwares considering user behaviour and satisfaction, connecting management decision making for the organisational growth. 💻  📱 🌟 📈 .
+                        Growing up, I took a liking to all things tech and digital, which fueled my interest in pursuing a career in software engineering. I find inspiration in the constantly evolving field of technology, particularly in computer-related advancements. My passion lies in web and mobile application development, as it provides me with an opportunity to create digital solutions that enhance the end-user experience. I am committed to innovating new strategies and integrating useful features into my software to ensure exceptional customer satisfaction, and in turn, can drive business growth.  💻  📱 🌟 📈 .
                         </Typography>
-                        <Typography variant="subtitle1"  style={{marginBottom:'2rem', textAlign:'justify', textJustify:'inter-word'}}>For over few years I had many opportunities to work in a vast spectrum of web and mobile technologies what let me gather a significant amount of various experience. Working for companies and individuals around the globe I met and learnt from amazing and ambitious people.. 
+                        <Typography variant="subtitle1"  style={{marginBottom:'2rem', textAlign:'justify', textJustify:'inter-word'}}>For over few years I had many opportunities to work in a vast spectrum of web and mobile technologies that let me gather a significant amount of various experience. Working for companies and individuals around the globe I met and learnt from amazing and ambitious people. 
                         </Typography>
-                        <Typography variant="subtitle1"  style={{marginBottom:'2rem', textAlign:'justify', textJustify:'inter-word'}}>I currently am working on self projects and exploring new development areas, also being open for new opportunities. 
+                        <Typography variant="subtitle1"  style={{marginBottom:'2rem', textAlign:'justify', textJustify:'inter-word'}}>I am currently working on self projects and exploring new development technologies, also being open for new opportunities. 
                         </Typography>
                      
                         </Box>

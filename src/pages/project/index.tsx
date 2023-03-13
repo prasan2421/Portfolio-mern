@@ -416,12 +416,12 @@ const Work = ({ posts }) => {
 
                       <Grow in={checked} style={{ transformOrigin: '0 0 0' }}
                         {...(checked ? { timeout: 1000 } : {})}>
-                        <Typography variant="h1">Work Experience</Typography>
+                        <Typography variant="h1">Projects</Typography>
                       </Grow>
 
                     </Box>
                     <Box className={styles.subTitle}>
-                      <Typography variant="h5" sx={{ textAlign: 'justify', textJustify: 'inter-word' }}>I have worked as a Web / Mobile application developer in my professional career where I was involved in the development of various applications throughout my few years of involvement in the field. </Typography>
+                      <Typography variant="h5" sx={{ textAlign: 'justify', textJustify: 'inter-word' }}>I have worked in few web and mobile application development projects, both for the companies and personal. </Typography>
 
                     </Box>
                     <Box >
@@ -446,47 +446,7 @@ const Work = ({ posts }) => {
             <Box className={styles.AboutDiv}>
               <Container maxWidth="xl" sx={{ marginTop: '-5rem' }}  >
                 <Grid container >
-                  <Grid xs={12} >
-                    <Card sx={{ margin: '7px', borderTop: `2px solid lightgreen` }}>
-
-                      <CardContent>
-                        <Typography gutterBottom variant="h5" component="div" color="lightgreen">
-                          Work Experience
-                        </Typography>
-                        {EducationData.map((text, index) => (
-                          <CardActionArea key='index' onClick={() => handleOpen(text)} sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <Box key={index} sx={{ display: { sm: 'flex' }, margin: '15px', }}>
-                              <Box sx={{ width: { xs: '100%', sm: 'auto' }, marginRight: '10px', justifyContent: 'center', alignItems: 'center', display: { xs: 'flex', sm: 'block' } }}>
-                                <Image
-                                  // loader={myLoader}
-                                  src={text.image}
-                                  alt="Picture of the Company"
-                                  width={70}
-                                  height={70}
-                                />
-                              </Box>
-
-                              <Box sx={{ marginY: { xs: '1rem', sm: 0 } }}>
-                                <Typography variant="body1" >
-                                  {text.title}
-                                </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                  {text.subtitle}
-                                </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                  {text.date}
-                                </Typography>
-                              </Box>
-                            </Box>
-                            <Box>
-                              <ChevronRightIcon fontSize="large" />
-                            </Box>
-                          </CardActionArea>
-                        ))}
-                      </CardContent>
-
-                    </Card>
-                  </Grid>
+                
 
 
                   <Grid xs={12} >
@@ -501,7 +461,7 @@ const Work = ({ posts }) => {
                             <Grid key={data.id} xs={6} sm={6} md={3} sx={{ display: 'flex', justifyContent: 'center' }}>
                               <Button onClick={() => {
                                 router.push({
-                                  pathname: `/work/${data.title}`,
+                                  pathname: `/project/${data.title}`,
                                   query: data,
                                 })
                               }}>
