@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import * as Yup from 'yup';
 import { Box, Button, Container, Grid, Link, TextField, Typography } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { login, reset } from '../../features/auth/authSlice'
+import { login, reset } from '../../store/features/auth/authSlice'
 // import { Facebook as FacebookIcon } from '../../components/components/icons/facebook';
 // import { Google as GoogleIcon } from '../../components/components/icons/google';
 

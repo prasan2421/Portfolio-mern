@@ -21,6 +21,12 @@ import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDiss
 import SentimentSatisfiedIcon from '@mui/icons-material/SentimentSatisfied';
 import Move from "../../components/Move";
 import FormControl from '@mui/material/FormControl';
+import EmojiEmotionsTwoToneIcon from '@mui/icons-material/EmojiEmotionsTwoTone';
+
+import SentimentSatisfiedTwoToneIcon from '@mui/icons-material/SentimentSatisfiedTwoTone';
+
+import SentimentDissatisfiedTwoToneIcon from '@mui/icons-material/SentimentDissatisfiedTwoTone';
+
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
@@ -30,7 +36,8 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import useBreakpoint from 'use-breakpoint';
 import DancingLinesDark from '../../components/dancing-lines-dark';
 import DancingLinesLight from '../../components/dancing-lines-light';
-
+import { useDispatch, useSelector } from "react-redux";
+import { selectProfileState, setProfileCountHappyState,setProfileCountNeutralState, setProfileCountSadState } from "../../store/features/profile/profileSlice";
 import axios from 'axios';
 // import {Link as Link2} from '@mui/material/Link';
 
@@ -39,6 +46,7 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import { styled, alpha, ThemeProvider, createTheme, useTheme,responsiveFontSizes, } from '@mui/material/styles';
 import AddReactionIcon from '@mui/icons-material/AddReaction';
 import DownloadIcon from '@mui/icons-material/Download';
+import { wrapper } from "../../store/store";
 
 const BREAKPOINTS = { smallScreen:0, mobile: 600, tablet: 900, desktop: 1280 }
 
@@ -114,10 +122,14 @@ const Fade = React.forwardRef<HTMLDivElement, FadeProps>(function Fade(props, re
   }).required();
  
 
-export default function HomeSectionFirst(
-  
-  // { dateString }: { dateString: string }
-  ) {
+const HomeSectionFirst = (props)=>  {
+
+  const {resolvedUrl} = props;
+
+    const count = useSelector(selectProfileState);
+
+    const dispatch = useDispatch();
+
     const [checked, setChecked] = React.useState(true);
     const [open, setOpen] = React.useState(false);
     const [openEmoji, setOpenEmoji] = React.useState(false);
@@ -453,17 +465,16 @@ else{
               What&apos;s your reaction? (Select one or more)
             </Typography>
             <Stack direction="row"  spacing={2} sx={{justifyContent:'center', mt:'1rem'}}>
-              <IconButton color="primary" aria-label="upload picture" component="label">
-                
-                <InsertEmoticonIcon sx={{color:'#ffd100'}} fontSize="large"/>
+             
+              <IconButton onClick={()=> dispatch(setProfileCountHappyState(count.countHappy+1))} color="primary" aria-label="upload picture" component="label">
+             
+                {count.countHappy>0?<EmojiEmotionsTwoToneIcon sx={{color:'#ffd100'}} fontSize="large"/>:<InsertEmoticonIcon sx={{color:'#ffd100'}} fontSize="large"/>}
               </IconButton>
-              <IconButton color="primary" aria-label="upload picture" component="label">
-                
-                <SentimentSatisfiedIcon sx={{color:'#ffd100'}} fontSize="large"/>
+              <IconButton onClick={()=> dispatch(setProfileCountNeutralState(count.countNeutral+1))} color="primary" aria-label="upload picture" component="label">
+              {count.countNeutral>0?<SentimentSatisfiedTwoToneIcon sx={{color:'#ffd100'}} fontSize="large"/>:<SentimentSatisfiedIcon sx={{color:'#ffd100'}} fontSize="large"/>}  
               </IconButton>
-              <IconButton color="primary" aria-label="upload picture" component="label">
-                
-                <SentimentVeryDissatisfiedIcon sx={{color:'#ffd100'}} fontSize="large"/>
+              <IconButton onClick={()=> dispatch(setProfileCountSadState(count.countSad+1))} color="primary" aria-label="upload picture" component="label">
+              {count.countSad>0?<SentimentDissatisfiedTwoToneIcon sx={{color:'#ffd100'}} fontSize="large"/>:<SentimentVeryDissatisfiedIcon sx={{color:'#ffd100'}} fontSize="large"/>}
               </IconButton>
             </Stack>
             
@@ -528,7 +539,7 @@ else{
           <Box sx={{ color: 'inherit',marginTop:'30px'}} >
         <Box className="introText">
           <Grow in={checked} style={{ transformOrigin: '0 0 0' }}>
-          <Typography variant="h1"> Hi,</Typography>
+          <Typography variant="h1"> Hi, {resolvedUrl}</Typography>
           </Grow>
           <Grow in={checked} style={{ transformOrigin: '0 0 0' }}
               {...(checked ? { timeout: 1000 } : {})}>
@@ -592,3 +603,7 @@ else{
 </Grid>
   );
 }
+
+
+
+export default HomeSectionFirst

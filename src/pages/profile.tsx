@@ -429,7 +429,7 @@ theme={theme}
       {/* -------------------------------------------- First grid --------------------------------------------------- */}
 
     <Box style={{position:'relative', overflow: 'hidden', paddingTop:'6rem',paddingBottom:'10rem'}}>
-    <BackgroundText  text={'About'}/>
+    <BackgroundText  text={'My Profile'}/>
       <Grid container sx={{paddingX: {xs:'2.5rem',md:'4.5rem'}, marginBottom:'5rem'}}>
         <Grid item xs={12} lg={8}>
       <Slide direction="up" in={checked} container={containerRef.current}>
@@ -475,10 +475,10 @@ theme={theme}
      
       <Grid container xs={12} sm={6} >
       <Grid container item >
-      <Card sx={{margin:'7px', borderTop:`2px solid crimson`, width:'100%' }}>
+      <Card sx={{margin:'7px', borderTop:`2px solid lightblue`, width:'100%' }}>
           <CardActionArea >
             <CardContent>
-            <Typography gutterBottom variant="h5" component="div" color="crimson">
+            <Typography gutterBottom variant="h5" component="div" color="lightblue">
                 Personal Details
               </Typography>
               {personalDetailsData.map((text, index) => (
@@ -499,7 +499,7 @@ theme={theme}
         </Card>
         </Grid>
         <Grid container item >
-        <Card sx={{margin:'7px', borderTop:`2px solid lightgreen`}}>
+        <Card sx={{margin:'7px', borderTop:`2px solid lightgreen` , width:'100%'}}>
           <CardActionArea>
             <CardContent>
             <Typography gutterBottom variant="h5" component="div" color="lightgreen">
@@ -619,10 +619,10 @@ display: 'flex'}}>
         </Grid>
       </Grid>
       <Grid xs={12}>
-      <Card sx={{ margin: '7px', borderTop: `2px solid lightgreen`,  }} >
+      <Card sx={{ margin: '7px', borderTop: `2px solid #fe3939`,  }} >
 
 <CardContent >
-  <Typography gutterBottom variant="h5" component="div" color="lightgreen">
+  <Typography gutterBottom variant="h5" component="div" color="#fe3939">
     Work Experience
   </Typography>
   {WorkData.map((text, index) => (

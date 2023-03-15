@@ -407,7 +407,7 @@ const Work = ({ posts }) => {
           {/* -------------------------------------------- First grid --------------------------------------------------- */}
 
           <Box style={{ position: 'relative', overflow: 'hidden', paddingTop: '6rem', paddingBottom: '10rem' }}>
-            <BackgroundText text={'Work'} />
+            <BackgroundText text={'Projects'} />
             <Grid container sx={{ paddingX: { xs: '2.5rem', md: '4.5rem' }, marginBottom: '5rem' }}>
               <Grid item xs={12} lg={8}>
                 <Slide direction="up" in={checked} container={containerRef.current}>
@@ -421,7 +421,7 @@ const Work = ({ posts }) => {
 
                     </Box>
                     <Box className={styles.subTitle}>
-                      <Typography variant="h5" sx={{ textAlign: 'justify', textJustify: 'inter-word' }}>I have worked in few web and mobile application development projects, both for the companies and personal. </Typography>
+                      <Typography variant="h5" sx={{ textAlign: 'justify', textJustify: 'inter-word' }}>I have had the opportunity to work on several web and mobile application development projects, both in a professional capacity for companies and on personal projects. </Typography>
 
                     </Box>
                     <Box >

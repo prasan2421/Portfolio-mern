@@ -29,26 +29,34 @@ import HomeSectionSecond from './home/HomeSectionSecond';
 import HomeSectionThird from './home/HomeSectionThird';
 import HomeSectionFourth from './home/HomeSectionFourth';
 import HomeSectionFifth from './home/HomeSectionFifth'; 
+import { wrapper } from "../store/store";
+import { setProfileCountHappyState } from "../store/features/profile/profileSlice";
 
 
 
 //  const containerRef = React.useRef(null);
 
-export default function Home({
-  posts,
-}: {
-  posts: {
-    id: string
+export default function Home(
+  props
+//   {
+//   posts,
+// }: {
+//   posts: {
+//     id: string
    
-  }[]
-}) {
+//   }[]
+// }
+
+) {
+
+  const {resolvedUrl} = props;
 
   const theme = useTheme();
 
   // useEffect(()=>{
       
   //   // getStaticProps()
-  //   alert(JSON.stringify(posts))
+  //   alert(JSON.stringify(resolvedUrl))
   // })
 
   
@@ -89,7 +97,7 @@ export default function Home({
        
         <HomeSectionFirst/>
         
-        <HomeSectionSecond posts={posts}/>
+        <HomeSectionSecond/>
         <HomeSectionThird/>
         <HomeSectionFourth/>
         <HomeSectionFifth/>
@@ -104,37 +112,19 @@ export default function Home({
 
 
 
-// export const getStaticProps: GetStaticProps = async () => {
-//   const allPostsData = getSortedPostsData()
-
-//   return {
-//     props: {
-//       allPostsData,
-  
-//     }
-//   }
-// }
-
-// export async function getStaticProps() {
-//   const files = fs.readdirSync(path.join('projects'));
-//  console.log(files)
-
-//   const posts = files.map((fileName) => {
-//     const slug = fileName.replace('.md', '');
-//     const readFile = fs.readFileSync(  path.join('projects', fileName), 'utf-8');
-//     const { data: frontmatter } = matter(readFile);
-//     return {
-//       slug,
-//       frontmatter,
-//     };
-//   });
-
-
-
-//   return {
-//     props: {
-//       posts,
-//     },
-//   };
-// }  
-
+export const getServerSideProps = wrapper.getServerSideProps(
+  (store) =>
+    async ({ resolvedUrl }) => {
+     
+      store.dispatch( setProfileCountHappyState(100))
+      // we can set the initial state from here
+      // we are setting to false but you can run your custom logic here
+      // await store.dispatch(setAuthState(false)); 
+      // console.log("State on server", store.getState());
+      return {
+        props: {
+          resolvedUrl
+        },
+      };
+    }
+);

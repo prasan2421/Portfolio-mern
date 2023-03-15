@@ -1,90 +1,38 @@
-import React, { useEffect, useState, useRef, useMemo, useCallback } from "react";
-import fs from 'fs';
-import path from 'path'
-// import matter from 'gray-matter';
+import React, { useEffect, useState, useRef, useMemo, useCallback, Suspense,Alert } from "react";
  import Moment from "moment";
-
-// import Announcement from "../components/Announcement";
-// import Categories from "../components/Categories";
 import useMediaQuery from '@mui/material/useMediaQuery';
-import TextField from '@mui/material/TextField';
 import CancelIcon from '@mui/icons-material/Cancel';
 import useBreakpoint from 'use-breakpoint';
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { IconButtonProps } from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Card from '@mui/material/Card';
 import { useRouter } from 'next/router'
 import {CardHeader, CardActionArea, CardMedia, CardContent, CardActions} from '@mui/material';
-
+import Icon from '../../components/muiIcons'
 import Avatar from '@mui/material/Avatar';
 import { styled, alpha, ThemeProvider, createTheme, useTheme, responsiveFontSizes, } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import prasannapng from '../assets/images/prasannapng.png';
-
-import MobileStepper from '@mui/material/MobileStepper';
 import Paper from '@mui/material/Paper';
 import Modal from '@mui/material/Modal';
-import PropTypes from 'prop-types';
-import Toolbar from '@mui/material/Toolbar';
 import Backdrop from '@mui/material/Backdrop';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import Send from '@mui/icons-material/Send';
-import Zoom from '@mui/material/Zoom';
-import Image from 'next/image'
 import BackgroundText from "../../components/BackgroundText";
-import ImageListItemBar from '@mui/material/ImageListItemBar';
-
 import IconButton from '@mui/material/IconButton';
-import InfoIcon from '@mui/icons-material/Info';
-// import Typography from '@mui/material/Typography';
 import Grow from '@mui/material/Grow';
 import Slide from '@mui/material/Slide';
-import Switch from '@mui/material/Switch';
 import Button, { ButtonProps } from '@mui/material/Button';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 // import Link from '@mui/material/Link';
 import Link from "next/link";
-import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
-import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
-import InterestsIcon from '@mui/icons-material/Interests';
 import { useSpring, animated } from '@react-spring/web';
-import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
-
 import styles from '../../styles/About.module.css';
-import Alert from '@mui/material/Alert';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import TagSphere from "../../components/wordSphere";
-import MyMaps from "../../components/maps";
 import DetailModel from "../../components/DetailModel"
 import { GoogleMap, LoadScript, useLoadScript, Marker } from "@react-google-maps/api";
-
-// import Swiper core and required modules
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-import usn from '../../assets/images/usn.png';
-import tic from '../../assets/images/tic.png';
-import tu from '../../assets/images/tu.png';
-import spn from '../../assets/images/spn.png';
-import art from '../../assets/images/art.png';
-import ballSports from '../../assets/images/ballsports.png';
-import cycling from '../../assets/images/cycling.png';
-import guitar from '../../assets/images/guitar.png';
-import technology from '../../assets/images/technology.png';
-import travel from '../../assets/images/travel.png';
-
-import ListSubheader from '@mui/material/ListSubheader';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -92,11 +40,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Collapse from '@mui/material/Collapse';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import DraftsIcon from '@mui/icons-material/Drafts';
-import SendIcon from '@mui/icons-material/Send';
 import ExpandLess from '@mui/icons-material/ExpandLess';
-import Checkbox from '@mui/material/Checkbox';
-import StarBorder from '@mui/icons-material/StarBorder';
-import ListItem from '@mui/material/ListItem';
 import axios from 'axios';
 import { marked } from 'marked';
 // Import Swiper styles
@@ -104,10 +48,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import { setMaxListeners } from "events";
-import { list } from "mdast-util-to-hast/lib/handlers/list";
-
-// const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
+import { wrapper } from "../../store/store";
 
 const BREAKPOINTS = { mobile: 0, tablet: 900, desktop: 1280 }
 
@@ -211,45 +152,25 @@ const CustomButton = styled(Button)({
 
 
 
-const Blog = ({ posts }) => {
+const Blog = ({ data }) => {
+
+  
   const theme = useTheme();
   const router = useRouter()
   const { breakpoint, maxWidth, minWidth } = useBreakpoint(BREAKPOINTS, 'desktop');
-  const [data, setData] = React.useState([])
+  // const [data, setData] = React.useState([])
   const [listOpen, setListOpen] = React.useState(false);
 
   function createMarkup(data) {
     return { __html: marked(data) };
   }
 
-  const getData = async () => {
-    try {
-     await axios.get(process.env.HOST+'/blogs/public/all',
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      )
-        .then(function (response) {
-          // alert(JSON.stringify(response))
 
-          setData(response.data)
-
-        })
-    }
-    catch (error) {
-      alert(JSON.stringify(error))
-      console.log('Error is :' + error);
-    };
-
-
-  }
-
-  useEffect(() => {
-    window.scrollTo(0, 0)
-    getData()
-  }, [])
+  // useEffect(() => {
+  //   // window.scrollTo(0, 0)
+  //   // getData()
+  //   setData(getData)
+  // }, [])
 
   const matches = useMediaQuery('(min-width:600px)');
   const [checkedZoom, setCheckedZoom] = React.useState(null);
@@ -271,7 +192,7 @@ const Blog = ({ posts }) => {
 
   const [open, setOpen] = React.useState(false);
   const [listData, setListData] = React.useState({});
-  // const [data, setData] = React.useState('testing');
+  // const [data, setData] = React.useState([]);
   const handleOpen = (list) => {
     setListData(list);
     setOpen(true);
@@ -280,17 +201,6 @@ const Blog = ({ posts }) => {
     setListData('');
     setOpen(false);
   }
-
-
-
-  // const handleStepChange = () => (
-  //   setCheckedZoom(true)
-  // )
-
-  // const handleHireForm = () => (
-  //   setCheckedZoom(false)
-  // );
-
 
 
   const renderForm = (
@@ -335,9 +245,10 @@ const Blog = ({ posts }) => {
   const listItems = (data)=> {
 
    return (
+    <Suspense fallback={<div>Loading...</div>}>
     <Grid container spacing={2}>
       {
-     data.map((data, index) => (
+     data && data.map((data, index) => (
       <Grid item  xs={12} sm={6} md={6} lg={4} >
         <Card >
           <Link href={{
@@ -402,9 +313,10 @@ const Blog = ({ posts }) => {
           </Collapse> */}
         </Card>
       </Grid>
-    ))
+    )) 
   }
     </Grid>
+    </Suspense>
     );
   }
   
@@ -494,7 +406,8 @@ const Blog = ({ posts }) => {
         <List component="div" disablePadding sx={{ pl: {sm:4, md:0} }}>
                       <ListItemButton>
                         <ListItemIcon>
-                          <SendIcon />
+                        <Icon name={'Drafts'} />
+                        
                         </ListItemIcon>
                         <ListItemText primary="Technologies" />
                       </ListItemButton>
@@ -567,22 +480,26 @@ export default React.memo(Blog);
 
 
 
-// export async function getStaticProps() {
-//   const files = fs.readdirSync('projects');
-
-//   const posts = files.map((fileName) => {
-//     const slug = fileName.replace('.md', '');
-//     const readFile = fs.readFileSync(`projects/${fileName}`, 'utf-8');
-//     const { data: frontmatter } = matter(readFile);
-//     return {
-//       slug,
-//       frontmatter,
-//     };
-//   });
-
-//   return {
-//     props: {
-//       posts,
-//     },
-//   };
-// }
+export const getServerSideProps = wrapper.getServerSideProps(
+  (store) =>
+    async ({  }) => {
+     
+      const res = await fetch(process.env.HOST+'/blogs/public/all',
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      const data = await res.json()
+    
+      if (!data) {
+        return {
+          notFound: true,
+        }
+      }
+    
+      return {
+        props: {data}, // will be passed to the page component as props
+      }
+    }
+);

@@ -127,7 +127,7 @@ const CustomButton = styled(Button)({
     transition: theme.transitions.create('opacity'),
   }));   
 
-export default function HomeSectionSecond({posts}) {
+export default function HomeSectionSecond() {
 
   const router = useRouter()
   const { breakpoint, maxWidth, minWidth } = useBreakpoint(BREAKPOINTS, 'desktop');

@@ -1,7 +1,7 @@
 const Blogs = require('../model/blogModel')
 const Admins = require('../model/adminModel')
 
-const {GraphQlObject, GraphQLID,GraphQLList,GraphQLNonNull, GraphQLString, GraphQlSchema, GraphQLObjectType, GraphQLSchema} = require('graphql')
+const {GraphQlObject, GraphQLID,GraphQLList,GraphQLNonNull, GraphQLString, GraphQLObjectType, GraphQLSchema} = require('graphql')
 
 // Blog Type
 const BlogType = new GraphQLObjectType({
@@ -27,7 +27,6 @@ const AdminType = new GraphQLObjectType({
       _id: { type: GraphQLID },
       name: { type: GraphQLString },
       email: { type: GraphQLString },
-      
     }),
   });
 

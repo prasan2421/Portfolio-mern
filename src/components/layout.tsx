@@ -19,9 +19,8 @@ import IconButton from '@mui/material/IconButton';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import TwitterIcon from '@mui/icons-material/Twitter';
+import { useDispatch, useSelector } from "react-redux";
+import { selectProfileState, setProfileCountHappyState,setProfileCountNeutralState, setProfileCountSadState } from "../store/features/profile/profileSlice";
 import CircleIcon from '@mui/icons-material/Circle';
 import { red, green } from '@mui/material/colors';
 import * as React from 'react';
@@ -102,6 +101,10 @@ export default function Layout({ children, home }: {
   children: React.ReactNode
   home?: boolean
 }) {
+
+  const count = useSelector(selectProfileState);
+
+
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
 
   const { breakpoint, maxWidth, minWidth } = useBreakpoint(BREAKPOINTS, 'desktop');
@@ -294,7 +297,7 @@ export default function Layout({ children, home }: {
                 color="inherit"
               >
                  <Move y={10}>
-                <Badge badgeContent={5} color="error" anchorOrigin={{
+                <Badge badgeContent={count.countHappy+count.countNeutral+count.countSad} color="error" anchorOrigin={{
     vertical: 'bottom',
     horizontal: 'right',
   }}>
@@ -317,17 +320,17 @@ export default function Layout({ children, home }: {
                 <Box sx={{display:'flex', alignItems:'center',}}>
                  
                 <InsertEmoticonIcon sx={{color:'#ffd100'}} fontSize="large"/>
-           <Typography variant='h4' sx={{ pl:2}}>2</Typography>
+           <Typography variant='h4' sx={{ pl:2}}>{count.countHappy}</Typography>
                 </Box>
                 
                 <Box  sx={{display:'flex', alignItems:'center'}}>
                 <SentimentSatisfiedIcon sx={{color:'#ffd100'}} fontSize="large"/>
-                <Typography variant='h4' sx={{ pl:2}}>2</Typography>
+                <Typography variant='h4' sx={{ pl:2}}>{count.countNeutral}</Typography>
                 </Box>
                 
            <Box sx={{display:'flex', alignItems:'center'}}>
            <SentimentVeryDissatisfiedIcon sx={{color:'#ffd100'}} fontSize="large"/>
-           <Typography variant='h4' sx={{ pl:2}}>1</Typography>
+           <Typography variant='h4' sx={{ pl:2}}>{count.countSad}</Typography>
            </Box>
                 
                 

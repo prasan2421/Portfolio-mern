@@ -13,11 +13,11 @@ import Script from 'next/script'
 
 import { Provider } from 'react-redux';
 import axios from 'axios';
-import { store } from '../app/store';
+import { wrapper } from '../store/store';
 
 const BREAKPOINTS = { mobile: 0, tablet: 900, desktop: 1280 }
 
-export default function App({ Component, pageProps: { session, ...pageProps }, router }: AppProps) {
+function App({ Component, pageProps: { session, ...pageProps }, router }: AppProps) {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 
   let theme = useMemo(
@@ -99,8 +99,12 @@ const getLayout =
 
 
   return (
-    <Provider store={store}>
-     {/* <Script strategy="lazyOnload" src="https://www.googletagmanager.com/gtag/js?id=G-JEYE1RNNJV"/>
+    // <Provider store={store}>
+    
+
+    <ThemeProvider theme={theme}>
+      
+       {/* <Script strategy="lazyOnload" src="https://www.googletagmanager.com/gtag/js?id=G-JEYE1RNNJV"/>
 <Script id="google-analytics" strategy="lazyOnload">
   {`
   window.dataLayer = window.dataLayer || [];
@@ -113,13 +117,14 @@ const getLayout =
   `}
 </Script> */}
 
-    <ThemeProvider theme={theme}>
       <GoTop />
      
      
       {getLayout(<Component  {...pageProps} />)}
   </ThemeProvider>
  
-  </Provider>
+  // </Provider>
   )
 }
+
+export default wrapper.withRedux(App);
