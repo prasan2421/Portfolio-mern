@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useMemo, useCallback, Suspense,Alert } from "react";
+import React, { useEffect, useState, useRef, useMemo, useCallback, Suspense } from "react";
  import Moment from "moment";
 import useMediaQuery from '@mui/material/useMediaQuery';
 import CancelIcon from '@mui/icons-material/Cancel';
@@ -42,6 +42,8 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import DraftsIcon from '@mui/icons-material/Drafts';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import axios from 'axios';
+import { gql } from "@apollo/client";
+import client from "../apollo-client";
 import { marked } from 'marked';
 // Import Swiper styles
 import 'swiper/css';
@@ -166,11 +168,11 @@ const Blog = ({ data }) => {
   }
 
 
-  // useEffect(() => {
-  //   // window.scrollTo(0, 0)
-  //   // getData()
-  //   setData(getData)
-  // }, [])
+  useEffect(() => {
+    // window.scrollTo(0, 0)
+    // getData()
+  // console.log(data.blogs)
+  }, [])
 
   const matches = useMediaQuery('(min-width:600px)');
   const [checkedZoom, setCheckedZoom] = React.useState(null);
@@ -377,7 +379,7 @@ const Blog = ({ data }) => {
               <Container maxWidth="xl" sx={{ marginTop: '-5rem' }}  >
                 <Grid container spacing={2}  sx={{flexDirection:{sm: "column-reverse" ,md:'row'}}}>
                   <Grid item sm={12} md={9} >
-                    {data.length !== 0 ? listItems(data) : (
+                    {data.length !== 0 ? listItems(data.blogs) : (
                       <Box sx={{ width: '100%', }}>
                         <Paper variant="outlined" sx={{ px: 2, width: '100%', minHeight: 100, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                           <Typography variant="h5" >No blogs to display!!</Typography>
@@ -481,16 +483,37 @@ export default React.memo(Blog);
 
 
 export const getServerSideProps = wrapper.getServerSideProps(
-  (store) =>
+  () =>
     async ({  }) => {
      
-      const res = await fetch(process.env.HOST+'/blogs/public/all',
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-      const data = await res.json()
+      // const res = await fetch(process.env.HOST+'/blogs/public/all',
+      // {
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      // })
+      // const data = await res.json()
+
+
+      const { data } = await client.query({
+        query: gql`
+          query blogs {
+            blogs {
+              _id
+    title
+    markdown
+    description
+    createdAt
+    user {
+      _id
+      name
+      email
+      status
+    }
+            }
+          }
+        `,
+      });
     
       if (!data) {
         return {

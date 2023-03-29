@@ -7,7 +7,7 @@ module.exports = {
   env: {
     // HOST:'http://13.50.130.172:80/api'
     // ,
-    HOST:'http://localhost:3000/api',
+    HOST:'http://localhost:80/api',
    
     // NODE_ENV : 'production'
 

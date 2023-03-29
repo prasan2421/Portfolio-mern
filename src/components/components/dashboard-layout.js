@@ -8,8 +8,8 @@ import { DashboardSidebar } from './dashboard-sidebar';
 import { useSelector, useDispatch } from 'react-redux'
 import { useRouter } from 'next/router';
 import CircularProgress from '@mui/material/CircularProgress';
-import { getGoals, reset } from '../../features/blog/blogSlice'
-import { logout, spinner } from '../../features/auth/authSlice'
+// import { getGoals, reset } from '../../features/blog/blogSlice'
+import { logout, spinner } from '../../store/features/auth/authSlice'
 
 const DashboardLayoutRoot = styled('div')(({ theme ,user}) => ({
   display: 'flex',

@@ -9,7 +9,7 @@ import { Bell as BellIcon } from '../../icons/bell';
 import { UserCircle as UserCircleIcon } from '../../icons/user-circle';
 
 import { useRouter } from 'next/router';
-import { logout, reset } from '../../features/auth/authSlice'
+import { logout, reset } from '../../store/features/auth/authSlice'
 import { Users as UsersIcon } from '../../icons/users';
 import { AccountPopover } from './account-popover';
 

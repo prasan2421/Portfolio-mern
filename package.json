@@ -10,7 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/cache": "11.10.3",
+    "@apollo/client": "^3.7.10",
     "@emotion/react": "11.10.4",
     "@emotion/server": "11.10.0",
     "@emotion/styled": "11.10.4",

@@ -5,13 +5,9 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import Layout, { siteTitle } from '../components/layout'
 import { styled, alpha, ThemeProvider, createTheme, useTheme,responsiveFontSizes, } from '@mui/material/styles';
 import GoTop from "../components/goTop";
-import DancingLinesDark from '../components/dancing-lines-dark';
-import DancingLinesLight from '../components/dancing-lines-light';
-import { DashboardLayout } from '../components/admin/dashboard-layout';
-import useBreakpoint from 'use-breakpoint';
-import Script from 'next/script'
 
-import { Provider } from 'react-redux';
+import { DashboardLayout } from '../components/admin/dashboard-layout';
+
 import axios from 'axios';
 import { wrapper } from '../store/store';
 
@@ -99,7 +95,8 @@ const getLayout =
 
 
   return (
-    // <Provider store={store}>
+    <>
+   
     
 
     <ThemeProvider theme={theme}>
@@ -123,7 +120,8 @@ const getLayout =
       {getLayout(<Component  {...pageProps} />)}
   </ThemeProvider>
  
-  // </Provider>
+  
+  </>
   )
 }
 

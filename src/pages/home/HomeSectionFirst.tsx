@@ -565,10 +565,10 @@ else{
                     xs:'1rem', sm:'1rem 3rem 1rem 3rem'
                   } }}>Contact Me</CustomButton>
                
-                  <Box
-                  // href={require("../assets/files/PrasannaCV.pdf")} 
+                  {/* <Box
+                 
                   sx={{width:{xs:'inherit'},borderLeft:'2px solid lightgray',borderColor:"inherit", }} 
-                  // download underline="none"
+                 
                   >
                     <Link href={'files/PrasannaCV.pdf'} sx={
                     {color:"inherit"}
@@ -579,7 +579,7 @@ else{
                       sx={{width:{xs:'100%',sm:'auto'},color:"inherit", padding:{xs:'1rem', sm:'1rem 3rem 1rem 3rem'}}} 
                       variant="text" endIcon={<DownloadIcon color="inherit"/>} >CV</CustomButton>
                     </Link>
-                  </Box>
+                  </Box>  */}
                 </Box>
                   <Box sx={{display:'flex', alignItems:'center', marginLeft:{xs:'0',sm:'2rem'}, marginTop:{xs:'1rem',sm:'0'}, justifyContent:{xs:'center',sm:'left'} }}>
                   <IconButton disableRipple
