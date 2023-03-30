@@ -29,15 +29,15 @@ import Slide from '@mui/material/Slide';
 import Image from 'next/image';
 import customerexp from '../../../public/images/customer-experience.jpeg';
 import Button, { ButtonProps } from '@mui/material/Button';
-
+import { wrapper } from "../../store/store";
 import { useSpring, animated } from '@react-spring/web';
 import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-
+import client from "../apollo-client";
 import Typography from '@mui/material/Typography';
-
+import { gql } from "@apollo/client";
 import styles from '../../styles/About.module.css';
 
 import MarkdownDisplay from "../../components/MarkdownDisplay"
@@ -55,16 +55,7 @@ import { setMaxListeners } from "events";
 
 // const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
-const BREAKPOINTS = { mobile: 0, tablet: 900, desktop: 1280 }
-
-
- 
-    const EducationData=[
-      {'subtitle':'Food delivery mobile application (customer and delivery application) - React native','date':'07/03/2018 – 30/11/2020','list':['Developed Web and mobile (android / iOS) applications.','Cooperated with designers to create clean interfaces and simple, intuitive interactions and experiences.','Developed project concepts and maintained optimal workflow.','API integration between applications.','Updated landing pages, product listings, and checkouts for launches and promotions.','Created new page designs for split tests and promotions','Worked with testing teams to end tests and make winning variations live.','optimized page structures for better performance','Incorporated requested QA updates','Assisted with tracking and documentation for split tests and funnels']},
-      
-      ];
-
-  
+const BREAKPOINTS = { mobile: 0, tablet: 900, desktop: 1280 } 
 
 const images = [
   {
@@ -96,54 +87,7 @@ const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
 
 // carousel end 
 
-const Fade = React.forwardRef<HTMLDivElement, FadeProps>(function Fade(props, ref) {
-  const { in: open, children, onEnter, onExited, ...other } = props;
- 
-  const style = useSpring({
-    from: { opacity: 0 },
-    to: { opacity: open ? 1 : 0 },
-    onStart: () => {
-      if (open && onEnter) {
-        onEnter();
-      }
-    },
-    onRest: () => {
-      if (!open && onExited) {
-        onExited();
-      }
-    },
-  });
-
-  return (
-    <animated.div ref={ref} style={style} {...other}>
-      {children}
-    </animated.div>
-  );
-});
-
-interface FadeProps {
-  children?: React.ReactElement;
-  in: boolean;
-  onEnter?: () => {};
-  onExited?: () => {};
-}
-
-const styleModel = {
-  position: 'absolute' ,
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
- maxHeight:'90%',
- overflow:'hidden',
-// width: {breakpoint!=='mobile'?'90%':'auto'},
-//  overflow:'auto',
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  paddingY: 5,
-};
-
-const Work = () => {
+const Work = (props) => {
   interface keyable {
     [key: string]: any  
 }
@@ -156,35 +100,14 @@ const Work = () => {
   const { breakpoint, maxWidth, minWidth } = useBreakpoint(BREAKPOINTS, 'desktop');
 
 
-const getData = async () => {
-  try {
-    await axios.get(process.env.HOST+'/blogs/public/'+pid,
-       {
-         headers: {
-           'Content-Type': 'application/json',
-         },
-       }
-     )
-       .then(function (response) {
-        //  alert(JSON.stringify(response))
-
-         setData(response.data)
-
-       })
-   }
-   catch (error) {
-     alert(JSON.stringify(error))
-     console.log('Error is :' + error);
-   };
-
-
-}
 
   useEffect(()=>{
-    // alert(pid)
-    if(pid){
-      getData()
-    }
+    // alert(JSON.stringify(props.data.blog))
+    setData(props.data.blog)
+console.log(props.data)
+    // if(pid){
+    //   getData()
+    // }
    
     
   },[router])
@@ -218,11 +141,7 @@ const getData = async () => {
 
   const containerRef = React.useRef(null);
 
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: 'AIzaSyD52vW7Nc0Dxavo8s5wd_uaPjLr8SuWYJM',
-  });
-
-  if (!isLoaded) return <div>Loading...</div>;
+ 
 
 
   return (
@@ -274,9 +193,9 @@ theme={theme}
           <Box sx={{marginLeft:'1rem'}} >
               <p style={{margin:0}}>Prasanna Tuladhar</p>
               <Box sx={{color:'gray', display:'flex', flexDirection:'row'}}>
-           
+          
                <Typography variant="caption">Posted on {Moment(data.createdAt).format('MMMM Do YYYY')}</Typography><span style={{marginLeft:'0.5rem', marginRight:'0.5rem'}}>•</span>
-               <Typography variant="caption">Updated on {Moment(data.createdAt).format('MMMM Do YYYY')}</Typography>
+               <Typography variant="caption">Updated on {Moment(data.updatedAt).format('MMMM Do YYYY')}</Typography>
                              </Box>
               <Box>
 
@@ -380,4 +299,50 @@ theme={theme}
 export default React.memo(Work);
 
 
+export async function getServerSideProps(context) {
+     
+      const { id,pid } = context.query;
+
+  //     const router = useRouter()
+  // const {id,pid} = router.query;
+      // const res = await fetch(process.env.HOST+'/blogs/public/all',
+      // {
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      // })
+      // const data = pid
+
+
+      const { data } = await client.query({
+        query: gql`
+          query blog {
+            blog(id:"63aa1fd224da573db23bea7f") {
+              _id
+              title
+              markdown
+              description
+              user {
+                _id
+                name
+                email
+                status
+              }
+              createdAt
+              
+            }
+          }
+        `,
+      });
+    
+      // if (!data) {
+      //   return {
+      //     notFound: true,
+      //   }
+      // }
+    
+      return {
+        props: {data}, // will be passed to the page component as props
+      }
+    }
 

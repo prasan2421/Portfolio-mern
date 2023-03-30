@@ -42,7 +42,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import DraftsIcon from '@mui/icons-material/Drafts';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import axios from 'axios';
-import { gql } from "@apollo/client";
+import { gql, useQuery } from "@apollo/client";
 import client from "../apollo-client";
 import { marked } from 'marked';
 // Import Swiper styles
@@ -51,6 +51,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { wrapper } from "../../store/store";
+import {GET_BLOGS} from '../../queries/contactQueries'
 
 const BREAKPOINTS = { mobile: 0, tablet: 900, desktop: 1280 }
 
@@ -254,9 +255,9 @@ const Blog = ({ data }) => {
       <Grid item  xs={12} sm={6} md={6} lg={4} >
         <Card >
           <Link href={{
-            pathname: `/blog/${data.title}`,
+            pathname: `/blog/[slug]`,
             query:{
-              
+              slug:data.title,
               pid: data._id
             }
         }} >
@@ -483,7 +484,7 @@ export default React.memo(Blog);
 
 
 export const getServerSideProps = wrapper.getServerSideProps(
-  () =>
+  (id) =>
     async ({  }) => {
      
       // const res = await fetch(process.env.HOST+'/blogs/public/all',
@@ -494,25 +495,10 @@ export const getServerSideProps = wrapper.getServerSideProps(
       // })
       // const data = await res.json()
 
+      
 
       const { data } = await client.query({
-        query: gql`
-          query blogs {
-            blogs {
-              _id
-    title
-    markdown
-    description
-    createdAt
-    user {
-      _id
-      name
-      email
-      status
-    }
-            }
-          }
-        `,
+        query: GET_BLOGS
       });
     
       if (!data) {

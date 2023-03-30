@@ -22,7 +22,7 @@ import SentimentSatisfiedIcon from '@mui/icons-material/SentimentSatisfied';
 import Move from "../../components/Move";
 import FormControl from '@mui/material/FormControl';
 import EmojiEmotionsTwoToneIcon from '@mui/icons-material/EmojiEmotionsTwoTone';
-
+import { gql, useMutation } from '@apollo/client';
 import SentimentSatisfiedTwoToneIcon from '@mui/icons-material/SentimentSatisfiedTwoTone';
 
 import SentimentDissatisfiedTwoToneIcon from '@mui/icons-material/SentimentDissatisfiedTwoTone';
@@ -47,16 +47,22 @@ import { styled, alpha, ThemeProvider, createTheme, useTheme,responsiveFontSizes
 import AddReactionIcon from '@mui/icons-material/AddReaction';
 import DownloadIcon from '@mui/icons-material/Download';
 import { wrapper } from "../../store/store";
+import { ADD_CONTACT } from "../../mutations/contactMutations";
 
 const BREAKPOINTS = { smallScreen:0, mobile: 600, tablet: 900, desktop: 1280 }
 
 const CustomButton = styled(Button)({
- 
     padding:'1rem 3rem 1rem 3rem',
-    
    });
 
-  
+const AddContact = gql`
+  mutation AddContact {
+      name
+      email
+      subject
+      message
+  }
+`;
 
 const Fade = React.forwardRef<HTMLDivElement, FadeProps>(function Fade(props, ref) {
     const { in: open, children, onEnter, onExited, ...other } = props;
@@ -113,6 +119,18 @@ const Fade = React.forwardRef<HTMLDivElement, FadeProps>(function Fade(props, re
     // password: yup.string().min(4).max(20).required(),
   }
 
+  const [addContact] = useMutation(ADD_CONTACT, {
+    variables: {name, email, subject, message },
+    // update(cache, { data: { addContact } }) {
+    //   const { clients } = cache.readQuery({ query: GET_CLIENTS });
+
+    //   cache.writeQuery({
+    //     query: GET_CLIENTS,
+    //     data: { clients: [...clients, addClient] },
+    //   });
+    // },
+  });
+
   const schema = yup.object({
     name: yup.string().required(),
     // age: yup.number().positive().integer().required(),
@@ -123,6 +141,15 @@ const Fade = React.forwardRef<HTMLDivElement, FadeProps>(function Fade(props, re
  
 
 const HomeSectionFirst = (props)=>  {
+
+  // const [addContact, { data, loading, error }] = useMutation(AddContact,{
+  //   variables:{
+  //     name,
+  //     email,
+  //     subject,
+  //     message
+  //   }
+  // });
 
   const {resolvedUrl} = props;
 
@@ -254,7 +281,7 @@ else{
     // alert(qs.stringify(data));return;
     setSendTrigger(true);
 
-
+    addContact(data);
     // const config = {
     //   headers: {
     //     'Content-Type': 'application/x-www-form-urlencoded'
@@ -319,7 +346,7 @@ else{
   const onSubmit: SubmitHandler<IFormInputs> = (data) => {
     
     submitMessage(data)
-   
+  //  addContact(data)
   
   };
 
