@@ -43,7 +43,7 @@ import DraftsIcon from '@mui/icons-material/Drafts';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import axios from 'axios';
 import { gql, useQuery } from "@apollo/client";
-import client from "../apollo-client";
+import {getClient} from "../apollo-client";
 import { marked } from 'marked';
 // Import Swiper styles
 import 'swiper/css';
@@ -148,12 +148,6 @@ const styleModel = {
   paddingY: 5,
 };
 
-const CustomButton = styled(Button)({
-
-  padding: '1rem 3rem 1rem 3rem'
-});
-
-
 
 const Blog = ({ data }) => {
 
@@ -169,11 +163,6 @@ const Blog = ({ data }) => {
   }
 
 
-  useEffect(() => {
-    // window.scrollTo(0, 0)
-    // getData()
-  // console.log(data.blogs)
-  }, [])
 
   const matches = useMediaQuery('(min-width:600px)');
   const [checkedZoom, setCheckedZoom] = React.useState(null);
@@ -253,8 +242,8 @@ const Blog = ({ data }) => {
       {
      data && data.map((data, index) => (
       <Grid item  xs={12} sm={6} md={6} lg={4} >
-        <Card >
-          <Link href={{
+        <Card sx={{height:'100%'}}>
+          <Link sx={{height:"100%"}} href={{
             pathname: `/blog/[slug]`,
             query:{
               slug:data.title,
@@ -264,6 +253,7 @@ const Blog = ({ data }) => {
 
           <CardActionArea >
           <CardHeader
+          sx={{height:'100px',}}
             avatar={
               <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
                 M
@@ -432,14 +422,11 @@ const Blog = ({ data }) => {
                         </ListItemIcon>
                         <ListItemText primary="Lifestyle" />
                       </ListItemButton>
-</List></Collapse>
+                      </List></Collapse>
                     </List>
 
-                    
-                  </Grid>
+                 </Grid>
                 </Grid>
-
-
               </Container>
 
 
@@ -454,24 +441,6 @@ const Blog = ({ data }) => {
         </Box>
 
         <Box className='ContainerWrapper-base' sx={{ marginX: { xs: '0.1rem', md: '1rem' }, }}>{'</html>'}</Box>
-
-        {/* Grid */}
-
-
-        {/* -------------------------   ------------ Carousel start ----------- -------------------------- */}
-
-        {/* -------------------------   ------------ Carousel end ----------- -------------------------- */}
-
-
-
-        {/* Top banners end*/}
-        {/* <Slider /> */}
-        {/* <Categories /> */}
-        {/* <Products/> */}
-        {/* <Newsletter/> */}
-
-
-
 
       </Box>
 
@@ -495,7 +464,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
       // })
       // const data = await res.json()
 
-      
+      const client = getClient();
 
       const { data } = await client.query({
         query: GET_BLOGS
@@ -506,6 +475,8 @@ export const getServerSideProps = wrapper.getServerSideProps(
           notFound: true,
         }
       }
+
+      console.log('asa')
     
       return {
         props: {data}, // will be passed to the page component as props

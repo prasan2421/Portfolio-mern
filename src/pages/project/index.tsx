@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path'
 // import matter from 'gray-matter';
 import { useEffect, useState, useRef, useMemo, useCallback } from "react";
+import AWS from 'aws-sdk';
 import { useRouter } from 'next/router'
 // import Announcement from "../components/Announcement";
 // import Categories from "../components/Categories";
@@ -89,6 +90,13 @@ import { setMaxListeners } from "events";
 // const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
 const BREAKPOINTS = { mobile: 0, tablet: 900, desktop: 1280 }
+
+AWS.config.update({
+  accessKeyId: process.env.ACCESSKEY_ID,
+  secretAccessKey: process.env.SECRETKEY_ID,
+  region: 'eu-north-1',
+  signatureVersion: 'v4',
+});
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -279,6 +287,7 @@ const CustomButton = styled(Button)({
 
 
 const Work = ({ posts }) => {
+  const s3 = new AWS.S3();
   const theme = useTheme();
   const router = useRouter()
   const { breakpoint, maxWidth, minWidth } = useBreakpoint(BREAKPOINTS, 'desktop');
@@ -293,11 +302,29 @@ const Work = ({ posts }) => {
 
   const [checkedImage, setCheckedImage] = React.useState(true);
   const [activeStep, setActiveStep] = React.useState(0);
+// images state AWS S3
+  const [imageUrl, setImageUrl] = useState(null);
+  const [file, setFile] = useState(null);
 
   // const colorMode = React.useContext(ColorModeContext);
   const [checked, setChecked] = React.useState(true);
 
-
+  const handleFileSelect = (e) => {
+    setFile(e.target.files[0]);
+  }
+  const uploadToS3 = async () => {
+    if (!file) {
+      return;
+    }
+    const params = { 
+      Bucket: 'prasannat-bucket', 
+      Key: `${Date.now()}.${file.name}`, 
+      Body: file 
+    };
+    const { Location } = await s3.upload(params).promise();
+    setImageUrl(Location);
+    console.log('uploading to s3', Location);
+  }
 
   const handleChange = () => {
     setChecked((prev) => !prev);
@@ -427,7 +454,22 @@ const Work = ({ posts }) => {
                     <Box >
                     </Box>
                   </Box>
+
                 </Slide>
+                <Box sx={{ marginTop: '150px' }}>
+      <h1>Test Image Upload</h1>
+      <input type="file" onChange={handleFileSelect} />
+      {file && (
+        <Box style={{ marginTop: '10px' }}>
+          <button onClick={uploadToS3}>Upload</button>
+        </Box>
+      )}
+      {imageUrl && (
+        <Box style={{ marginTop: '10px' }}>
+          <img src={imageUrl} alt="uploaded" />
+        </Box>
+      )}
+    </Box>
               </Grid>
               <Grid item xs={12} md={4} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
 

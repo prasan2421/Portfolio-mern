@@ -14,7 +14,7 @@ mutation deleteClient($id:ID!){
 const ADD_CONTACT = gql`
   mutation addContact($name: String!, $email: String!, $subject: String!,  $message: String!) {
     addContact(name: $name, email: $email, subject: $subject, message:$message) {
-      id
+      _id
       name
       email
       subject
@@ -22,5 +22,6 @@ const ADD_CONTACT = gql`
     }
   }
 `;
+
 
 export {ADD_CONTACT, DELETE_CONTACT};

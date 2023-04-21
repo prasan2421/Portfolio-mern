@@ -1,4 +1,4 @@
-var Contactdb = require('../model/contact_model')
+var Contactdb = require('../model/contactModel')
 
 // create and save new user
 exports.create = (req,res) =>{

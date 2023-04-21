@@ -8,6 +8,9 @@ module.exports = {
     // HOST:'http://13.50.130.172:80/api'
     // ,
     HOST:'http://localhost:80/api',
+    ACCESSKEY_ID: 'AKIA47WKKVG2DVLOYDO6',
+  SECRETKEY_ID: 'EA8pDGvLbzIysDcXjfLSiW3WU5z6nL/ESS1mFt9O',
+
    
     // NODE_ENV : 'production'
 

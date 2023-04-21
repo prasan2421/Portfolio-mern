@@ -35,7 +35,7 @@ import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import client from "../apollo-client";
+import {getClient} from "../apollo-client";
 import Typography from '@mui/material/Typography';
 import { gql } from "@apollo/client";
 import styles from '../../styles/About.module.css';
@@ -300,9 +300,10 @@ export default React.memo(Work);
 
 
 export async function getServerSideProps(context) {
-     
+  const client = getClient();
       const { id,pid } = context.query;
 
+ 
   //     const router = useRouter()
   // const {id,pid} = router.query;
       // const res = await fetch(process.env.HOST+'/blogs/public/all',
@@ -315,9 +316,10 @@ export async function getServerSideProps(context) {
 
 
       const { data } = await client.query({
+       
         query: gql`
-          query blog {
-            blog(id:"63aa1fd224da573db23bea7f") {
+          query blog($pid: ID!) {
+            blog(id:$pid) {
               _id
               title
               markdown
@@ -329,12 +331,17 @@ export async function getServerSideProps(context) {
                 status
               }
               createdAt
-              
+              updatedAt
             }
           }
         `,
+        variables: { pid },
+       
       });
     
+      
+
+
       // if (!data) {
       //   return {
       //     notFound: true,
