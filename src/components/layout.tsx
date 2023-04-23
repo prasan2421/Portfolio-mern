@@ -234,7 +234,7 @@ export default function Layout({ children, home }: {
                       <Image 
                       width="130"
                     src={playstore}
-                    alt="Click to doenload the app."
+                    alt="Click to download the app."
                     
                   />
                       </Move>

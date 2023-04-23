@@ -1,93 +1,41 @@
 import React from "react";
-import fs from 'fs';
-import path from 'path'
-// import matter from 'gray-matter';
 import { useEffect, useState, useRef, useMemo, useCallback } from "react";
 import AWS from 'aws-sdk';
 import { useRouter } from 'next/router'
-// import Announcement from "../components/Announcement";
-// import Categories from "../components/Categories";
-import useMediaQuery from '@mui/material/useMediaQuery';
-import TextField from '@mui/material/TextField';
 import CancelIcon from '@mui/icons-material/Cancel';
 import useBreakpoint from 'use-breakpoint';
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-// import TextareaAutosize from '@mui/material/TextareaAutosize';
-// import Newsletter from "../components/Newsletter";
-// import Products from "../components/Products";
-// import Slider1 from "../components/Slider";
-import { styled, alpha, ThemeProvider, createTheme, useTheme, responsiveFontSizes, } from '@mui/material/styles';
+import { styled, alpha, ThemeProvider, useTheme, } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import prasannapng from '../assets/images/prasannapng.png';
-
-import MobileStepper from '@mui/material/MobileStepper';
-import Paper from '@mui/material/Paper';
 import Modal from '@mui/material/Modal';
-import PropTypes from 'prop-types';
-import Toolbar from '@mui/material/Toolbar';
 import Backdrop from '@mui/material/Backdrop';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import Send from '@mui/icons-material/Send';
-import Zoom from '@mui/material/Zoom';
 import Image from 'next/image'
 import BackgroundText from "../../components/BackgroundText";
+import Grow from '@mui/material/Grow';
+import Slide from '@mui/material/Slide';
+import Button, { ButtonProps } from '@mui/material/Button';
+import { useSpring, animated } from '@react-spring/web';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import styles from '../../styles/About.module.css';
+import DetailModel from "../../components/DetailModel"
+import {useLoadScript, Marker } from "@react-google-maps/api";
+import technology from '../../../assets/images/technology.png';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import ListSubheader from '@mui/material/ListSubheader';
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
-// import Typography from '@mui/material/Typography';
-import Grow from '@mui/material/Grow';
-import Slide from '@mui/material/Slide';
-import Switch from '@mui/material/Switch';
-import Button, { ButtonProps } from '@mui/material/Button';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import Link from '@mui/material/Link';
-import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
-import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
-import InterestsIcon from '@mui/icons-material/Interests';
-import { useSpring, animated } from '@react-spring/web';
-import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardActionArea, CardActions } from '@mui/material';
-import styles from '../../styles/About.module.css';
-import Alert from '@mui/material/Alert';
-import FormControlLabel from '@mui/material/FormControlLabel';
-// import TagSphere from "../../../components/wordSphere";
-// import MyMaps from "../../../components/maps";
-import DetailModel from "../../components/DetailModel"
-import { GoogleMap, LoadScript, useLoadScript, Marker } from "@react-google-maps/api";
-
-// import Swiper core and required modules
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-import usn from '../../../assets/images/usn.png';
-import tic from '../../../assets/images/tic.png';
-import tu from '../../../assets/images/tu.png';
-import spn from '../../../assets/images/spn.png';
-import art from '../../../assets/images/art.png';
-import ballSports from '../../../assets/images/ballsports.png';
-import cycling from '../../../assets/images/cycling.png';
-import guitar from '../../../assets/images/guitar.png';
-import technology from '../../../assets/images/technology.png';
-import travel from '../../../assets/images/travel.png';
 
 
-// Import Swiper styles
+import Paper from '@mui/material/Paper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import { setMaxListeners } from "events";
-
-// const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
 const BREAKPOINTS = { mobile: 0, tablet: 900, desktop: 1280 }
 
@@ -105,98 +53,6 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: 'center',
   color: theme.palette.text.secondary,
 }));
-
-
-const containerStyle = {
-  width: '400px',
-  height: '400px'
-};
-
-const center = {
-  lat: -3.745,
-  lng: -38.523
-};
-
-const itemData = [
-  {
-    img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
-    title: 'Breakfast',
-    author: '@bkristastucchio',
-    rows: 2,
-    cols: 2,
-    featured: true,
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
-    title: 'Burger',
-    author: '@rollelflex_graphy726',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
-    title: 'Camera',
-    author: '@helloimnik',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
-    title: 'Coffee',
-    author: '@nolanissac',
-    cols: 2,
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1533827432537-70133748f5c8',
-    title: 'Hats',
-    author: '@hjrc33',
-    cols: 2,
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62',
-    title: 'Honey',
-    author: '@arwinneil',
-    rows: 2,
-    cols: 2,
-    featured: true,
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1516802273409-68526ee1bdd6',
-    title: 'Basketball',
-    author: '@tjdragotta',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1518756131217-31eb79b20e8f',
-    title: 'Fern',
-    author: '@katie_wasserman',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1597645587822-e99fa5d45d25',
-    title: 'Mushrooms',
-    author: '@silverdalex',
-    rows: 2,
-    cols: 2,
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1567306301408-9b74779a11af',
-    title: 'Tomato basil',
-    author: '@shelleypauls',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1471357674240-e1a485acb3e1',
-    title: 'Sea star',
-    author: '@peterlaster',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1589118949245-7d38baf380d6',
-    title: 'Bike',
-    author: '@southside_customs',
-    cols: 2,
-  },
-];
-
-
-const EducationData = [
-  { 'image': usn, 'title': 'Application Developer (Web / Mobile)', 'subtitle': 'I.Click Pvt.Ltd. ', 'date': '07/03/2018 – 30/11/2020', 'list': ['Developed Web and mobile (android / iOS) applications.', 'Cooperated with designers to create clean interfaces and simple, intuitive interactions and experiences.', 'Developed project concepts and maintained optimal workflow.', 'API integration between applications.', 'Updated landing pages, product listings, and checkouts for launches and promotions.', 'Created new page designs for split tests and promotions', 'Worked with testing teams to end tests and make winning variations live.', 'optimized page structures for better performance', 'Incorporated requested QA updates', 'Assisted with tracking and documentation for split tests and funnels'] },
-  { 'image': tu, 'title': 'Internship in Web Development', 'subtitle': 'Sherpa Technologies Pvt. Ltd.', 'date': '02/08/2017 – 09/12/2017', 'list': ['Designed company’s website using HTML,CSS,Javascript (Bootstrap framework)', 'Listened to and implemented management’s recommendations into the website', 'Determined customer needs and improved UX in response.', 'Backend coding and developed APIs.', 'Debugged problems with minimal guidance'] },
-
-];
 
 const objectData = [
   { 'id': '1', 'img': 'images/1.png', 'title': 'Prasannat Portfolio', 'subtitle': 'A portfolio website developed in MERN stack.', 'technologies': 'React, React Native, Typescript, Express, MongoDB', 'link': 'http://www.prasannat.com', 'date': '07/03/2018 – 30/11/2020', 'list': ['NEXT js, client side framework that use react js, to create front-end.', 'Express, a node js web-application framework, to create backend.', 'Mongoose db, an Object Data Modeling (ODM) library for MongoDB and Node js, connecting backend-end with front-end.', 'Material UI, Google Maps, Redux, SSR, AXIOS for Rest API requests, CRUD, React Spring, and more..',], 'images': ['/images/Portfolio/1.png', '/images/Portfolio/2.png'] },
@@ -279,12 +135,6 @@ const styleModel = {
   paddingY: 5,
 };
 
-const CustomButton = styled(Button)({
-
-  padding: '1rem 3rem 1rem 3rem'
-});
-
-
 
 const Work = ({ posts }) => {
   const s3 = new AWS.S3();
@@ -296,41 +146,71 @@ const Work = ({ posts }) => {
     window.scrollTo(0, 0)
   }, [])
 
-  const matches = useMediaQuery('(min-width:600px)');
-  const [checkedZoom, setCheckedZoom] = React.useState(null);
-  const [mouseOverItem, setMouseOverItem] = React.useState(null);
 
-  const [checkedImage, setCheckedImage] = React.useState(true);
+
+  const [mouseOverItem, setMouseOverItem] = React.useState(null);
   const [activeStep, setActiveStep] = React.useState(0);
 // images state AWS S3
-  const [imageUrl, setImageUrl] = useState(null);
-  const [file, setFile] = useState(null);
+const [selectedFiles, setSelectedFiles] = useState([]);
+const [uploadedFiles, setUploadedFiles] = useState([]);
 
   // const colorMode = React.useContext(ColorModeContext);
   const [checked, setChecked] = React.useState(true);
 
-  const handleFileSelect = (e) => {
-    setFile(e.target.files[0]);
+  const handleFileSelect = (event) => {
+
+    const files = Array.from(event.target.files);
+    setSelectedFiles([...selectedFiles, ...files]);
+    console.log(files)
   }
+
+  const remImgItem = (index) => {
+    const ArrayFiles = [...selectedFiles]
+  ArrayFiles.splice(index,1)
+  
+    setSelectedFiles(ArrayFiles)
+  }
+  
   const uploadToS3 = async () => {
-    if (!file) {
+    if (selectedFiles.length<=0) {
+      
       return;
     }
-    const params = { 
-      Bucket: 'prasannat-bucket', 
-      Key: `${Date.now()}.${file.name}`, 
-      Body: file 
-    };
-    const { Location } = await s3.upload(params).promise();
-    setImageUrl(Location);
-    console.log('uploading to s3', Location);
+    const promises = selectedFiles.map(file => {
+     
+      const params = { 
+        Bucket: 'prasannat-bucket', 
+        Key: `${Date.now()}.${file.name}`, 
+        Body: file,
+       
+      };
+      return new Promise((resolve, reject) => {
+        s3.upload(params, (err, data) => {
+          if (err) {
+            alert(err)
+            reject(err);
+          } else {
+            alert(data)
+            resolve(data.Location);
+          }
+        });
+      });
+
+    })
+
+    Promise.all(promises)
+    .then(urls => {
+      setUploadedFiles([...uploadedFiles, ...urls]);
+      setSelectedFiles([]);
+    })
+    .catch(error => {
+      console.error('Error uploading files:', error);
+    });
+    
+   
   }
 
-  const handleChange = () => {
-    setChecked((prev) => !prev);
-  };
-  const maxSteps = images.length;
-
+ 
   const [open, setOpen] = React.useState(false);
   const [listData, setListData] = React.useState({});
   // const [data, setData] = React.useState('testing');
@@ -342,24 +222,6 @@ const Work = ({ posts }) => {
     setListData('');
     setOpen(false);
   }
-
-
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
-  // const handleStepChange = () => (
-  //   setCheckedZoom(true)
-  // )
-
-  // const handleHireForm = () => (
-  //   setCheckedZoom(false)
-  // );
-
 
 
   const renderForm = (
@@ -390,13 +252,6 @@ const Work = ({ posts }) => {
     </Modal>
   );
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1
-  };
 
   const containerRef = React.useRef(null);
 
@@ -406,19 +261,6 @@ const Work = ({ posts }) => {
 
   if (!isLoaded) return <div>Loading...</div>;
 
-
-
-  // const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
-  //   setAnchorEl(event.currentTarget);
-  // };
-
-  // const handlePopoverClose = () => {
-  //   setAnchorEl(null);
-  // };
-
-  const handlePopoverOpen = (index: any) => {
-    setMouseOverItem(index)
-  };
 
 
   return (
@@ -456,20 +298,7 @@ const Work = ({ posts }) => {
                   </Box>
 
                 </Slide>
-                <Box sx={{ marginTop: '150px' }}>
-      <h1>Test Image Upload</h1>
-      <input type="file" onChange={handleFileSelect} />
-      {file && (
-        <Box style={{ marginTop: '10px' }}>
-          <button onClick={uploadToS3}>Upload</button>
-        </Box>
-      )}
-      {imageUrl && (
-        <Box style={{ marginTop: '10px' }}>
-          <img src={imageUrl} alt="uploaded" />
-        </Box>
-      )}
-    </Box>
+               
               </Grid>
               <Grid item xs={12} md={4} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
 
@@ -482,11 +311,61 @@ const Work = ({ posts }) => {
 
           {/* -------------------------------------------- First grid end --------------------------------------------------- */}
 
+          <Box >
+          <input
+        type="file"
+        style={{ display: 'none' }}
+        id="file-input"
+        multiple
+        onChange={handleFileSelect}
+      />
+      <label htmlFor="file-input">
+        <Button variant="contained" component="span">
+        Select Files
+        </Button>
+      </label>
+      <Button variant="contained" onClick={uploadToS3}>Upload</Button>
+      <Grid container >
 
+        {selectedFiles.map((item,index) => (
+
+<Grid xs={6}>
+<ImageListItem>
+
+<img
+        style={{width:'100%', height:300}}
+            src={URL.createObjectURL(item)}
+            srcSet={URL.createObjectURL(item)}
+            alt={item.name}
+            loading="lazy"
+            
+          />
+           <ImageListItemBar
+            title={item.name}
+            subtitle={item.name}
+            actionIcon={
+              <IconButton
+                sx={{ color: 'red' }}
+                aria-label={`info about ${item.name}`}
+                onClick={()=>remImgItem(index)}
+              >
+                <CancelIcon />
+              </IconButton>
+            }
+          />
+          </ImageListItem>
+</Grid>
+        ))}
+       
+      </Grid>
+    </Box>
+
+
+         
           {/* -------------------------------------------- Second grid --------------------------------------------------- */}
           <Box sx={{ position: 'relative' }}>
             <Box className={styles.AboutDiv}>
-              <Container maxWidth="xl" sx={{ marginTop: '-5rem' }}  >
+              <Container maxWidth="xl" sx={{ marginTop: '5rem' }}  >
                 <Grid container >
                 
 
