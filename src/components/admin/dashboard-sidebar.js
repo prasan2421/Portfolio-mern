@@ -31,12 +31,12 @@ const items = [
   {
     href: '/admin/customers',
     icon: (<UsersIcon fontSize="small" />),
-    title: 'Customers'
+    title: 'Contacts'
   },
   {
-    href: '/admin/products',
+    href: '/admin/media',
     icon: (<ShoppingBagIcon fontSize="small" />),
-    title: 'Products'
+    title: 'Media'
   },
   {
     href: '/admin/account',

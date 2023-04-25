@@ -36,7 +36,7 @@ const index = (props) => {
   // const getLayout = Component.getLayout ?? ((page) => page);
 
   const Page = () => (
-    <>
+    
      
       <Box
         // component="main"
@@ -125,7 +125,7 @@ const index = (props) => {
           </Grid>
         </Container>
       </Box>
-    </>
+   
   );
 
   return (

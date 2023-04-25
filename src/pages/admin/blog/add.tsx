@@ -1,14 +1,13 @@
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import Router from 'next/router';
 import { useFormik, FormikErrors } from 'formik';
 import { FormControl, InputLabel, Input } from '@mui/material'
 import Paper from '@mui/material/Paper';
 import { useSelector, useDispatch } from 'react-redux'
-
+import Grid from '@mui/material/Grid';
 import { useRouter } from 'next/navigation';
 
-import * as yup from "yup";
 import axios from 'axios';
 import qs from 'qs';
 import {
@@ -25,8 +24,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 // import { JSDOM } from 'jsdom';
 
 import { marked } from 'marked';
-import { useState } from 'react';
-const clean = marked('# Marked in browser\n\nRendered by **marked**.');
+
 
 interface IFormInputs {
   title: string;
@@ -37,10 +35,10 @@ interface IFormInputs {
 
 
 const Add = () => {
+ 
   const router = useRouter()
   const { user, isSuccess, spinnerAuth } = useSelector((state:any) => state.auth)
   const [preview, setPreview] = useState(false)
-  const [success, setSuccess] = useState(false)
 
   function createMarkup() {
     return { __html: marked(formik.values.markdown) };
@@ -159,8 +157,9 @@ const Add = () => {
             Back
           </Button>
         </Link>
-      </Box>
-      <Box
+        <Grid container spacing={2}>
+        <Grid item xs={10}>
+        <Box
         component="main"
         sx={{
           alignItems: 'center',
@@ -281,6 +280,15 @@ const Add = () => {
 
         </Container>
       </Box>
+        </Grid>
+        <Grid item xs={2}>
+        
+
+        </Grid>
+      </Grid>
+      </Box>
+      
+    
     </>
   );
 };

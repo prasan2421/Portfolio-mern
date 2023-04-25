@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import React, { useEffect, useState, useRef } from "react";
 import { Box, Container } from '@mui/material';
-import { CustomerListResults } from '../../components/components/customer/customer-list-results';
-import { CustomerListToolbar } from '../../components/components/customer/customer-list-toolbar';
+import { CustomerListResults } from '../../components/admin/customer/customer-list-results';
+import { CustomerListToolbar } from '../../components/admin/customer/customer-list-toolbar';
 import { DashboardLayout } from '../../components/components/dashboard-layout';
 // import { customers } from './__mocks__/customers';
 

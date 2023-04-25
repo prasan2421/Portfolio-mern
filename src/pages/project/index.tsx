@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState, useRef, useMemo, useCallback } from "react";
-import AWS from 'aws-sdk';
+
 import { useRouter } from 'next/router'
 import CancelIcon from '@mui/icons-material/Cancel';
 import useBreakpoint from 'use-breakpoint';
@@ -23,12 +23,7 @@ import styles from '../../styles/About.module.css';
 import DetailModel from "../../components/DetailModel"
 import {useLoadScript, Marker } from "@react-google-maps/api";
 import technology from '../../../assets/images/technology.png';
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
-import ListSubheader from '@mui/material/ListSubheader';
-import IconButton from '@mui/material/IconButton';
-import InfoIcon from '@mui/icons-material/Info';
+
 
 
 import Paper from '@mui/material/Paper';
@@ -39,12 +34,7 @@ import 'swiper/css/scrollbar';
 
 const BREAKPOINTS = { mobile: 0, tablet: 900, desktop: 1280 }
 
-AWS.config.update({
-  accessKeyId: process.env.ACCESSKEY_ID,
-  secretAccessKey: process.env.SECRETKEY_ID,
-  region: 'eu-north-1',
-  signatureVersion: 'v4',
-});
+
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -67,24 +57,7 @@ const objectData = [
   { 'id': '10', 'img': '', 'title': 'IMIS - Jhenaidah', 'subtitle': 'Integrated Municipality Integrated system app of Jhenaidah municipality, Bangladesh', 'technologies': 'Laravel, PHP, HTML, CSS, Javascript (jQuery)', 'link': 'http://178.128.123.39/imis-jhenaidah-new/', 'date': '07/03/2018 – 30/11/2020', 'list': ['Web application - Laravel (PHP)', 'Muicipality Integrated System for Jhenaidah Municipality, Bangladesh'], 'images': [] },
 ]
 
-const images = [
-  {
-    label: 'San Francisco  Oakland Bay Bridge, United States',
-    imgPath:
-      'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60',
-  },
-  {
-    label: 'Bird',
-    imgPath:
-      'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60',
-  },
-  {
-    label: 'Bali, Indonesia',
-    imgPath:
-      'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250&q=80',
-  },
 
-];
 
 // carousel end 
 
@@ -137,7 +110,7 @@ const styleModel = {
 
 
 const Work = ({ posts }) => {
-  const s3 = new AWS.S3();
+  
   const theme = useTheme();
   const router = useRouter()
   const { breakpoint, maxWidth, minWidth } = useBreakpoint(BREAKPOINTS, 'desktop');
@@ -151,64 +124,12 @@ const Work = ({ posts }) => {
   const [mouseOverItem, setMouseOverItem] = React.useState(null);
   const [activeStep, setActiveStep] = React.useState(0);
 // images state AWS S3
-const [selectedFiles, setSelectedFiles] = useState([]);
-const [uploadedFiles, setUploadedFiles] = useState([]);
+
 
   // const colorMode = React.useContext(ColorModeContext);
   const [checked, setChecked] = React.useState(true);
 
-  const handleFileSelect = (event) => {
 
-    const files = Array.from(event.target.files);
-    setSelectedFiles([...selectedFiles, ...files]);
-    console.log(files)
-  }
-
-  const remImgItem = (index) => {
-    const ArrayFiles = [...selectedFiles]
-  ArrayFiles.splice(index,1)
-  
-    setSelectedFiles(ArrayFiles)
-  }
-  
-  const uploadToS3 = async () => {
-    if (selectedFiles.length<=0) {
-      
-      return;
-    }
-    const promises = selectedFiles.map(file => {
-     
-      const params = { 
-        Bucket: 'prasannat-bucket', 
-        Key: `${Date.now()}.${file.name}`, 
-        Body: file,
-       
-      };
-      return new Promise((resolve, reject) => {
-        s3.upload(params, (err, data) => {
-          if (err) {
-            alert(err)
-            reject(err);
-          } else {
-            alert(data)
-            resolve(data.Location);
-          }
-        });
-      });
-
-    })
-
-    Promise.all(promises)
-    .then(urls => {
-      setUploadedFiles([...uploadedFiles, ...urls]);
-      setSelectedFiles([]);
-    })
-    .catch(error => {
-      console.error('Error uploading files:', error);
-    });
-    
-   
-  }
 
  
   const [open, setOpen] = React.useState(false);
@@ -311,55 +232,7 @@ const [uploadedFiles, setUploadedFiles] = useState([]);
 
           {/* -------------------------------------------- First grid end --------------------------------------------------- */}
 
-          <Box >
-          <input
-        type="file"
-        style={{ display: 'none' }}
-        id="file-input"
-        multiple
-        onChange={handleFileSelect}
-      />
-      <label htmlFor="file-input">
-        <Button variant="contained" component="span">
-        Select Files
-        </Button>
-      </label>
-      <Button variant="contained" onClick={uploadToS3}>Upload</Button>
-      <Grid container >
-
-        {selectedFiles.map((item,index) => (
-
-<Grid xs={6}>
-<ImageListItem>
-
-<img
-        style={{width:'100%', height:300}}
-            src={URL.createObjectURL(item)}
-            srcSet={URL.createObjectURL(item)}
-            alt={item.name}
-            loading="lazy"
-            
-          />
-           <ImageListItemBar
-            title={item.name}
-            subtitle={item.name}
-            actionIcon={
-              <IconButton
-                sx={{ color: 'red' }}
-                aria-label={`info about ${item.name}`}
-                onClick={()=>remImgItem(index)}
-              >
-                <CancelIcon />
-              </IconButton>
-            }
-          />
-          </ImageListItem>
-</Grid>
-        ))}
-       
-      </Grid>
-    </Box>
-
+          
 
          
           {/* -------------------------------------------- Second grid --------------------------------------------------- */}
