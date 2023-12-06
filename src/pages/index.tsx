@@ -61,25 +61,52 @@ const myLatLng = { lat: 59.9239669, lng: 10.7466753 };
 
 const BREAKPOINTS = { smallScreen:0, mobile: 600, tablet: 900, desktop: 1280 }
 
-const objectData=[
-  {'id':'1','img':'images/1.png','title':'Prasannat Portfolio','subtitle':'A portfolio website developed in MERN stack.','technologies': 'React, React Native, Typescript, Express, MongoDB','link':'http://www.prasannat.com','date':'07/03/2018 – 30/11/2020','list':['NEXT js, client side framework that use react js, to create front-end.','Express, a node js web-application framework, to create backend.','Mongoose db, an Object Data Modeling (ODM) library for MongoDB and Node js, connecting backend-end with front-end.','Material UI, Google Maps, Redux, SSR, AXIOS for Rest API requests, CRUD, React Spring, and more..',],'images':['/images/Portfolio/1.png','/images/Portfolio/2.png']},
-  {'id':'2','img':'images/foodbusters.png','title':'Foodbusters','subtitle':'Food delivery mobile application (customer and delivery application)','technologies': 'React Native, Javascript','link':'https://foodbusters.com.np/','date':'07/03/2018 – 30/11/2020','list':['Location tracking','Google maps features.','cart system.','API integration between applications.','Redux State management','Product listing and organising.','AXIOS for HTTP requests to rest API.'],'images':['/images/Foodbusters/1.jpg','/images/Foodbusters/2.jpg','/images/Foodbusters/3.jpg','/images/Foodbusters/4.jpg','/images/Foodbusters/5.jpg','/images/Foodbusters/6.jpg','/images/Foodbusters/7.jpg','/images/Foodbusters/8.jpg','/images/Foodbusters/9.jpg']},
-  {'id':'3','img':'images/covid.png','title':'Nepal Covid-19 Surveillance','subtitle':'A mobile application for COVID-19 Surveillance in Nepal','technologies': 'React Native, Javascript','link':'https://play.google.com/store/apps/details?id=com.iclick.covidnew&hl=en&gl=US','date':'07/03/2018 – 30/11/2020','list':['Government of Nepal: Kathmandu Metropolitan City','Surveillance app to monitor the spread of covid-19 in the locality.','Check ones possibility of covid-19 comparing with the given symptoms.','Monitor and notify through push notifications.','Covid-19 Surveillance system developed for the residence of Kathmandu city.'],'images':['/images/Covid/1.jpg','/images/Covid/2.jpg','/images/Covid/3.jpg','/images/Covid/4.jpg','/images/Covid/5.jpg','/images/Covid/6.jpg','/images/Covid/7.jpg','/images/Covid/8.jpg',]  },
-  {'id':'4','img':'images/patanjalisfa.png','title':'Patanjali SFA','subtitle':'Sales Force Order collection application for internal use of Patanjali employees.','technologies': 'React Native, Javascript','link':'https://play.google.com/store/apps/details?id=com.iclick.patanjali&hl=en&gl=US','date':'07/03/2018 – 30/11/2020','list':['Location tracking.','Google maps features.','Cart system.','Redux State management','Product listing and organising','AXIOS for HTTP requests to rest API'],'images':['/images/Patanjalisfa/1.jpg','/images/Patanjalisfa/2.jpg','/images/Patanjalisfa/3.jpg','/images/Patanjalisfa/4.jpg','/images/Patanjalisfa/5.jpg','/images/Patanjalisfa/6.jpg','/images/Patanjalisfa/7.jpg','/images/Patanjalisfa/8.jpg','/images/Patanjalisfa/9.jpg','/images/Patanjalisfa/10.jpg','/images/Patanjalisfa/11.jpg','/images/Patanjalisfa/12.jpg','/images/Patanjalisfa/13.jpg','/images/Patanjalisfa/14.jpg','/images/Patanjalisfa/15.jpg','/images/Patanjalisfa/16.jpg','/images/Patanjalisfa/17.jpg','/images/Patanjalisfa/18.jpg','/images/Patanjalisfa/19.jpg','/images/Patanjalisfa/20.jpg','/images/Patanjalisfa/21.jpg','/images/Patanjalisfa/22.jpg',]},
-  {'id':'5','img':'images/pbri.png','title':'Patanjali Bio Research Institute','subtitle':'Sales Force Order collection application for internal use of Patanjali Bio Research employees.','technologies': 'React Native, Javascript','link':'https://play.google.com/store/apps/details?id=com.patanjali.pbri&hl=en&gl=US','date':'07/03/2018 – 30/11/2020','list':['Location tracking.','Google maps features.','Cart system.','Redux State management','Product listing and organising','AXIOS for HTTP requests to rest API'],'images':[]},
-  {'id':'6','img':'','title':'Patanjali Dairy Application','subtitle':'Sales Force Order collection application for internal use of Patanjali Dairy employees.','technologies': 'React Native, Javascript','link':'https://play.google.com/store/apps/details?id=com.patanjali.dairy&hl=en&gl=US','date':'07/03/2018 – 30/11/2020','list':['Location tracking.','Google maps features.','Cart system.','Redux State management','Product listing and organising','AXIOS for HTTP requests to rest API'],'images':[]},
-  {'id':'7','img':'','title':'Prakriti Organics','subtitle':'Sales Force Order collection application for internal use of Prakriti Organics employees.','technologies': 'React Native, Javascript','link':'https://play.google.com/store/apps/details?id=com.prakriti.organics','date':'07/03/2018 – 30/11/2020','list':['Location tracking.','Google maps features.','Cart system.','Redux State management','Product listing and organising','AXIOS for HTTP requests to rest API'],'images':[]},
-  {'id':'8','img':'','title':'Ruchi Soya- Nutrela SOA','subtitle':'Sales Order collection application for internal use of Ruchi Soya - Nutrela SOA employees.','technologies': 'React Native, Javascript','link':'https://play.google.com/store/apps/details?id=com.ruchisoya.nutrela&ref=apkcombo.com','date':'07/03/2018 – 30/11/2020','list':['Location tracking.','Google maps features.','Cart system.','Redux State management','Product listing and organising','AXIOS for HTTP requests to rest API'],'images':['images/Nutrela/1.jpg','images/Nutrela/2.jpg','images/Nutrela/3.jpg','images/Nutrela/4.jpg','images/Nutrela/5.jpg','images/Nutrela/6.jpg','images/Nutrela/7.jpg','images/Nutrela/8.jpg','/images/Nutrela/9.jpg']},
-  {'id':'9','img':'images/doe.png','title':'Department of Environment- GIS','subtitle':'GIS Based Industrial Information System','technologies': 'Laravel, PHP, HTML, CSS, Javascript (jQuery)','link':'https://play.google.com/store/apps/details?id=com.iclick.giis&hl=en&gl=US','date':'07/03/2018 – 30/11/2020','list':['Web application - Laravel (PHP)','Government of Nepal: Department of Forest and Environment'],'images':[]},
-  {'id':'10','img':'','title':'IMIS - Jhenaidah','subtitle':'Integrated Municipality Integrated system app of Jhenaidah municipality, Bangladesh','technologies': 'Laravel, PHP, HTML, CSS, Javascript (jQuery)','link':'http://178.128.123.39/imis-jhenaidah-new/','date':'07/03/2018 – 30/11/2020','list':['Web application - Laravel (PHP)','Muicipality Integrated System for Jhenaidah Municipality, Bangladesh'],'images':[]},
+const objectData = [
+  { 'id': '1', 'img': 'images/tedx.png', 'title': 'TedxTrondheim', 'subtitle': 'A website developed in Next.js and Headless wordpress.', 'technologies': 'React, Wordpress, Typescript, Tailwind CSS, Redux, MySQL', 'link': 'https://tedxtrondheim-prasan2421.vercel.app/', 'date': '01/03/2023 – Ongoing', 'list': ['NEXT js, client side framework that use react js, to create front-end.', 'Express, a node js web-application framework, to create backend.', 'Mongoose db, an Object Data Modeling (ODM) library for MongoDB and Node js, connecting backend-end with front-end.', 'Material UI, Google Maps, Redux, SSR, AXIOS for Rest API requests, CRUD, React Spring, and more..',], 'images': ['/images/tedx1.png', '/images/tedx2.png', '/images/tedx3.png'] },
+  { 'id': '2', 'img': 'images/spoiq.png', 'title': 'Highlight capture & Editor', 'subtitle': 'A mobile application to capture highlight and edit highlights.', 'technologies': 'React Native, Typescript, Express, MongoDB, React Native Paper, Redux', 'Link':'https://www.spoiq.com/', 'date': '07/05/2018 – Ongoing', 'list': ['A cross platform React Native mobile application.','- Video recording.',
+  '- Capturing highlights from different categories of highlight types.',
+  '- Add or edit highlights from the pre recorded videos/ highlights.',
+  '- Create a reels from the highlights.'], 'images': ['/images/spoiq1.jpg', '/images/spoiq2.png','/images/spoiq3.png','/images/spoiq4.png','/images/spoiq5.png','/images/spoiq6.png'] },
+  { 'id': '3', 'img': 'images/1.png', 'title': 'Prasannat Portfolio', 'subtitle': 'A portfolio website developed in MERN stack.', 'technologies': 'React, React Native, Typescript, Express, MongoDB', 'link': 'http://www.prasannat.com', 'date': '07/03/2018 – 30/11/2020', 'list': ['NEXT js, client side framework that use react js, to create front-end.', 'Express, a node js web-application framework, to create backend.', 'Mongoose db, an Object Data Modeling (ODM) library for MongoDB and Node js, connecting backend-end with front-end.', 'Material UI, Google Maps, Redux, SSR, AXIOS for Rest API requests, CRUD, React Spring, and more..',], 'images': ['/images/Portfolio/1.png', '/images/Portfolio/2.png'] },
+  { 'id': '4', 'img': 'images/foodbusters.png', 'title': 'Foodbusters', 'subtitle': 'Food delivery mobile application (customer and delivery application)', 'technologies': 'React Native, Javascript', 'link': 'https://foodbusters.com.np/', 'date': '07/03/2018 – 30/11/2020', 'list': ['Location tracking', 'Google maps features.', 'cart system.', 'API integration between applications.', 'Redux State management', 'Product listing and organising.', 'AXIOS for HTTP requests to rest API.'], 'images': ['/images/Foodbusters/1.jpg', '/images/Foodbusters/2.jpg', '/images/Foodbusters/3.jpg', '/images/Foodbusters/4.jpg', '/images/Foodbusters/5.jpg', '/images/Foodbusters/6.jpg', '/images/Foodbusters/7.jpg', '/images/Foodbusters/8.jpg', '/images/Foodbusters/9.jpg'] },
+  { 'id': '5', 'img': 'images/covid.png', 'title': 'Nepal Covid-19 Surveillance', 'subtitle': 'A mobile application for COVID-19 Surveillance in Nepal', 'technologies': 'React Native, Javascript', 'link': 'https://play.google.com/store/apps/details?id=com.iclick.covidnew&hl=en&gl=US', 'date': '07/03/2018 – 30/11/2020', 'list': ['Government of Nepal: Kathmandu Metropolitan City', 'Surveillance app to monitor the spread of covid-19 in the locality.', 'Check ones possibility of covid-19 comparing with the given symptoms.', 'Monitor and notify through push notifications.', 'Covid-19 Surveillance system developed for the residence of Kathmandu city.'], 'images': ['/images/Covid/1.jpg', '/images/Covid/2.jpg', '/images/Covid/3.jpg', '/images/Covid/4.jpg', '/images/Covid/5.jpg', '/images/Covid/6.jpg', '/images/Covid/7.jpg', '/images/Covid/8.jpg',] },
+  { 'id': '6', 'img': 'images/patanjalisfa.png', 'title': 'Patanjali SFA', 'subtitle': 'Sales Force Order collection application for internal use of Patanjali employees.', 'technologies': 'React Native, Javascript', 'link': 'https://play.google.com/store/apps/details?id=com.iclick.patanjali&hl=en&gl=US', 'date': '07/03/2018 – 30/11/2020', 'list': ['Location tracking.', 'Google maps features.', 'Cart system.', 'Redux State management', 'Product listing and organising', 'AXIOS for HTTP requests to rest API'], 'images': ['/images/Patanjalisfa/1.jpg', '/images/Patanjalisfa/2.jpg', '/images/Patanjalisfa/3.jpg', '/images/Patanjalisfa/4.jpg', '/images/Patanjalisfa/5.jpg', '/images/Patanjalisfa/6.jpg', '/images/Patanjalisfa/7.jpg', '/images/Patanjalisfa/8.jpg', '/images/Patanjalisfa/9.jpg', '/images/Patanjalisfa/10.jpg', '/images/Patanjalisfa/11.jpg', '/images/Patanjalisfa/12.jpg', '/images/Patanjalisfa/13.jpg', '/images/Patanjalisfa/14.jpg', '/images/Patanjalisfa/15.jpg', '/images/Patanjalisfa/16.jpg', '/images/Patanjalisfa/17.jpg', '/images/Patanjalisfa/18.jpg', '/images/Patanjalisfa/19.jpg', '/images/Patanjalisfa/20.jpg', '/images/Patanjalisfa/21.jpg', '/images/Patanjalisfa/22.jpg',] },
+  { 'id': '7', 'img': 'images/pbri.png', 'title': 'Patanjali Bio Research Institute', 'subtitle': 'Sales Force Order collection application for internal use of Patanjali Bio Research employees.', 'technologies': 'React Native, Javascript', 'link': 'https://play.google.com/store/apps/details?id=com.patanjali.pbri&hl=en&gl=US', 'date': '07/03/2018 – 30/11/2020', 'list': ['Location tracking.', 'Google maps features.', 'Cart system.', 'Redux State management', 'Product listing and organising', 'AXIOS for HTTP requests to rest API'], 'images': [] },
+  { 'id': '8', 'img': '', 'title': 'Patanjali Dairy Application', 'subtitle': 'Sales Force Order collection application for internal use of Patanjali Dairy employees.', 'technologies': 'React Native, Javascript', 'link': 'https://play.google.com/store/apps/details?id=com.patanjali.dairy&hl=en&gl=US', 'date': '07/03/2018 – 30/11/2020', 'list': ['Location tracking.', 'Google maps features.', 'Cart system.', 'Redux State management', 'Product listing and organising', 'AXIOS for HTTP requests to rest API'], 'images': [] },
+  { 'id': '9', 'img': '', 'title': 'Prakriti Organics', 'subtitle': 'Sales Force Order collection application for internal use of Prakriti Organics employees.', 'technologies': 'React Native, Javascript', 'link': 'https://play.google.com/store/apps/details?id=com.prakriti.organics', 'date': '07/03/2018 – 30/11/2020', 'list': ['Location tracking.', 'Google maps features.', 'Cart system.', 'Redux State management', 'Product listing and organising', 'AXIOS for HTTP requests to rest API'], 'images': [] },
+  { 'id': '10', 'img': '', 'title': 'Ruchi Soya- Nutrela SOA', 'subtitle': 'Sales Order collection application for internal use of Ruchi Soya - Nutrela SOA employees.', 'technologies': 'React Native, Javascript', 'link': 'https://play.google.com/store/apps/details?id=com.ruchisoya.nutrela&ref=apkcombo.com', 'date': '07/03/2018 – 30/11/2020', 'list': ['Location tracking.', 'Google maps features.', 'Cart system.', 'Redux State management', 'Product listing and organising', 'AXIOS for HTTP requests to rest API'], 'images': ['images/Nutrela/1.jpg', 'images/Nutrela/2.jpg', 'images/Nutrela/3.jpg', 'images/Nutrela/4.jpg', 'images/Nutrela/5.jpg', 'images/Nutrela/6.jpg', 'images/Nutrela/7.jpg', 'images/Nutrela/8.jpg', '/images/Nutrela/9.jpg'] },
+  { 'id': '11', 'img': 'images/doe.png', 'title': 'Department of Environment- GIS', 'subtitle': 'GIS Based Industrial Information System', 'technologies': 'Laravel, PHP, HTML, CSS, Javascript (jQuery)', 'link': 'https://play.google.com/store/apps/details?id=com.iclick.giis&hl=en&gl=US', 'date': '07/03/2018 – 30/11/2020', 'list': ['Web application - Laravel (PHP)', 'Government of Nepal: Department of Forest and Environment'], 'images': [] },
+  { 'id': '12', 'img': '', 'title': 'IMIS - Jhenaidah', 'subtitle': 'Integrated Municipality Integrated system app of Jhenaidah municipality, Bangladesh', 'technologies': 'Laravel, PHP, HTML, CSS, Javascript (jQuery)', 'link': 'http://178.128.123.39/imis-jhenaidah-new/', 'date': '07/03/2018 – 30/11/2020', 'list': ['Web application - Laravel (PHP)', 'Muicipality Integrated System for Jhenaidah Municipality, Bangladesh'], 'images': [] },
 ]
 
 const blogData=[
-  {'topic':'Javascript', 'title':'React', 'subtitle':'This is a demo summary.', 'color':'red'},
-  {'topic':'Javascript','title':'React Native', 'subtitle':'This is a demo summary.', 'color':'green'},
-  {'topic':'Web designing','title':'UI/UX', 'subtitle':'This is a demo summary.', 'color':'#81D8F7'},
+  {'topic':'Javascript / Typescript', 'title':'React / Next JS', 'subtitle':'Frontend development.', 'color':'red'},
+  {'topic':'Javascript  / Typescript','title':'React Native', 'subtitle':'Cross-platform mobile application development.', 'color':'green'},
+  {'topic':'Design System','title':'Material UI', 'subtitle':'This is a demo summary.', 'color':'cyan'},
+  {'topic':'Design System','title':'React Native Paper', 'subtitle':'This is a demo summary.', 'color':'cyan'},
+  {'topic':'Design System','title':'Bootstrap', 'subtitle':'This is a demo summary.', 'color':'cyan'},
+  {'topic':'CSS Framework','title':'Tailwind CSS', 'subtitle':'This is a demo summary.', 'color':'cyan'},
+ {'topic':'Web designing','title':'UI/UX', 'subtitle':'Design web / mobile UI/UX.', 'color':'#81D8F7'},
   {'topic':'Business development','title':'E-commerce', 'subtitle':'This is a demo summary.', 'color':'yellow'},
-  {'topic':'Business growth','title':'Growth Hacking', 'subtitle':'This is a demo summary.', 'color':'cyan'} ]
+  {'topic':'Business growth','title':'Growth Hacking', 'subtitle':'This is a demo summary.', 'color':'cyan'},
+  {'topic':'Web development','title':'Rest API', 'subtitle':'This is a demo summary.', 'color':'cyan'},
+  {'topic':'Version Control','title':'GIT', 'subtitle':'This is a demo summary.', 'color':'cyan'},
+  {'topic':'Web development','title':'Object Oriented Programming (OOP)', 'subtitle':'This is a demo summary.', 'color':'cyan'},
+  {'topic':'Mobile Database','title':'Realm', 'subtitle':'This is a demo summary.', 'color':'cyan'},
+  {'topic':'Key-Value Storage','title':'MMKV', 'subtitle':'This is a demo summary.', 'color':'cyan'},
+  {'topic':'Multimedia Processing','title':'FFmpeg', 'subtitle':'This is a demo summary.', 'color':'cyan'},
+  {'topic':'Web Development','title':'HTML', 'subtitle':'This is a demo summary.', 'color':'cyan'},
+  {'topic':'Web Development','title':'CSS', 'subtitle':'This is a demo summary.', 'color':'cyan'},
+  {'topic':'Database','title':'Mongo DB', 'subtitle':'This is a demo summary.', 'color':'cyan'},
+  {'topic':'Javascript  / Typescript','title':'Node JS', 'subtitle':'This is a demo summary.', 'color':'cyan'},
+  {'topic':'Web Development','title':'GraphQl', 'subtitle':'This is a demo summary.', 'color':'cyan'},
+  {'topic':'State Management','title':'Redux', 'subtitle':'This is a demo summary.', 'color':'cyan'},
+  {'topic':'Graphic Designing','title':'Adobe Photoshop', 'subtitle':'This is a demo summary.', 'color':'cyan'},
+  {'topic':'Graphic Designing','title':'Adobe Illustrator', 'subtitle':'This is a demo summary.', 'color':'cyan'},
+  {'topic':'Management','title':'IT Project Management', 'subtitle':'This is a demo summary.', 'color':'cyan'},
+  
+
+ ]
 
 
 
@@ -635,7 +662,7 @@ export default function Home(props) {
         <ImageButton
          onClick={() => {
           router.push({
-            pathname: `/work/${data.title}`,
+            pathname: `/project/${data.title}`,
             query: data,
             
           })
@@ -739,8 +766,8 @@ export default function Home(props) {
                         </Typography>
                         <Typography variant="subtitle1"  style={{marginBottom:'2rem', textAlign:'justify', textJustify:'inter-word'}}>For over few years I had many opportunities to work in a vast spectrum of web and mobile technologies that let me gather a significant amount of various experience. Working for companies and individuals around the globe I met and learnt from amazing and ambitious people. 
                         </Typography>
-                        <Typography variant="subtitle1"  style={{marginBottom:'2rem', textAlign:'justify', textJustify:'inter-word'}}>I am currently working on self projects and exploring new development technologies, also being open for new opportunities. 
-                        </Typography>
+                        {/* <Typography variant="subtitle1"  style={{marginBottom:'2rem', textAlign:'justify', textJustify:'inter-word'}}>I am currently working on self projects and exploring new development technologies, also being open for new opportunities. 
+                        </Typography> */}
                      
                         </Box>
                           <Box>
@@ -773,23 +800,16 @@ export default function Home(props) {
               <Typography gutterBottom variant="h4" component="div">
                 {text.title}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              {/* <Typography variant="body2" color="text.secondary">
               {text.subtitle}
-              </Typography>
+              </Typography> */}
             </CardContent>
           </CardActionArea>
         </Card>
       </Grid>
      ))}
      </Grid>
-     <Box sx={{justifyContent:'center', display:'flex', margin:'2rem'}}>
-     <Link href="#" 
-    //  underline="none" 
-     >
-        See all articles.....
-      </Link>
-      
-      </Box>
+    
    </Container>
    </Box>
       {/* Fifth */}

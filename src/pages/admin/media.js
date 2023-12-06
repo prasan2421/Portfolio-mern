@@ -5,15 +5,21 @@ import { MediaListResults } from '../../components/admin/media/media-list-result
 import { MediaListToolbar } from '../../components/admin/media/media-list-toolbar';
 import { DashboardLayout } from '../../components/components/dashboard-layout';
 // import { customers } from './__mocks__/customers';
-import AWS from 'aws-sdk';
+// import AWS from 'aws-sdk';
 import axios from 'axios';
+import {
+  DynamoDBClient,
+  ListTablesCommand
+} from "@aws-sdk/client-dynamodb";
 
-AWS.config.update({
-  accessKeyId: process.env.ACCESSKEY_ID,
+// JS SDK v3 does not support global configuration.
+// Codemod has attempted to pass values to each service client in this file.
+// You may need to update clients outside of this file, if they use global config.
+const dbclient = new DynamoDBClient({  accessKeyId: process.env.ACCESSKEY_ID,
   secretAccessKey: process.env.SECRETKEY_ID,
-  region: 'eu-north-1',
-  // signatureVersion: 'v4',
-});
+  region: 'eu-north-1',});
+
+
 
 const Media =  (props) => {
   

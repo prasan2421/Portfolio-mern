@@ -35,7 +35,7 @@ import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import {getClient} from "../apollo-client";
+import getClient from "../../components/apollo-client";
 import Typography from '@mui/material/Typography';
 import { gql } from "@apollo/client";
 import styles from '../../styles/About.module.css';

@@ -10,18 +10,27 @@ import {
 import { Search as SearchIcon } from '../../../icons/search';
 import { Upload as UploadIcon } from '../../../icons/upload';
 import { Download as DownloadIcon } from '../../../icons/download';
-import AWS from 'aws-sdk';
+// import AWS from 'aws-sdk';
+const {S3} = require('@aws-sdk/client-s3');
+import {
+  DynamoDBClient,
+  ListTablesCommand
+} from "@aws-sdk/client-dynamodb";
 
-AWS.config.update({
-  accessKeyId: process.env.ACCESSKEY_ID,
+const dbclient = new DynamoDBClient({  accessKeyId: process.env.ACCESSKEY_ID,
   secretAccessKey: process.env.SECRETKEY_ID,
-  region: 'eu-north-1',
-  // signatureVersion: 'v4',
-});
+  region: 'eu-north-1',});
+
+// AWS.config.update({
+//   accessKeyId: process.env.ACCESSKEY_ID,
+//   secretAccessKey: process.env.SECRETKEY_ID,
+//   region: 'eu-north-1',
+//   // signatureVersion: 'v4',
+// });
 
 
 export const MediaListToolbar = ({onButtonClick}) => {
-  const s3 = new AWS.S3();
+  const s3 = new S3();
   const handleButtonClick = (event) => {
     const data = Array.from(event.target.files);
     
@@ -49,6 +58,8 @@ export const MediaListToolbar = ({onButtonClick}) => {
        
       };
       return new Promise((resolve, reject) => {
+        // S3 ManagedUpload with callbacks are not supported in AWS SDK for JavaScript (v3).
+        // Please convert to 'await client.upload(params, options).promise()', and re-run aws-sdk-js-codemod.
         s3.upload(params, (err, data) => {
           if (err) {
             alert(err)

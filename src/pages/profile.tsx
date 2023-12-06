@@ -126,7 +126,7 @@ const PersonalData=[
   {'title':'Birth Date', 'subtitle':'23/03/1993'},
   {'title':'Email', 'subtitle':'tuladharprasan@gmail.com'},
   {'title':'Website', 'subtitle':'www.prasannat.com'},
-  {'title':'Address', 'subtitle':'Storgata 63, 0182, Oslo'},
+  {'title':'Address', 'subtitle':'Bergen, Norway'},
   
   ];
  
@@ -314,7 +314,7 @@ export default function  About(){
     // {'title':'Birth Date', 'subtitle':'23/03/1993'},
     {'title':'Email', 'subtitle':'tuladharprasan@gmail.com, me@prasannat.com'},
     {'title':'Website', 'subtitle':'www.prasannat.com'},
-    {'title':'Address', 'subtitle':'Storgata, Oslo'},
+    {'title':'Address', 'subtitle':'Bergen, Norway'},
     
     ]);
   
@@ -443,11 +443,18 @@ theme={theme}
              
             </Box>
             <Box className={styles.subTitle}>
-            <Typography variant="h5" sx={{textAlign:'justify', textJustify:'inter-word'}}>I&apos;m a result-driven, forward-looking Software Engineer with 3 years' of progressive experience in various phases of SDLC including Requirement Analysis, Design, Development, Implementation, Testing and Maintenance of Customer focused and Enterprise-level <b style={{color:'turquoise'}}>Web / Mobile application</b>.</Typography>
+            <Typography variant="h5" sx={{textAlign:'justify', textJustify:'inter-word'}}>Software Engineer with a specialization in Web and mobile applications, experienced in developing user interfaces that are intuitive, responsive, and engaging.
+
+I am mainly involved in Customer focused and Enterprise-level <b style={{color:'turquoise'}}>Web / Mobile application</b> development using - React JS, React Native, Express JS. ⚛️ 💻 📱 🌟 📈
+</Typography>
             
               </Box>
               <Box className={styles.subTitle}>
-            <Typography variant="h5" sx={{textAlign:'justify', textJustify:'inter-word'}}>I&apos;m able to create and execute innovative software solutions to enhance business productivity considering user behaviour and satisfaction.</Typography>
+            <Typography variant="h5" sx={{textAlign:'justify', textJustify:'inter-word'}}>I have great enthusiasm for the customer behaviour and satisfaction in software applications, and stay current with the latest design trends and development methodologies to ensure that every project I undertake is at the forefront of user expectations.</Typography>
+            
+              </Box>
+              <Box className={styles.subTitle}>
+            <Typography variant="h5" sx={{textAlign:'justify', textJustify:'inter-word'}}>My goal is to create captivating online experiences that eases users and leave a lasting impression.</Typography>
             
               </Box>
                 <Box >

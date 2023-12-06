@@ -43,7 +43,7 @@ import DraftsIcon from '@mui/icons-material/Drafts';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import axios from 'axios';
 import { gql, useQuery } from "@apollo/client";
-import {getClient} from "../apollo-client";
+import getClient from "../../components/apollo-client";
 import { marked } from 'marked';
 // Import Swiper styles
 import 'swiper/css';
@@ -243,7 +243,7 @@ const Blog = ({ data }) => {
      data && data.map((data, index) => (
       <Grid item  xs={12} sm={6} md={6} lg={4} >
         <Card sx={{height:'100%'}}>
-          <Link sx={{height:"100%"}} href={{
+          <Link  href={{
             pathname: `/blog/[slug]`,
             query:{
               slug:data.title,

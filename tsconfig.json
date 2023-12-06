@@ -29,7 +29,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-  ],
+, "src/components/admin/media/media-list-results.jsx"  ],
   "exclude": [
     "node_modules"
   ]
