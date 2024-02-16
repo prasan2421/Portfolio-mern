@@ -1,0 +1,88 @@
+[29-Aug-2022 01:11:10 America/Boise] PHP Fatal error:  Uncaught Error: Interface "SimplePie_Cache_Base" not found in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/DB.php:50
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/DB.php on line 50
+[29-Aug-2022 01:11:17 America/Boise] PHP Fatal error:  Uncaught Error: Interface "SimplePie_Cache_Base" not found in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/File.php:50
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/File.php on line 50
+[29-Aug-2022 01:11:24 America/Boise] PHP Fatal error:  Uncaught Error: Interface "SimplePie_Cache_Base" not found in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/Memcache.php:57
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/Memcache.php on line 57
+[29-Aug-2022 01:11:31 America/Boise] PHP Fatal error:  Uncaught Error: Interface "SimplePie_Cache_Base" not found in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/Memcached.php:58
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/Memcached.php on line 58
+[29-Aug-2022 01:11:37 America/Boise] PHP Fatal error:  Uncaught Error: Class "SimplePie_Cache_DB" not found in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/MySQL.php:56
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/MySQL.php on line 56
+[29-Aug-2022 01:11:43 America/Boise] PHP Fatal error:  Uncaught Error: Interface "SimplePie_Cache_Base" not found in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/Redis.php:27
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/Redis.php on line 27
+[29-Aug-2022 01:57:12 America/Boise] PHP Fatal error:  Uncaught Error: Interface "SimplePie_Cache_Base" not found in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/DB.php:50
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/DB.php on line 50
+[29-Aug-2022 01:57:19 America/Boise] PHP Fatal error:  Uncaught Error: Interface "SimplePie_Cache_Base" not found in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/File.php:50
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/File.php on line 50
+[29-Aug-2022 01:57:26 America/Boise] PHP Fatal error:  Uncaught Error: Interface "SimplePie_Cache_Base" not found in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/Memcache.php:57
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/Memcache.php on line 57
+[29-Aug-2022 01:57:31 America/Boise] PHP Fatal error:  Uncaught Error: Interface "SimplePie_Cache_Base" not found in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/Memcached.php:58
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/Memcached.php on line 58
+[29-Aug-2022 01:57:38 America/Boise] PHP Fatal error:  Uncaught Error: Class "SimplePie_Cache_DB" not found in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/MySQL.php:56
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/MySQL.php on line 56
+[29-Aug-2022 01:57:45 America/Boise] PHP Fatal error:  Uncaught Error: Interface "SimplePie_Cache_Base" not found in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/Redis.php:27
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/Redis.php on line 27
+[27-Jun-2023 14:25:36 America/Boise] PHP Fatal error:  Uncaught Error: Interface "SimplePie_Cache_Base" not found in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/DB.php:50
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/DB.php on line 50
+[27-Jun-2023 14:25:37 America/Boise] PHP Fatal error:  Uncaught Error: Interface "SimplePie_Cache_Base" not found in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/DB.php:50
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/DB.php on line 50
+[27-Jun-2023 14:25:46 America/Boise] PHP Fatal error:  Uncaught Error: Interface "SimplePie_Cache_Base" not found in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/Memcache.php:57
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/Memcache.php on line 57
+[27-Jun-2023 14:25:46 America/Boise] PHP Fatal error:  Uncaught Error: Interface "SimplePie_Cache_Base" not found in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/Memcache.php:57
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/Memcache.php on line 57
+[27-Jun-2023 14:25:51 America/Boise] PHP Fatal error:  Uncaught Error: Interface "SimplePie_Cache_Base" not found in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/Memcached.php:58
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/Memcached.php on line 58
+[27-Jun-2023 14:25:52 America/Boise] PHP Fatal error:  Uncaught Error: Interface "SimplePie_Cache_Base" not found in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/Memcached.php:58
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/Memcached.php on line 58
+[27-Jun-2023 14:26:00 America/Boise] PHP Fatal error:  Uncaught Error: Class "SimplePie_Cache_DB" not found in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/MySQL.php:56
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/MySQL.php on line 56
+[27-Jun-2023 14:26:00 America/Boise] PHP Fatal error:  Uncaught Error: Class "SimplePie_Cache_DB" not found in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/MySQL.php:56
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/MySQL.php on line 56
+[27-Jun-2023 14:26:11 America/Boise] PHP Fatal error:  Uncaught Error: Interface "SimplePie_Cache_Base" not found in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/Redis.php:27
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/Redis.php on line 27
+[27-Jun-2023 14:26:13 America/Boise] PHP Fatal error:  Uncaught Error: Interface "SimplePie_Cache_Base" not found in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/Redis.php:27
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/SimplePie/Cache/Redis.php on line 27

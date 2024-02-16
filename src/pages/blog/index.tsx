@@ -194,6 +194,11 @@ const Blog = ({ data }) => {
     setOpen(false);
   }
 
+  React.useEffect(() => {
+     
+  alert(JSON.stringify(data))
+  }, []);
+
 
   const renderForm = (
 
@@ -450,8 +455,6 @@ const Blog = ({ data }) => {
 
 export default React.memo(Blog);
 
-
-
 export const getServerSideProps = wrapper.getServerSideProps(
   (id) =>
     async ({  }) => {
@@ -470,14 +473,12 @@ export const getServerSideProps = wrapper.getServerSideProps(
         query: GET_BLOGS
       });
     
-      if (!data) {
-        return {
-          notFound: true,
-        }
-      }
+      // if (!data) {
+      //   return {
+      //     notFound: true,
+      //   }
+      // }
 
-      console.log('asa')
-    
       return {
         props: {data}, // will be passed to the page component as props
       }

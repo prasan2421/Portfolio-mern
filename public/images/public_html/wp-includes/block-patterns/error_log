@@ -1,0 +1,28 @@
+[29-Aug-2022 01:16:33 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function _x() in /home1/tedxtron/public_html/wp-includes/block-patterns/query-grid-posts.php:9
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/block-patterns/query-grid-posts.php on line 9
+[29-Aug-2022 01:16:39 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function _x() in /home1/tedxtron/public_html/wp-includes/block-patterns/query-large-title-posts.php:9
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/block-patterns/query-large-title-posts.php on line 9
+[29-Aug-2022 01:16:46 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function _x() in /home1/tedxtron/public_html/wp-includes/block-patterns/query-medium-posts.php:9
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/block-patterns/query-medium-posts.php on line 9
+[29-Aug-2022 01:16:52 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function _x() in /home1/tedxtron/public_html/wp-includes/block-patterns/query-offset-posts.php:9
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/block-patterns/query-offset-posts.php on line 9
+[29-Aug-2022 01:16:58 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function _x() in /home1/tedxtron/public_html/wp-includes/block-patterns/query-small-posts.php:9
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/block-patterns/query-small-posts.php on line 9
+[29-Aug-2022 01:17:04 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function _x() in /home1/tedxtron/public_html/wp-includes/block-patterns/query-standard-posts.php:9
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/block-patterns/query-standard-posts.php on line 9
+[29-Aug-2022 01:17:11 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function _x() in /home1/tedxtron/public_html/wp-includes/block-patterns/social-links-shared-background-color.php:9
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/block-patterns/social-links-shared-background-color.php on line 9

@@ -1,5 +1,6 @@
-const Blogs = require('../model/blogModel')
+
 const Admins = require('../model/adminModel')
+const Blogs = require('../model/blogModel')
 const Personal = require('../model/personalModel')
 const Contact = require('../model/contactModel')
 const Project = require('../model/projectModel')
@@ -151,7 +152,7 @@ const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
     fields:{
         blogs:{
-            type: new GraphQLList(BlogType),
+            type: BlogType,
            
             resolve(parent, args){
                 return Blogs.find()

@@ -1,0 +1,29 @@
+# This file is a template, and might need editing before it works on your project.
+# Select image from https://hub.docker.com/_/php/
+image: php:7.2
+
+before_script:
+  - apt-get update -yqq
+  - apt-get install -yqq git-ftp
+
+stages:
+  - deploy
+
+# Deploy
+deploy to production:
+  stage: deploy
+  script:
+    - git ftp push --user $FTP_username --passwd $FTP_password ftp://ftp.tedxtrondheim.com
+  environment: production
+  only:
+    refs:
+      - master
+
+deploy to staging:
+  stage: deploy
+  script:
+    - git ftp push --user $FTP_username --passwd $FTP_password ftp://ftp.tedxtrondheim.com/staging
+  environment: staging
+  only:
+    refs:
+      - main-dev

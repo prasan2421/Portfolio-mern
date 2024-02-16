@@ -8,7 +8,7 @@ let client: ApolloClient<any> | null = null;
     if (!client || typeof window === "undefined") {
       client = new ApolloClient({
         link: new HttpLink({
-          uri: "http://localhost:80/graphql",
+          uri: "http://localhost:3000/graphql",
         }),
         cache: new InMemoryCache(),
       });

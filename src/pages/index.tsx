@@ -339,6 +339,7 @@ export default function Home(props) {
     });
   
     const onSubmit: SubmitHandler<IFormInputs> = (data) => {
+      alert('coming soon..'); return;
       let name = data.name;
       let email = data.email;
       let subject = data.subject;

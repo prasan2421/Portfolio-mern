@@ -60,7 +60,7 @@ const BREAKPOINTS = { mobile: 0, tablet: 900, desktop: 1280 }
 
 const navData=[
   {'title':'Home', 'link':'/'},
-  {'title':'Blog', 'link':'/blog'},
+  // {'title':'Blog', 'link':'/blog'},
   {'title':'Profile', 'link':'/profile'},
   // {'title':'My Skills', 'link':'/skill'},
   {'title':'Projects', 'link':'/project'},

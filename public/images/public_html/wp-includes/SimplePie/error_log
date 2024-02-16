@@ -1,0 +1,4 @@
+[29-Aug-2022 01:12:15 America/Boise] PHP Fatal error:  Uncaught Error: Class "SimplePie" not found in /home1/tedxtron/public_html/wp-includes/SimplePie/Core.php:53
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/SimplePie/Core.php on line 53

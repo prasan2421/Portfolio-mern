@@ -1,0 +1,264 @@
+[29-Aug-2022 01:32:05 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-application-passwords-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-application-passwords-controller.php on line 17
+[29-Aug-2022 01:32:12 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Posts_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php on line 17
+[29-Aug-2022 01:32:18 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Revisions_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-autosaves-controller.php:18
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-autosaves-controller.php on line 18
+[29-Aug-2022 01:32:25 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-block-directory-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-block-directory-controller.php on line 17
+[29-Aug-2022 01:32:33 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-block-pattern-categories-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-block-pattern-categories-controller.php on line 17
+[29-Aug-2022 01:32:40 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-block-patterns-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-block-patterns-controller.php on line 17
+[29-Aug-2022 01:32:47 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-block-renderer-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-block-renderer-controller.php on line 17
+[29-Aug-2022 01:32:54 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-block-types-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-block-types-controller.php on line 17
+[29-Aug-2022 01:33:01 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Posts_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-blocks-controller.php:20
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-blocks-controller.php on line 20
+[29-Aug-2022 01:33:08 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php on line 17
+[29-Aug-2022 01:33:27 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-edit-site-export-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-edit-site-export-controller.php on line 17
+[29-Aug-2022 01:33:34 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-global-styles-controller.php:13
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-global-styles-controller.php on line 13
+[29-Aug-2022 01:33:41 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Posts_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-menu-items-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-menu-items-controller.php on line 17
+[29-Aug-2022 01:33:49 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-menu-locations-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-menu-locations-controller.php on line 17
+[29-Aug-2022 01:33:56 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Terms_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-menus-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-menus-controller.php on line 17
+[29-Aug-2022 01:34:04 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-pattern-directory-controller.php:20
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-pattern-directory-controller.php on line 20
+[29-Aug-2022 01:34:15 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-plugins-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-plugins-controller.php on line 17
+[29-Aug-2022 01:34:22 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-post-statuses-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-post-statuses-controller.php on line 17
+[29-Aug-2022 01:34:38 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php on line 17
+[29-Aug-2022 01:34:45 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php on line 17
+[29-Aug-2022 01:34:52 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php on line 17
+[29-Aug-2022 01:34:59 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-search-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-search-controller.php on line 17
+[29-Aug-2022 01:35:06 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-settings-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-settings-controller.php on line 17
+[29-Aug-2022 01:35:13 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-sidebars-controller.php:19
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-sidebars-controller.php on line 19
+[29-Aug-2022 01:35:20 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-site-health-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-site-health-controller.php on line 17
+[29-Aug-2022 01:35:28 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php on line 17
+[29-Aug-2022 01:35:35 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php on line 17
+[29-Aug-2022 01:35:44 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php on line 17
+[29-Aug-2022 01:35:51 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-themes-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-themes-controller.php on line 17
+[29-Aug-2022 01:35:59 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-url-details-controller.php:18
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-url-details-controller.php on line 18
+[29-Aug-2022 01:36:07 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php on line 17
+[29-Aug-2022 01:36:14 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-widget-types-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-widget-types-controller.php on line 17
+[29-Aug-2022 01:36:22 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-widgets-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-widgets-controller.php on line 17
+[29-Aug-2022 02:14:45 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-application-passwords-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-application-passwords-controller.php on line 17
+[29-Aug-2022 02:14:51 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Posts_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php on line 17
+[29-Aug-2022 02:14:58 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Revisions_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-autosaves-controller.php:18
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-autosaves-controller.php on line 18
+[29-Aug-2022 02:15:04 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-block-directory-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-block-directory-controller.php on line 17
+[29-Aug-2022 02:15:11 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-block-pattern-categories-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-block-pattern-categories-controller.php on line 17
+[29-Aug-2022 02:15:18 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-block-patterns-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-block-patterns-controller.php on line 17
+[29-Aug-2022 02:15:25 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-block-renderer-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-block-renderer-controller.php on line 17
+[29-Aug-2022 02:15:33 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-block-types-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-block-types-controller.php on line 17
+[29-Aug-2022 02:15:40 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Posts_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-blocks-controller.php:20
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-blocks-controller.php on line 20
+[29-Aug-2022 02:15:46 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php on line 17
+[29-Aug-2022 02:16:00 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-edit-site-export-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-edit-site-export-controller.php on line 17
+[29-Aug-2022 02:16:07 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-global-styles-controller.php:13
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-global-styles-controller.php on line 13
+[29-Aug-2022 02:16:13 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Posts_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-menu-items-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-menu-items-controller.php on line 17
+[29-Aug-2022 02:16:21 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-menu-locations-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-menu-locations-controller.php on line 17
+[29-Aug-2022 02:16:28 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Terms_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-menus-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-menus-controller.php on line 17
+[29-Aug-2022 02:16:34 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-pattern-directory-controller.php:20
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-pattern-directory-controller.php on line 20
+[29-Aug-2022 02:16:40 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-plugins-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-plugins-controller.php on line 17
+[29-Aug-2022 02:16:47 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-post-statuses-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-post-statuses-controller.php on line 17
+[29-Aug-2022 02:16:54 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php on line 17
+[29-Aug-2022 02:17:01 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php on line 17
+[29-Aug-2022 02:17:07 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php on line 17
+[29-Aug-2022 02:17:15 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-search-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-search-controller.php on line 17
+[29-Aug-2022 02:17:22 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-settings-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-settings-controller.php on line 17
+[29-Aug-2022 02:17:28 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-sidebars-controller.php:19
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-sidebars-controller.php on line 19
+[29-Aug-2022 02:17:35 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-site-health-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-site-health-controller.php on line 17
+[29-Aug-2022 02:17:42 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php on line 17
+[29-Aug-2022 02:17:49 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-templates-controller.php on line 17
+[29-Aug-2022 02:17:56 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php on line 17
+[29-Aug-2022 02:18:02 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-themes-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-themes-controller.php on line 17
+[29-Aug-2022 02:18:11 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-url-details-controller.php:18
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-url-details-controller.php on line 18
+[29-Aug-2022 02:18:18 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php on line 17
+[29-Aug-2022 02:18:26 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-widget-types-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-widget-types-controller.php on line 17
+[29-Aug-2022 02:18:32 America/Boise] PHP Fatal error:  Uncaught Error: Class "WP_REST_Controller" not found in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-widgets-controller.php:17
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/rest-api/endpoints/class-wp-rest-widgets-controller.php on line 17

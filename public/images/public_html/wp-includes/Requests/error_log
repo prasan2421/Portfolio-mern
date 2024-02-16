@@ -1,0 +1,4 @@
+[29-Aug-2022 01:08:16 America/Boise] PHP Fatal error:  Uncaught Error: Interface "Requests_Hooker" not found in /home1/tedxtron/public_html/wp-includes/Requests/Hooks.php:15
+Stack trace:
+#0 {main}
+  thrown in /home1/tedxtron/public_html/wp-includes/Requests/Hooks.php on line 15
