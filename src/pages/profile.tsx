@@ -121,14 +121,7 @@ const InterpersonalData=[
       
   ];
 
-const PersonalData=[
-  {'title':'Name', 'subtitle':'Prasanna Tuladhar'},
-  {'title':'Birth Date', 'subtitle':'23/03/1993'},
-  {'title':'Email', 'subtitle':'tuladharprasan@gmail.com'},
-  {'title':'Website', 'subtitle':'www.prasannat.com'},
-  {'title':'Address', 'subtitle':'Bergen, Norway'},
-  
-  ];
+
  
     const EducationData=[
       {'image':usn, 'title':'Master of Science in Management Information Systems', 'subtitle':'University of South-Eastern Norway','date':'2020 - 2022'},
@@ -144,27 +137,17 @@ const PersonalData=[
       
       ];
       
-      const ProjectData = [
-        { 'id': '1', 'img': 'images/1.png', 'title': 'Prasannat Portfolio', 'subtitle': 'A portfolio website developed in MERN stack.', 'technologies': 'React, React Native, Typescript, Express, MongoDB', 'link': 'http://www.prasannat.com', 'date': '07/03/2018 – 30/11/2020', 'list': ['NEXT js, client side framework that use react js, to create front-end.', 'Express, a node js web-application framework, to create backend.', 'Mongoose db, an Object Data Modeling (ODM) library for MongoDB and Node js, connecting backend-end with front-end.', 'Material UI, Google Maps, Redux, SSR, AXIOS for Rest API requests, CRUD, React Spring, and more..',], 'images': ['/images/Portfolio/1.png', '/images/Portfolio/2.png'] },
-        { 'id': '2', 'img': 'images/foodbusters.png', 'title': 'Foodbusters', 'subtitle': 'Food delivery mobile application (customer and delivery application)', 'technologies': 'React Native, Javascript', 'link': 'https://foodbusters.com.np/', 'date': '07/03/2018 – 30/11/2020', 'list': ['Location tracking', 'Google maps features.', 'cart system.', 'API integration between applications.', 'Redux State management', 'Product listing and organising.', 'AXIOS for HTTP requests to rest API.'], 'images': ['/images/Foodbusters/1.jpg', '/images/Foodbusters/2.jpg', '/images/Foodbusters/3.jpg', '/images/Foodbusters/4.jpg', '/images/Foodbusters/5.jpg', '/images/Foodbusters/6.jpg', '/images/Foodbusters/7.jpg', '/images/Foodbusters/8.jpg', '/images/Foodbusters/9.jpg'] },
-        { 'id': '3', 'img': 'images/covid.png', 'title': 'Nepal Covid-19 Surveillance', 'subtitle': 'A mobile application for COVID-19 Surveillance in Nepal', 'technologies': 'React Native, Javascript', 'link': 'https://play.google.com/store/apps/details?id=com.iclick.covidnew&hl=en&gl=US', 'date': '07/03/2018 – 30/11/2020', 'list': ['Government of Nepal: Kathmandu Metropolitan City', 'Surveillance app to monitor the spread of covid-19 in the locality.', 'Check ones possibility of covid-19 comparing with the given symptoms.', 'Monitor and notify through push notifications.', 'Covid-19 Surveillance system developed for the residence of Kathmandu city.'], 'images': ['/images/Covid/1.jpg', '/images/Covid/2.jpg', '/images/Covid/3.jpg', '/images/Covid/4.jpg', '/images/Covid/5.jpg', '/images/Covid/6.jpg', '/images/Covid/7.jpg', '/images/Covid/8.jpg',] },
-        { 'id': '4', 'img': 'images/patanjalisfa.png', 'title': 'Patanjali SFA', 'subtitle': 'Sales Force Order collection application for internal use of Patanjali employees.', 'technologies': 'React Native, Javascript', 'link': 'https://play.google.com/store/apps/details?id=com.iclick.patanjali&hl=en&gl=US', 'date': '07/03/2018 – 30/11/2020', 'list': ['Location tracking.', 'Google maps features.', 'Cart system.', 'Redux State management', 'Product listing and organising', 'AXIOS for HTTP requests to rest API'], 'images': ['/images/Patanjalisfa/1.jpg', '/images/Patanjalisfa/2.jpg', '/images/Patanjalisfa/3.jpg', '/images/Patanjalisfa/4.jpg', '/images/Patanjalisfa/5.jpg', '/images/Patanjalisfa/6.jpg', '/images/Patanjalisfa/7.jpg', '/images/Patanjalisfa/8.jpg', '/images/Patanjalisfa/9.jpg', '/images/Patanjalisfa/10.jpg', '/images/Patanjalisfa/11.jpg', '/images/Patanjalisfa/12.jpg', '/images/Patanjalisfa/13.jpg', '/images/Patanjalisfa/14.jpg', '/images/Patanjalisfa/15.jpg', '/images/Patanjalisfa/16.jpg', '/images/Patanjalisfa/17.jpg', '/images/Patanjalisfa/18.jpg', '/images/Patanjalisfa/19.jpg', '/images/Patanjalisfa/20.jpg', '/images/Patanjalisfa/21.jpg', '/images/Patanjalisfa/22.jpg',] },
-        { 'id': '5', 'img': 'images/pbri.png', 'title': 'Patanjali Bio Research Institute', 'subtitle': 'Sales Force Order collection application for internal use of Patanjali Bio Research employees.', 'technologies': 'React Native, Javascript', 'link': 'https://play.google.com/store/apps/details?id=com.patanjali.pbri&hl=en&gl=US', 'date': '07/03/2018 – 30/11/2020', 'list': ['Location tracking.', 'Google maps features.', 'Cart system.', 'Redux State management', 'Product listing and organising', 'AXIOS for HTTP requests to rest API'], 'images': [] },
-        { 'id': '6', 'img': '', 'title': 'Patanjali Dairy Application', 'subtitle': 'Sales Force Order collection application for internal use of Patanjali Dairy employees.', 'technologies': 'React Native, Javascript', 'link': 'https://play.google.com/store/apps/details?id=com.patanjali.dairy&hl=en&gl=US', 'date': '07/03/2018 – 30/11/2020', 'list': ['Location tracking.', 'Google maps features.', 'Cart system.', 'Redux State management', 'Product listing and organising', 'AXIOS for HTTP requests to rest API'], 'images': [] },
-        { 'id': '7', 'img': '', 'title': 'Prakriti Organics', 'subtitle': 'Sales Force Order collection application for internal use of Prakriti Organics employees.', 'technologies': 'React Native, Javascript', 'link': 'https://play.google.com/store/apps/details?id=com.prakriti.organics', 'date': '07/03/2018 – 30/11/2020', 'list': ['Location tracking.', 'Google maps features.', 'Cart system.', 'Redux State management', 'Product listing and organising', 'AXIOS for HTTP requests to rest API'], 'images': [] },
-        { 'id': '8', 'img': '', 'title': 'Ruchi Soya- Nutrela SOA', 'subtitle': 'Sales Order collection application for internal use of Ruchi Soya - Nutrela SOA employees.', 'technologies': 'React Native, Javascript', 'link': 'https://play.google.com/store/apps/details?id=com.ruchisoya.nutrela&ref=apkcombo.com', 'date': '07/03/2018 – 30/11/2020', 'list': ['Location tracking.', 'Google maps features.', 'Cart system.', 'Redux State management', 'Product listing and organising', 'AXIOS for HTTP requests to rest API'], 'images': ['images/Nutrela/1.jpg', 'images/Nutrela/2.jpg', 'images/Nutrela/3.jpg', 'images/Nutrela/4.jpg', 'images/Nutrela/5.jpg', 'images/Nutrela/6.jpg', 'images/Nutrela/7.jpg', 'images/Nutrela/8.jpg', '/images/Nutrela/9.jpg'] },
-        { 'id': '9', 'img': 'images/doe.png', 'title': 'Department of Environment- GIS', 'subtitle': 'GIS Based Industrial Information System', 'technologies': 'Laravel, PHP, HTML, CSS, Javascript (jQuery)', 'link': 'https://play.google.com/store/apps/details?id=com.iclick.giis&hl=en&gl=US', 'date': '07/03/2018 – 30/11/2020', 'list': ['Web application - Laravel (PHP)', 'Government of Nepal: Department of Forest and Environment'], 'images': [] },
-        { 'id': '10', 'img': '', 'title': 'IMIS - Jhenaidah', 'subtitle': 'Integrated Municipality Integrated system app of Jhenaidah municipality, Bangladesh', 'technologies': 'Laravel, PHP, HTML, CSS, Javascript (jQuery)', 'link': 'http://178.128.123.39/imis-jhenaidah-new/', 'date': '07/03/2018 – 30/11/2020', 'list': ['Web application - Laravel (PHP)', 'Muicipality Integrated System for Jhenaidah Municipality, Bangladesh'], 'images': [] },
-      ]
+    
 
       const TrainingData=[
+        {'image':spn, 'title':'C# Fundamental', 'subtitle':'Microsoft X FreeCodeCamp','date':'12/2023 - 02/2024'},
         {'image':spn, 'title':'Web development', 'subtitle':'Student Project Nepal','date':'10/2016 - 03/2017'},
         {'image':spn, 'title':'Graphics designing', 'subtitle':'Student Project Nepal','date':'2011'},
         
         
         ];
     const LanguageData=[
-      {'image':spn, 'title':'Norwegian', 'subtitle':'Beginner'},
+      {'image':spn, 'title':'Norwegian', 'subtitle':'Beginner - A2'},
           {'image':spn, 'title':'English', 'subtitle':'Professional'},
           {'image':spn, 'title':'Nepali', 'subtitle':'Native'},
           {'image':spn, 'title':'Hindi', 'subtitle':'Intermediate'},
@@ -198,6 +181,8 @@ const PersonalData=[
                 'Mentoring',
                 'Motivation',
                 'Positive reinforcement']},
+                {'image':technology, 'title':'C#', 'subtitle':'Good','subField':['Caring','Compassion','Diplomacy','Diversity','Helping others','Kindness','Patience','Respect','Sensitivity','Sympathy']},
+
               {'image':guitar, 'title':'Graphic Designing', 'subtitle':'Good','subField':['Active listening',
                 'Curiosity',
                 'Focus',
@@ -312,8 +297,8 @@ export default function  About(){
   const [personalDetailsData, setPersonalDetailsData] = React.useState([
     {'title':'Name', 'subtitle':'Prasanna Tuladhar'},
     // {'title':'Birth Date', 'subtitle':'23/03/1993'},
-    {'title':'Email', 'subtitle':'tuladharprasan@gmail.com, me@prasannat.com'},
-    {'title':'Website', 'subtitle':'www.prasannat.com'},
+    {'title':'Email', 'subtitle':'tuladharprasan@gmail.com'},
+    {'title':'Website', 'subtitle':'https://portfolio-mern-dmpri0lwz-prasan2421.vercel.app/'},
     {'title':'Address', 'subtitle':'Bergen, Norway'},
     
     ]);
@@ -445,7 +430,7 @@ theme={theme}
             <Box className={styles.subTitle}>
             <Typography variant="h5" sx={{textAlign:'justify', textJustify:'inter-word'}}>Software Engineer with a specialization in Web and mobile applications, experienced in developing user interfaces that are intuitive, responsive, and engaging.
 
-I am mainly involved in Customer focused and Enterprise-level <b style={{color:'turquoise'}}>Web / Mobile application</b> development using - React JS, React Native, Express JS. ⚛️ 💻 📱 🌟 📈
+I am mainly involved in Customer focused and Enterprise-level <b style={{color:'turquoise'}}>Web / Mobile application</b> development using - React JS, React Native, Express JS, C#. ⚛️ 💻 📱 🌟 📈
 </Typography>
             
               </Box>
@@ -483,7 +468,7 @@ I am mainly involved in Customer focused and Enterprise-level <b style={{color:'
       <Grid container xs={12} sm={6} >
       <Grid container item >
       <Card sx={{margin:'7px', borderTop:`2px solid lightblue`, width:'100%' }}>
-          <CardActionArea >
+       
             <CardContent>
             <Typography gutterBottom variant="h5" component="div" color="lightblue">
                 Personal Details
@@ -502,12 +487,12 @@ I am mainly involved in Customer focused and Enterprise-level <b style={{color:'
               </Box>
               ))}
             </CardContent>
-          </CardActionArea>
+          
         </Card>
         </Grid>
         <Grid container item >
         <Card sx={{margin:'7px', borderTop:`2px solid lightgreen` , width:'100%'}}>
-          <CardActionArea>
+         
             <CardContent>
             <Typography gutterBottom variant="h5" component="div" color="lightgreen">
                 Education
@@ -540,7 +525,7 @@ I am mainly involved in Customer focused and Enterprise-level <b style={{color:'
               </Box>
               ))}
             </CardContent>
-          </CardActionArea>
+         
         </Card>
           </Grid>
       </Grid>
@@ -668,10 +653,10 @@ display: 'flex'}}>
       </Grid>
       <Grid xs={12} sm={6} >
         <Card sx={{margin:'7px', borderTop:`2px solid cyan`, height:'97%'}}>
-          <CardActionArea>
+         
             <CardContent>
             <Typography gutterBottom variant="h5" component="div" color="cyan">
-                Trainings
+                Certification
               </Typography>
               {TrainingData.map((text, index) => (
                 <Box key={index} sx={{display:{sm:'flex'}, marginY:'15px',}}>
@@ -701,12 +686,12 @@ display: 'flex'}}>
               </Box>
               ))}
             </CardContent>
-          </CardActionArea>
+        
         </Card>
       </Grid>
       <Grid xs={12} sm={6} id="sectLanguages">
         <Card sx={{margin:'7px', borderTop:`2px solid #f2c204`}}>
-          <CardActionArea>
+         
             <CardContent>
             <Typography gutterBottom variant="h5" component="div" color="#f2c204">
                 Languages
@@ -740,7 +725,7 @@ display: 'flex'}}>
               </Grid>
               ))}</Grid>
             </CardContent>
-          </CardActionArea>
+         
         </Card>
       </Grid>
      </Grid>
