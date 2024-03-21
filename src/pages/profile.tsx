@@ -64,6 +64,7 @@ import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import usn from '../../assets/images/usn.png';
+import miks from '../../assets/images/miks.png';
 import tic from '../../assets/images/tic.png';
 import tu from '../../assets/images/tu.png';
 import spn from '../../assets/images/spn.png';
@@ -124,6 +125,7 @@ const InterpersonalData=[
 
  
     const EducationData=[
+      {'image':miks, 'title':'KIME Gründerprogram', 'subtitle':'MIKS Ressurssenter','date':'02/2024 - Ongoing'},
       {'image':usn, 'title':'Master of Science in Management Information Systems', 'subtitle':'University of South-Eastern Norway','date':'2020 - 2022'},
       {'image':tu, 'title':'Bachelor of Science in Computer Science and Information Technologies', 'subtitle':'Tribhuvan University','date':'2013 - 2017'},
       {'image':tic, 'title':'Intermediate with Science', 'subtitle':'Trinity International College','date':'2010 - 2012'},
